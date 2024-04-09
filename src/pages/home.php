@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home Page</title>
+        <title>Clothes Cachet</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <?php include_once('../templates/header.php'); ?>
+        <?php include_once('../templates/footer.php'); ?>
     </head>
     <body>
-        <h1>Home Page</h1>
-        <p>Welcome to the home page</p>
+        <?php drawHeader(); ?>
+        <?php drawFooter(); ?>
     </body>
 </html>
