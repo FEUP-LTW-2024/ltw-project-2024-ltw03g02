@@ -9,6 +9,7 @@
     </head>
     <body>
         <?php drawHeader(); ?>
+        
         <?php drawFooter(); ?>
     </body>
 </html>
