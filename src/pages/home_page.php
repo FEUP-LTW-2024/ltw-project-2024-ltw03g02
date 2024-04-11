@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clothes Cachet</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="../styles/general_style.css">
+        <link rel="stylesheet" type="text/css" href="../styles/home_page.css">
+        <?php include_once('../templates/common/header.php'); ?>
+        <?php include_once('../templates/common/footer.php'); ?>
+        <?php include_once('../templates/home_page/hero.php'); ?>
+        <?php include_once('../templates/home_page/clothes_type.php'); ?>
+        <?php include_once('../templates/home_page/brands.php'); ?>
+    </head>
+    <body>
+        <?php drawHeader(); ?>
+
+        <?php drawHero(); ?>
+        <?php drawClothesType(); ?>
+        <?php drawBrands(); ?>
+
+        <?php drawFooter(); ?>
+    </body>
+</html>
