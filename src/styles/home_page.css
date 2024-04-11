@@ -34,6 +34,12 @@
     }
 }
 
+@media screen and (max-width: 768px){
+    .hero {
+        height: 100%;
+    }
+}
+
 /* Clothes Type Section */
 .clothes-type {
     display: grid;
@@ -64,6 +70,18 @@
         }
     }
 }
+
+@media screen and (max-width: 768px){
+    .clothes-type {
+        .clothes-type-card{
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
 
 /* Brands Section */
 .brands {
