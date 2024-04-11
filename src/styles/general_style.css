@@ -12,14 +12,32 @@
 
 /* Header Style */
 
-.topbar{
+.topbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.topbar .topbar-right-items{
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: row;
     border-color: var(--light-grey);
     color: white;
     padding: 1rem;
+    > * {
+        margin: 0rem 2rem;
+    }
+    input{
+        padding: 0.5rem;
+        border-radius: 5px;
+        border-color: var(--dark-grey);
+        border-width: 2px;
+        width: 22rem;
+    }
     .cart-btn{
         display: flex;
         flex-direction: column;
@@ -29,14 +47,13 @@
             font-size: 1.5rem;
             color: black;
             margin: -1rem 0rem;
-            z-index: 1;
+            z-index: 2;
         }
     }
 }
 
-header .topbar > .primary-btn {
+header .topbar .topbar-right-items .primary-btn {
     padding: 1rem;
-    margin: 1rem;
 }
 
 nav {
@@ -71,6 +88,9 @@ nav {
 }
 
 @media screen and (max-width: 768px){
+    header .topbar .topbar-right-items input {
+        width: inherit;
+    }
     nav ul{
         display: flex;
         flex-direction: column;
