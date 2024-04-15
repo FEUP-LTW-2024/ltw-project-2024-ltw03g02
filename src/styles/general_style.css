@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Inter'; /* Replace with your font's name */
+    src: url('../fonts/Inter-Regular.ttf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +13,7 @@
     --dark-green: #3B542B;
     --light-green: #A9BD9D;
     --light-grey: #CFCFDD;
+    font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
 /* Header Style */
