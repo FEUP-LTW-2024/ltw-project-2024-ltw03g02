@@ -49,6 +49,7 @@
         flex-direction: column;
         align-items: center;
         margin: 0rem;
+        text-decoration: none;
         span{
             font-size: 1.5rem;
             color: black;
