@@ -1,16 +1,19 @@
 <?php function drawHeader() { ?>
+    <?php include_once('logo.php'); ?>
     <header>
         <div class="topbar">
-            <img src="../images/logo.png" />
+            <a href="../../pages/home_page.php">
+                <img src="../../images/logo.png" />
+            </a>
             <div class="topbar-right-items">
                 <form action="/search" method="get">
                     <input type="search" name="q" placeholder="Procure por vendedor, marca, produto...">
                 </form>
                 <button class="primary-btn">Iniciar Sessão</button>
-                <div class="cart-btn">
+                <a href="cart_page.php" class="cart-btn">
                     <span>0</span>
                     <img src="../images/shopping_cart.png" />
-                </div>
+                </a>
             </div>
         </div>
         <nav>

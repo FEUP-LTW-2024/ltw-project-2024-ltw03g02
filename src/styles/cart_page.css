@@ -1,0 +1,23 @@
+header .topbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid blue;
+    h2{
+        width: 100%;
+        text-align: right;
+    }
+    section {
+        width: 100%;
+        border: 1px solid red;
+        padding: 1em;
+    }
+}
