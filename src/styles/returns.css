@@ -1,0 +1,17 @@
+.returns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+
+}
+
+.instructions{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-direction: column;
+    padding: 1rem;
+
+}
