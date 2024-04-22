@@ -5,6 +5,14 @@
     flex-direction: column;
     padding: 1rem;
 
+    h1{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    p{
+        margin-bottom: 10px;
+    }
 }
 
 .instructions{
@@ -12,6 +20,24 @@
     justify-content: left;
     align-items: left;
     flex-direction: column;
+    background-color: var(--lighter-grey);
     padding: 1rem;
+    
+    ol li{
+        list-style-type:decimal;
+        margin-bottom: 10px;
+    }
+}
+
+.primary-btn{
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+    background-color: var(--dark-green);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-color: white;
+    border-radius: 5px;
+    cursor: pointer;
 
 }
