@@ -21,8 +21,12 @@
     align-items: left;
     flex-direction: column;
     background-color: var(--lighter-grey);
-    padding: 1rem;
+    padding: 2rem 0 2rem 2rem;
+    margin: 2rem 4rem 2rem 2rem;
     
+    h2{
+        margin-bottom: 10px;
+    }
     ol li{
         list-style-type:decimal;
         margin-bottom: 10px;

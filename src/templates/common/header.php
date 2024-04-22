@@ -2,7 +2,7 @@
     <?php include_once('logo.php'); ?>
     <header>
         <div class="topbar">
-            <a href="../../pages/home_page.php">
+            <a href="../../src/pages/home_page.php">
                 <img src="../../src/images/logo.png" />
             </a>
             <div class="topbar-right-items">
