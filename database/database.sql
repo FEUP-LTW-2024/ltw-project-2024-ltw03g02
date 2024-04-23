@@ -78,7 +78,7 @@ CREATE TABLE Review (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     idUser INTEGER REFERENCES User,
     idItem INTEGER REFERENCES Item,
-    stars INTEGER NOT NULL CHECK (1 <= stars AND stars <= 5),
+    stars INTEGER NOT NULL CHECK (0 <= stars AND stars <= 5),
     comment TEXT NOT NULL,
     data DATE
 );

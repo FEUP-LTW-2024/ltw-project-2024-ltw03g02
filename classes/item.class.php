@@ -285,31 +285,6 @@
         }
     return $items;
     }   
-
-    public static function create(PDO $db, $title, $description, $color, $type_item, $picture, $price, $condition, $sellerId, $categoryId, $idBrand, $clotheSize) {
-        $stmt = $db->prepare('
-            INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ');
-    
-        $stmt->execute(array($title, $description, $color, $type_item, $picture, $price, $condition, $sellerId, $categoryId, $idBrand, $clotheSize));
-    
-        return new Item(
-            intval($db->lastInsertId()),
-            $title,
-            $description,
-            $color,
-            $type_item,
-            $picture,
-            floatval($price),
-            $condition,
-            intval($sellerId),
-            intval($categoryId),
-            intval($idBrand),
-            $clotheSize,
-            date('Y-m-d H:i:s')
-        );
-    }
     
     static function search(PDO $db, int $categoryId, string $type_item, string $color, string $condition, int $idBrand, string $clotheSize) : array {
 
