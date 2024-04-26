@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Brand;
 DROP TABLE IF EXISTS Review;
 DROP TABLE IF EXISTS UserOrder;
+DROP TABLE IF EXISTS FavoriteItem;
 DROP TRIGGER IF EXISTS update_user_rating;
 
 CREATE TABLE User (
@@ -17,6 +18,7 @@ CREATE TABLE User (
     gender VARCHAR(255) NOT NULL CHECK (
         gender IN ('Mulher', 'Homem')
     ),
+    address TEXT NOT NULL,
     profile_image_link TEXT DEFAULT 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
     rating FLOAT,
     phoneNumber INTEGER NOT NULL CHECK (100000000 <= phoneNumber AND phoneNumber <= 999999999),
@@ -76,9 +78,15 @@ CREATE TABLE Review (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     idUser INTEGER REFERENCES User,
     idItem INTEGER REFERENCES Item,
-    stars INTEGER NOT NULL CHECK (1 <= stars AND stars <= 5),
+    stars INTEGER NOT NULL CHECK (0 <= stars AND stars <= 5),
     comment TEXT NOT NULL,
     data DATE
+);
+
+CREATE TABLE FavoriteItem (
+    idUser INTEGER REFERENCES User,
+    idItem INTEGER REFERENCES Item,
+    PRIMARY KEY (idUser, idItem)
 );
 
 CREATE TABLE UserOrder (
@@ -99,11 +107,11 @@ BEGIN
 END;
 
 
-INSERT INTO User (nome, username, email, pass, gender, rating, phoneNumber, is_admin)
+INSERT INTO User (nome, username, email, pass, gender, address, rating, phoneNumber, is_admin)
 VALUES
-    ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', 'Homem', 4.5, 919715443, 0),
-    ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 4.2, 987654321, 0),
-    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', 'adminpass', 'Homem', 5.0, 911053549, 1);
+    ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', 'Homem', 'Rua das Árvores, n.10', 4.5, 919715443, 0),
+    ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 4.2, 987654321, 0),
+    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', 'adminpass', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 5.0, 911053549, 1);
 
 INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
 VALUES
