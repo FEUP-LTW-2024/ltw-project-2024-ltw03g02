@@ -13,4 +13,11 @@
             <h3>Criança</h3>
         </div>
     </section>
+
+    <script src="types.js"></script>
+<script>
+    fetchItemsByType('women-card');
+    fetchItemsByType('men-card');
+    fetchItemsByType('children-card');
+</script>
 <?php } ?>

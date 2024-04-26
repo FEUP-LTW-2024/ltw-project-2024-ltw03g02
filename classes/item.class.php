@@ -236,7 +236,7 @@
     }
     
     static function getItemsByType(PDO $db, string $type_item) : array {
-        $stmt = $db->prepare('SELECT * FROM Item WHERE type_item = ?');
+        $stmt = $db->prepare('SELECT * FROM Item WHERE Item.type_item = ?');
         $stmt->execute(array($type_item)); 
     
         $items = array();
@@ -261,6 +261,8 @@
         return $items;
     }
     
+
+
     static function getItemsByCondition(PDO $db, string $condition) : array {
         $stmt = $db->prepare('SELECT * FROM Item WHERE condition = ?');
         $stmt->execute(array($condition)); 

@@ -1,4 +1,18 @@
-<?php function drawHeader() { ?>
+<?php 
+  require_once(dirname(__DIR__).'/../classes/session.class.php');
+  $session = new Session();
+
+  function displayUserIconOrLogin() {
+    global $session;
+    if ($session->isLoggedIn()) {
+      $user = $session->getUser();
+      echo '<img src="' . $user['profile_image_link'] . '" alt="Profile Icon">';
+    } else {
+      echo '<button class="primary-btn">Iniciar Sessão</button>';
+    }
+  }
+
+  function drawHeader() { ?>
     <?php include_once('logo.php'); ?>
     <header>
         <div class="topbar">
@@ -9,7 +23,7 @@
                 <form action="/search" method="get">
                     <input type="search" name="q" placeholder="Procure por vendedor, marca, produto...">
                 </form>
-                <button class="primary-btn">Iniciar Sessão</button>
+                <?php displayUserIconOrLogin(); ?>
                 <a href="cart_page.php" class="cart-btn">
                     <span>0</span>
                     <img src="../images/shopping_cart.png" />
