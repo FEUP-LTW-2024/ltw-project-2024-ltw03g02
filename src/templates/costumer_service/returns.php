@@ -15,6 +15,5 @@
             <li>Crie uma etiqueta de envio com o número de seguimento do envio e os nomes e moradas do remetente e do destinatário bem visíveis.</li>
         </ol>
         </div>
-        <button class="primary-btn">Devolver artigo</button>
     </section>
 <?php } ?>

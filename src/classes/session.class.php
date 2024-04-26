@@ -14,7 +14,8 @@
     }
 
     public function isLoggedIn() : bool {
-      return isset($_SESSION['id']);    
+      print_r("Session: " . $_SESSION['idUser'] . "<br>");
+      return isset($_SESSION['idUser']);    
     }
 
     public function logout() {

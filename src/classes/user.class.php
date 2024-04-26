@@ -56,6 +56,28 @@
       } else return null;
     }
 
+    static function getUserWithUsername(PDO $db, string $username, string $pass) : ?User {
+      $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
+      $stmt->execute(array($username));
+
+      $user = $stmt->fetch();
+      if ($user !== false && password_verify($pass, $user['pass'])) {
+          return new User(
+              intval($user['idUser']),
+              $user['nome'],
+              $user['username'],
+              $user['email'],
+              $user['pass'],
+              $user['gender'],
+              $user['address'],
+              $user['profile_image_link'],
+              floatval($user['rating']),
+              intval($user['phoneNumber']),
+              intval($user['is_admin']),
+          );
+      } else return null;
+  }
+
     static function getUsers(PDO $db, int $count) : array {
 
       $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User LIMIT ?');

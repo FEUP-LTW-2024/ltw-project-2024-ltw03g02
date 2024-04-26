@@ -1,5 +1,6 @@
 <?php function drawHeader() { ?>
-    <?php include_once('logo.php'); ?>
+    <?php include_once('logo.php');
+    include_once('/../classes/session.class.php'); ?>
     <header>
         <div class="topbar">
             <a href="../../pages/home_page.php">
@@ -9,10 +10,11 @@
                 <form action="/search" method="get">
                     <input type="search" name="q" placeholder="Procure por vendedor, marca, produto...">
                 </form>
-                <button class="primary-btn">Iniciar Sessão</button>
+                <a href="login.php" class="login-btn">
+                    <button class="primary-btn">Iniciar Sessão</button>
+                </a>
                 <a href="cart_page.php" class="cart-btn">
-                    <span>0</span>
-                    <img src="../images/shopping_cart.png" />
+                    <img src="/../images/shopping_cart.png" />
                 </a>
             </div>
         </div>

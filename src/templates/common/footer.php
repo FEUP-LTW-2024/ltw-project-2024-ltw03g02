@@ -1,7 +1,7 @@
 <?php function drawFooter() { ?>
     <footer>
         <ul>
-            <li><a href="">Devoluções</a></li>
+            <li><a href="../../pages/returns.php">Devoluções</a></li>
             <li><a href="../../pages/support.php">Apoio ao Cliente</a></li>
             <li><a href="">Termos e Serviços</a></li>
             <li><a href="">Contactos</a></li>
