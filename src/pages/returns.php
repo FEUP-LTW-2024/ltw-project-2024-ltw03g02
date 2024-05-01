@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Returns</title>
+        <title>Clothes Cachet - USE or SELL</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../styles/common_style.css">
         <link rel="stylesheet" type="text/css" href="../styles/returns.css">
