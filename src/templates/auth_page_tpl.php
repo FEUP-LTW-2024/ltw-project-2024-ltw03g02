@@ -6,13 +6,13 @@
         <link rel="stylesheet" type="text/css" href="../styles/common_style.css">
         <link rel="stylesheet" type="text/css" href="../styles/cart_page.css">
         <?php include_once('../templates/common/simple_header.php'); ?>
-        <?php include_once('../templates/cart_page/cart_main.php'); ?>
+        <?php include_once('../templates/common/login.tpl.php'); ?>
         <?php include_once('../templates/common/footer.php'); ?>
     </head>
     <body>
         <?php drawSimpleHeader(); ?>
 
-        <?php drawCartMain(); ?>
+        <?php drawLogin($session) ?>
 
         <?php drawFooter(); ?>
     </body>
