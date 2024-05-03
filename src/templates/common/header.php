@@ -21,8 +21,8 @@
         <nav>
             <ul>
                 <li><a href="#">Sobre Nós</a></li>
-                <li><a href="#">Loja</a></li>
-                <li><a href="#">Novidades</a></li>
+                <li><a href="../../pages/filtered_page.php">Loja</a></li>
+                <li><a href="../../pages/filtered_page.php">Novidades</a></li>
                 <li><a href="#">Vendedores</a></li>
                 <li><a href="#">Promoções</a></li>
             </ul>

@@ -141,32 +141,3 @@ footer {
     border-radius: 5px;
     cursor: pointer;
 }
-
-.item-card {
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--item-card-color);
-    > img {
-        width: 100%;
-    }
-    .item-card-info {
-        width: 100%;
-        padding: 0.2rem;
-        > * {
-            margin: 0.1rem;
-        }
-        > div {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-            justify-content: space-around;
-        }
-        > span {
-            font-weight: bolder;
-        }
-    }
-    
-}

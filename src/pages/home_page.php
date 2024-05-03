@@ -22,8 +22,6 @@
         <?php drawClothesType(); ?>
         <?php drawBrands(); ?>
 
-        <?php drawItemCard(); ?>
-
         <?php drawFooter(); ?>
     </body>
 </html>
