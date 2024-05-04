@@ -20,9 +20,11 @@
         .item-card {
             width: var(--card-width);
             background-color: var(--item-card-color);
-            height: 250px;
+            height: 300px;
             > img {
                 width: 100%;
+                height: var(--card-width);
+                object-fit: cover;
             }
             > div {
                 margin: 0.2em;
@@ -36,8 +38,19 @@
                     margin-top: 0;
                     margin: 0.1em;
                 }
-                > span {
+                > .price-info {
+                    margin-top: 0.4em;
                     font-weight: bolder;
+                    margin-right: 0;
+                }
+                > .size-info {
+                    font-size: 1.1em;
+                    font-weight: lighter;
+                    margin: 0.3em 0;
+                }
+                > .type-info, > .category-info {
+                    font-size: 0.8em;
+                    font-weight: lighter;
                     margin-right: 0;
                 }
             }
@@ -45,5 +58,39 @@
         a {
             width: var(--card-width);
         }
+    }
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 0;
+    > * {
+        margin: 0.5em 0;
+    }
+    > .filters-row {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        > * {
+            margin: 0em 2em;
+        }
+        select {
+            width: 100%;
+            padding: 0.5em;
+            border-radius: 0em;
+            border: 3px solid var(--dark-green);
+            font-size: 0.9em;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: var(--dark-green);
+        align-self: flex-end;
+        margin-right: 3em;
+        font-size: 0.9em;
+        margin-bottom: 0;
     }
 }
