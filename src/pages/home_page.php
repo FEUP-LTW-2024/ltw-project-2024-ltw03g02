@@ -11,6 +11,9 @@
         <?php include_once('../templates/home_page/clothes_type.php'); ?>
         <?php include_once('../templates/home_page/brands.php'); ?>
         <?php include_once('../templates/home_page/drawer.php'); ?>
+
+        <?php include_once('../templates/common/item_card.php'); ?>
+
     </head>
     <body>
         <?php drawHeader(); ?>
