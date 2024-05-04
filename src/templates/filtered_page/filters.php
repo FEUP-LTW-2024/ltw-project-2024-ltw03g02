@@ -29,7 +29,7 @@
                         $stmt->execute();
                         $categories = $stmt->fetchAll();
                         foreach ($categories as $category) {
-                            echo '<option value="'.$category['categoryName'].'">'.$category['categoryName'].'</option>';
+                            echo '<option value="'.$category['idCategory'].'">'.$category['categoryName'].'</option>';
                         }
                     ?>
                 </select>
