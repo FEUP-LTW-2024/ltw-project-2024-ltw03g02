@@ -8,19 +8,34 @@
     }
     .item-list {
         --card-width: 150px; 
+        --card-height: 300px;
         display: flex;
-        flex-wrap: wrap;
-        padding: 0;
+        flex-wrap: wrap;    
         align-items: center;
         justify-content: center;
         margin: 1em 0 2em 0;
         > * {
             margin: 1em;
+            border: 1px solid white;
+            width: var(--card-width);
+            height: var(--card-height);
+        }
+        > :hover {
+            border: 1px solid var(--dark-green);
+        }
+        > :last-child {
+            width: var(--card-width);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: none;
+        }
+        > :hover:last-child {
+            box-shadow: none;
         }
         .item-card {
-            width: var(--card-width);
             background-color: var(--item-card-color);
-            height: 300px;
             > img {
                 width: 100%;
                 height: var(--card-width);
@@ -55,9 +70,6 @@
                 }
             }
         }
-        a {
-            width: var(--card-width);
-        }
     }
 }
 
@@ -77,20 +89,41 @@
         > * {
             margin: 0em 2em;
         }
-        select {
+        > .filter{
             width: 100%;
-            padding: 0.5em;
-            border-radius: 0em;
-            border: 3px solid var(--dark-green);
-            font-size: 0.9em;
+            display: flex;
+            flex-direction: column;
+            span {
+                font-size: 0.9em;
+                font-weight: lighter;
+                margin-bottom: 0.5em;
+                color: var(--dark-grey);
+            }
+            select {
+                width: 100%;
+                padding: 0.5em;
+                border-radius: 0em;
+                border: 3px solid var(--dark-green);
+                font-size: 0.9em;
+            }
         }
     }
-    a {
-        text-decoration: none;
-        color: var(--dark-green);
-        align-self: flex-end;
-        margin-right: 3em;
-        font-size: 0.9em;
-        margin-bottom: 0;
+    .filtered-control-row{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        a {
+            text-decoration: none;
+            color: var(--dark-green);
+            margin-right: 3em;
+            font-size: 0.9em;
+            margin-bottom: 0;
+            display: none;
+        }
+        > button {
+            margin-right: 3em;
+        }
     }
 }
+

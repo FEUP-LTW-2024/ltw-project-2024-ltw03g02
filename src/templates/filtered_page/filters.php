@@ -4,9 +4,10 @@
 
 <?php function drawfilters() { ?>
     <section class="filters">
-            <div class="filters-row">
-                <select name="type">
-                    <option value="" disabled selected>Tipo</option>
+        <div class="filters-row">
+            <div id="type-filter" class="filter">
+                <span>Tipo</span>
+                <select id="type-filter-select" name="type" onchange="changedFilterValueHandler()">
                     <option value="">-</option>
                     <?php
                         $db = getDatabaseConnection();
@@ -18,8 +19,10 @@
                         }
                     ?>
                 </select>
-                <select name="category">
-                    <option value="" disabled selected>Categoria</option>
+            </div>
+            <div id="category-filter" class="filter">
+                <span>Categoria</span>
+                <select id="category-filter-select" name="category" onchange="changedFilterValueHandler()">
                     <option value="">-</option>
                     <?php
                         $stmt = $db->prepare('SELECT * FROM Category;');
@@ -30,8 +33,10 @@
                         }
                     ?>
                 </select>
-                <select name="size">
-                    <option value="" disabled selected>Tamanho</option>
+            </div>
+            <div id="size-filter" class="filter">
+                <span>Tamanho</span>
+                <select id="size-filter-select" name="size" onchange="changedFilterValueHandler()">
                     <option value="">-</option>
                     <?php
                         $stmt = $db->prepare('SELECT DISTINCT clotheSize FROM Item;');
@@ -42,11 +47,17 @@
                         }
                     ?>
                 </select>
-                <select name="order-by">
-                    <option value="" disabled selected>Ordenar por</option>
+            </div>
+            <div id="order-by-filter" class="filter">
+                <span>Ordenar por</span>
+                <select id="order-by-filter-select" name="order-by" onchange="changedFilterValueHandler()">
                     <option value="">-</option>
                 </select>
             </div>
-            <a href="#" class="clean-filters">Limpar filtros</a>
-        </section>
+        </div>
+        <div class="filtered-control-row">
+            <a href="#" id="clean-filters" onclick="cleanFiltersHandler()">Limpar filtros</a>
+            <button class=primary-btn onclick="applyFiltersHandler()">Aplicar filtros</button>
+        </div>
+    </section>
 <?php } ?>

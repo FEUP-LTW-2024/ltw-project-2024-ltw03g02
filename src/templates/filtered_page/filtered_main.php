@@ -25,9 +25,9 @@
                     }
 
                 ?>
-                <a href="#" class="expand-btn">
-                    <button class="primary-btn">Ver mais...</button>
-                </a>
+                <div>
+                    <button id="expand-btn" class="primary-btn">Ver mais...</button>
+                </div>
             </div>
         </section>
 
