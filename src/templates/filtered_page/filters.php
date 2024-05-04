@@ -57,7 +57,6 @@
         </div>
         <div class="filtered-control-row">
             <a href="#" id="clean-filters" onclick="cleanFiltersHandler()">Limpar filtros</a>
-            <button class=primary-btn onclick="applyFiltersHandler()">Aplicar filtros</button>
         </div>
     </section>
 <?php } ?>

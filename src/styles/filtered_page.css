@@ -119,7 +119,7 @@
             margin-right: 3em;
             font-size: 0.9em;
             margin-bottom: 0;
-            display: none;
+            visibility: hidden;
         }
         > button {
             margin-right: 3em;

@@ -95,14 +95,9 @@ async function loadItems() {
     itemList.appendChild(buttonDiv);
 }
 
-async function applyFiltersHandler() {
-    console.log('applyFiltersHandler() executed');
-    loadItems();
-}
-
 function cleanFiltersHandler() {
     console.log('cleanFiltersHandler() executed');
-    document.getElementById('clean-filters').style = 'display: none;';
+    document.getElementById('clean-filters').style = 'visibility: hidden;';
     filters.reset();
     loadItems();
 }
@@ -111,8 +106,10 @@ function changedFilterValueHandler(){
     console.log('changedFilterValueHandler() executed');
     filters.updateFilterValues();
     if (filters.isEmpty()){
-        document.getElementById('clean-filters').style = 'display: none;';
+        document.getElementById('clean-filters').style = 'visibility: hidden;';
     } else {
-        document.getElementById('clean-filters').style = 'display: flex;';
+        document.getElementById('clean-filters').style = 'visibility: visible;';
     }
+    console.log('applyFiltersHandler() executed');
+    loadItems();
 }
