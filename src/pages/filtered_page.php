@@ -7,8 +7,8 @@
         <link rel="stylesheet" type="text/css" href="../styles/filtered_page.css">
         <?php include_once('../templates/common/header.php'); ?>
         <?php include_once('../templates/common/footer.php'); ?>
-
         <?php include_once('../templates/filtered_page/filtered_main.php'); ?>
+        <script src="../js/filtered_page.js" defer></script>
     </head>
     <body>
         <?php drawHeader(); ?>

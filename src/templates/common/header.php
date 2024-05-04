@@ -1,6 +1,5 @@
 <?php function drawHeader() { ?>
-    <?php include_once('logo.php');
-    include_once('/../classes/session.class.php'); ?>
+    <?php include_once('../../classes/session.class.php'); ?>
     <header>
         <div class="topbar">
             <a href="../../pages/home_page.php">
