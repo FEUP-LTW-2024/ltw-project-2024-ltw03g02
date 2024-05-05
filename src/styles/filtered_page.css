@@ -89,7 +89,7 @@
         > * {
             margin: 0em 2em;
         }
-        > .filter{
+        > .filter {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -127,3 +127,25 @@
     }
 }
 
+@media screen and (max-width: 768px) and (min-width: 546px){
+    .filters-row {
+        flex-wrap: wrap;
+        .filter{
+            max-width: 250px;
+            margin: 0.5em 5px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 545px) {
+    .filters-row {
+        flex-direction: column;
+        padding: 0 1em;
+    }
+
+    .filters-row .filter {
+        margin: 0.5em 0;
+    }
+    
+}
