@@ -288,54 +288,38 @@
     return $items;
     }   
     
-    static function search(PDO $db, int $categoryId, string $type_item, string $color, string $condition, int $idBrand, string $clotheSize) : array {
+    static function filteredSearch(PDO $db, $clotheSize, $type_item, $categoryId) {
+        $sql = 'SELECT picture, username, price, clotheSize, type_item, categoryId, categoryName
+            FROM Item 
+            JOIN User ON sellerId=idUser 
+            JOIN Category ON categoryId=idCategory';
+        $sql .= ' WHERE 1=1';
+        if ($clotheSize != null) {
+            $sql .= ' AND clotheSize = :clotheSize';
+        } 
+        if ($type_item != null) {
+            $sql .= ' AND type_item = :type_item';
+        }
+        if ($categoryId != null) {
+            $sql .= ' AND categoryId = :categoryId';
+        }  
+        $sql .= ';';
 
-      $result = array();
-      $querie = ' SELECT Item.*
-                  FROM Item
-                  WHERE Item.categoryId = ? AND
-                        Item.type_item = ? AND
-                        Item.color = ? AND
-                        Item.condition = ? AND
-                        Item.idBrand = ? AND
-                        Item.clotheSize = ?                               ';
+        $stmt = $db->prepare($sql);
+        if($type_item != null){
+            $stmt->bindParam(':type_item', $type_item);
+        }
+        if($clotheSize != null){
+            $stmt->bindParam(':clotheSize', $clotheSize);
+        }
+        if($categoryId != null){
+            $stmt->bindParam(':categoryId', $categoryId);
+        }
+
+        $stmt->execute();
+        $items = $stmt->fetchAll();
       
-      $stmt = $db->prepare($querie);
-      $stmt->execute(array($categoryId, $type_item, $color, $condition, $idBrand, $clotheSize));
-
-      while ($item = $stmt->fetch()) {
-
-            $item = new Item(intval($item['idItem']),
-            $item['title'],
-            $item['description'],
-            $item['color'],
-            $item['type_item'],
-            $item['picture'],
-            floatval($item['price']),
-            $item['condition'],
-            intval($item['sellerId']),
-            intval($item['categoryId']),
-            intval($item['idBrand']),
-            $item['clotheSize'],
-            $item['listedAt']);
-                        
-            $result[] = array(
-                "idItem" => $item->idItem,
-                "title" => $item->title,
-                "description" => $item->description,
-                "color" => $item->color,
-                "type_item" => $item->type_item,
-                "picture" => $item->picture,
-                "price" => $item->price,
-                "condition" => $item->condition,
-                "sellerId" => $item->sellerId,
-                "categoryId" => $item->categoryId,
-                "idBrand" => $item->idBrand,
-                "clotheSize" => $item->clotheSize,
-                "listedAt" => $item->listedAt,
-            );
-      }
-      return $result;
+        return $items;
     }
 
     function save($db) {
