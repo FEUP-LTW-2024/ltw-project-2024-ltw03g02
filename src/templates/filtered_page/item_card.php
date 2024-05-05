@@ -1,6 +1,6 @@
-<?php function drawItemCard($username, $price, $size, $category, $type) { ?>
+<?php function drawItemCard($picture, $username, $price, $size, $category, $type) { ?>
     <div class="item-card">
-        <img src="../../images/item_card/item_card_example.png" />
+        <img src="<?php echo $picture; ?>" />
         <div class="item-card-info">
             <div>
                 <img src="../../images/item_card/small_profile_pic.png" />

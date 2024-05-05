@@ -29,7 +29,7 @@
                         $stmt->execute();
                         $categories = $stmt->fetchAll();
                         foreach ($categories as $category) {
-                            echo '<option value="'.$category['categoryName'].'">'.$category['categoryName'].'</option>';
+                            echo '<option value="'.$category['idCategory'].'">'.$category['categoryName'].'</option>';
                         }
                     ?>
                 </select>
@@ -49,15 +49,16 @@
                 </select>
             </div>
             <div id="order-by-filter" class="filter">
-                <span>Ordenar por</span>
+                <span>Ordenar por preço</span>
                 <select id="order-by-filter-select" name="order-by" onchange="changedFilterValueHandler()">
                     <option value="">-</option>
+                    <option value="asc">Crescente</option>
+                    <option value="desc">Decrescente</option>
                 </select>
             </div>
         </div>
         <div class="filtered-control-row">
             <a href="#" id="clean-filters" onclick="cleanFiltersHandler()">Limpar filtros</a>
-            <button class=primary-btn onclick="applyFiltersHandler()">Aplicar filtros</button>
         </div>
     </section>
 <?php } ?>

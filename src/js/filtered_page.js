@@ -38,30 +38,78 @@ class Filters {
                 this.currFilterValues[i] = null;
             }
         }
+        console.log(this.currFilterValues);
     }
 }
 
 filters = new Filters("Homem", "Calças", "L", null);
 
-function applyFiltersHandler() {
-    console.log('applyFiltersHandler() executed');
-    
-    type = filters.currFilterValues[0];
-    category = filters.currFilterValues[1];
-    size = filters.currFilterValues[2];
-    orderBy = filters.currFilterValues[3];
+function _createFetchString() {
+    let fetchString = '../api/api_filter_items.php?';
+    let filterNames = ['type_item', 'categoryId', 'clotheSize', 'orderBy'];
+    filters.currFilterValues.forEach((value, index) => {
+        if (value != null){
+            fetchString += filterNames[index] + '=' + value + '&';
+        }
+    });
+    return fetchString;
+}
 
-    console.log("\ntype: " + type + "\ncategory: " + category + "\nsize: " + size + "\norderBy: "+ orderBy);
+function _drawItemCard(item) {
+    const itemCard = document.createElement('div');
+    itemCard.classList.add('item-card');
+    itemCard.innerHTML = `
+        <img src="${item['picture']}">
+        <div class="item-card-info">
+            <div>
+                <img src="../../images/item_card/small_profile_pic.png" />
+                <span>${item['username']}</span>
+            </div>
+            <span class="price-info">€ ${item['price']}</span>
+            <span class="size-info">${item['clotheSize']}</span>
+            <span class="type-info">${item['type_item']}</span>
+            <span class="category-info">${item['categoryName']}</span>
+        </div>
+    `;
+    return itemCard;
+}
+
+async function loadItems() {
+    const response = await fetch(_createFetchString(), {
+        method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+    });
+    const items = await response.json();
+
+    itemList = document.querySelector('.item-list');
+    itemList.innerHTML = '';
+    console.log(items);
+    for (item of items){
+        itemList.appendChild(_drawItemCard(item));
+    }
+
+    buttonDiv = document.createElement('div');
+    buttonDiv.innerHTML = '<button id="expand-btn" class="primary-btn">Ver mais...</button>'
+    itemList.appendChild(buttonDiv);
 }
 
 function cleanFiltersHandler() {
     console.log('cleanFiltersHandler() executed');
-    document.getElementById('clean-filters').style = 'display: none;';
+    document.getElementById('clean-filters').style = 'visibility: hidden;';
     filters.reset();
+    loadItems();
 }
 
 function changedFilterValueHandler(){
     console.log('changedFilterValueHandler() executed');
     filters.updateFilterValues();
-    document.getElementById('clean-filters').style = 'display: flex;';
+    if (filters.isEmpty()){
+        document.getElementById('clean-filters').style = 'visibility: hidden;';
+    } else {
+        document.getElementById('clean-filters').style = 'visibility: visible;';
+    }
+    console.log('applyFiltersHandler() executed');
+    loadItems();
 }
