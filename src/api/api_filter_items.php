@@ -22,7 +22,13 @@
         $categoryId = null;
     }
 
-    $items = Item::filteredSearch($db, $clotheSize, $type_item, $categoryId);
+    if (isset($_GET['orderBy'])) {
+        $orderBy = $_GET['orderBy'];
+    } else {
+        $orderBy = null;
+    }
+
+    $items = Item::filteredSearch($db, $clotheSize, $type_item, $categoryId, $orderBy);
     
     echo json_encode($items);
 

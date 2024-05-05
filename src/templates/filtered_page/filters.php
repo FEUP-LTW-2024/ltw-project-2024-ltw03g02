@@ -49,9 +49,11 @@
                 </select>
             </div>
             <div id="order-by-filter" class="filter">
-                <span>Ordenar por</span>
+                <span>Ordenar por preço</span>
                 <select id="order-by-filter-select" name="order-by" onchange="changedFilterValueHandler()">
                     <option value="">-</option>
+                    <option value="asc">Crescente</option>
+                    <option value="desc">Decrescente</option>
                 </select>
             </div>
         </div>

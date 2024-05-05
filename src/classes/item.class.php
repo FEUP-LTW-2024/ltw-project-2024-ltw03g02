@@ -288,7 +288,7 @@
     return $items;
     }   
     
-    static function filteredSearch(PDO $db, $clotheSize, $type_item, $categoryId) {
+    static function filteredSearch(PDO $db, $clotheSize, $type_item, $categoryId, $orderBy) {
         $sql = 'SELECT picture, username, price, clotheSize, type_item, categoryId, categoryName
             FROM Item 
             JOIN User ON sellerId=idUser 
@@ -303,6 +303,12 @@
         if ($categoryId != null) {
             $sql .= ' AND categoryId = :categoryId';
         }  
+        if ($orderBy != null) {
+            $orderBy = strtoupper($orderBy);
+            if ($orderBy == 'ASC' || $orderBy == 'DESC') {
+                $sql .= ' ORDER BY price ' . $orderBy;
+            }
+        }
         $sql .= ';';
 
         $stmt = $db->prepare($sql);

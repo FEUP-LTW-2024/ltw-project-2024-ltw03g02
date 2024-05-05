@@ -46,7 +46,7 @@ filters = new Filters("Homem", "Calças", "L", null);
 
 function _createFetchString() {
     let fetchString = '../api/api_filter_items.php?';
-    let filterNames = ['type_item', 'categoryId', 'clotheSize'];
+    let filterNames = ['type_item', 'categoryId', 'clotheSize', 'orderBy'];
     filters.currFilterValues.forEach((value, index) => {
         if (value != null){
             fetchString += filterNames[index] + '=' + value + '&';
