@@ -24,7 +24,7 @@
                 <?php
                     $items = getItems();
                     foreach ($items as $item) {
-                        drawItemCard($item['picture'], $item['username'], $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item']);
+                        drawItemCard($item['picture'], $item['username'], $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], 1);
                     }
                 ?>
                 <div>

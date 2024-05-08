@@ -60,6 +60,7 @@ function _drawItemCard(item) {
     itemCard.classList.add('item-card');
     itemCard.innerHTML = `
         <img src="${item['picture']}">
+        <button class="buy-btn"><img src="../../images/item_card/cart_plus_solid.svg" /></button>
         <div class="item-card-info">
             <div>
                 <img src="../../images/item_card/small_profile_pic.png" />

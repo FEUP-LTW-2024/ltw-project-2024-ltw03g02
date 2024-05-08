@@ -35,7 +35,27 @@
             box-shadow: none;
         }
         .item-card {
+            position: relative;
             background-color: var(--item-card-color);
+            
+            .icon-btn{
+                position: absolute;
+            }
+
+            .buy-btn {
+                bottom: 0;
+                right: 0;
+            }
+            
+            .edit-btn {
+                top: 0;
+                right: 0;
+            }
+
+            .delete-btn{
+                top: 0;
+                left: 0;
+            }
             > img {
                 width: 100%;
                 height: var(--card-width);
