@@ -10,3 +10,20 @@ for (let btn of edit_btns) {
 
     });
 }
+
+const del_btns = document.querySelectorAll('.delete-btn');
+for (let btn of del_btns) {
+    btn.addEventListener('click', (e) => {
+        const btnId = e.currentTarget.id;
+        const idUser = btnId.split('-')[2];
+        console.log("id: " + idUser);
+        fetch('../actions/action_del_user.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idUser: idUser })
+        })
+        console.log("del request sent");
+    });
+}

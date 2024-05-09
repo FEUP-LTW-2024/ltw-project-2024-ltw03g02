@@ -47,7 +47,7 @@
                             <td><?php echo $user['phoneNumber']; ?></td>
                             <td><?php echo $user['is_admin']; ?></td>
                             <td><?php drawEditBtnWithId($user['idUser']); ?></td>
-                            <td><?php drawDeleteBtn(); ?></td>
+                            <td><?php drawDeleteBtnWithId($user['idUser']); ?></td>
                         </tr>
                         <?php
                     }

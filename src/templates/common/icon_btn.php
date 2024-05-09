@@ -13,3 +13,7 @@
 <?php function drawEditBtnWithId($userId) { ?>
     <button id="edit-btn-<?= $userId ?>"  class="icon-btn edit-btn"><img src="../../images/icon_btn/edit_solid.svg" /></button>
 <?php } ?>
+
+<?php function drawDeleteBtnWithId($userId) { ?>
+    <button id="delete-btn-<?= $userId ?>" class="icon-btn delete-btn"><img src="../../images/icon_btn/trash_solid.svg" /></button>
+<?php } ?>
