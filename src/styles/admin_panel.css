@@ -44,11 +44,11 @@ tr:hover {
     cursor: pointer;
 }
 
-#add-user-section {
+main section {
     padding: 2em;
 }
 
-#add-user-form {
+main form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
