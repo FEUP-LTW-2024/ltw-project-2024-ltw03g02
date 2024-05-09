@@ -51,22 +51,6 @@
                         </tr>
                         <?php
                     }
-                    ?>
-                        <tr>
-                            <td><button id="add-user-btn" class="icon-btn plus-btn"><img src="../../images/icon_btn/plus_solid.svg" /></button></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    <?php
                 ?>
             </tbody>
         </table>
