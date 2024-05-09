@@ -46,7 +46,7 @@
             </div>
             
             <div>
-                <label for="is_admin">Is Admin</label>
+                <label for="is_admin">Is Admin (0 or 1)</label>
                 <input type="text" name="is_admin" class="is_admin-input" required>
             </div>
 
