@@ -9,3 +9,7 @@
 <?php function drawPlusBtn() { ?>
         <button class="icon-btn plus-btn" ><img src="../../images/icon_btn/plus_solid.svg" /></button>
 <?php } ?>
+
+<?php function drawEditBtnWithId($userId) { ?>
+    <button id="edit-btn-<?= $userId ?>"  class="icon-btn edit-btn"><img src="../../images/icon_btn/edit_solid.svg" /></button>
+<?php } ?>

@@ -4,7 +4,7 @@
         <form id="edit-user-form" action="../actions/action_edit_user.php" method="post">
             <div>
                 <label for="idUser">Id</label>
-                <input type="text" name="idUser" class="idUser-input" required>
+                <input id="idUser-input-edit" type="text" name="idUser" class="idUser-input" required>
             </div>
             <div>
                 <label for="nome">Name</label>
