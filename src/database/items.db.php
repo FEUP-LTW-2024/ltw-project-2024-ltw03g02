@@ -1,6 +1,5 @@
 <?php
     function filteredSearch(PDO $db, $clotheSize, $type_item, $categoryId, $orderBy) {
-        include_once('connection.db.php');
         $db = getDatabaseConnection();
 
         $sql = 'SELECT picture, username, price, clotheSize, type_item, categoryId, categoryName
@@ -46,9 +45,10 @@
         include_once('connection.db.php');
         $db = getDatabaseConnection();
 
-        $sql = 'SELECT * FROM Item 
-                JOIN User ON sellerId=idUser 
-                JOIN Category ON categoryId=idCategory';
+        $sql = 'SELECT picture, username, price, clotheSize, type_item, categoryId, categoryName
+            FROM Item 
+            JOIN User ON sellerId=idUser 
+            JOIN Category ON categoryId=idCategory;';
 
         $stmt = $db->prepare($sql);
 

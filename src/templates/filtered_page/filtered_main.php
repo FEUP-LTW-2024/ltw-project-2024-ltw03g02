@@ -8,14 +8,19 @@
         <section class="items">
             <div class="item-list">
                 <?php
+                    if (isset($_SESSION['user']) && $_SESSION['user']['isAdmin']) {
+                        $enableEdit = 1;
+                    } else {
+                        $enableEdit = 0;
+                    }
                     $items = getItems();
                     foreach ($items as $item) {
-                        drawItemCard($item['picture'], $item['username'], $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], 1);
+                        drawItemCard($item['picture'], $item['username'], $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit);
                     }
                 ?>
-                <div>
+                <!-- <div>
                     <button id="expand-btn" class="primary-btn">Ver mais...</button>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>

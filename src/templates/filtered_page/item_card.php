@@ -7,7 +7,7 @@
                 drawDeleteBtn('#');
             } 
         ?>
-        <button class="icon-btn buy-btn"><img src="../../images/item_card/cart_plus_solid.svg" /></button>
+        <button class="icon-btn buy-btn"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
         <div class="item-card-info">
             <div>
                 <img src="../../images/item_card/small_profile_pic.png" />

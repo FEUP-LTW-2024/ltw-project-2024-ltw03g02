@@ -23,17 +23,6 @@
         > :hover {
             border: 1px solid var(--dark-green);
         }
-        > :last-child {
-            width: var(--card-width);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: none;
-        }
-        > :hover:last-child {
-            box-shadow: none;
-        }
         .item-card {
             position: relative;
             background-color: var(--item-card-color);
