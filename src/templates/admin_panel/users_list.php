@@ -1,16 +1,7 @@
-<?php 
-    function getUsers() {
-        require_once(dirname(__DIR__) . '/../database/connection.db.php');
-        $db = getDatabaseConnection();
-        $stmt = $db->prepare('SELECT *
-                                FROM User;');
-        $stmt->execute();
-        $users = $stmt->fetchAll();
-        return $users;
-    }
+<?php function drawUsersList(){ 
+    require_once(dirname(__DIR__) . '/../database/users.db.php');
+    $users = getUsers();
 ?>
-
-<?php function drawUsersList(){ ?>
     <section class="users-list">
         <table>
             <thead>
@@ -31,8 +22,6 @@
             </thead>
             <tbody>
                 <?php
-                    $users = getUsers();
-
                     foreach ($users as $user) {
                         ?>
                         <tr>

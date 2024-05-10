@@ -4,8 +4,21 @@
     <?php include_once('edit_user.php'); ?>
     <main>
         <h1>Admin Panel</h1>
-        <?php drawUsersList(); ?>
-        <?php drawAddUser(); ?>
-        <?php drawEditUser(); ?>
+        <?php
+            $state = 'users';
+            if ($state == 'users'){
+                drawUsersList();
+                drawAddUser();
+                drawEditUser();
+            } elseif ($state == 'products'){
+                drawProductsList();
+                drawAddProduct();
+                drawEditProduct();
+            } elseif ($state == 'categories') {
+                drawCategoriesList();
+                drawAddCategory();
+                drawEditCategory();
+            }
+        ?>
     </main>
 <?php } ?>

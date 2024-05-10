@@ -1,20 +1,6 @@
 <?php include_once('item_card.php'); ?>
 <?php include_once('filters.php'); ?>
-
-<?php function getItems() {
-    require_once(dirname(__DIR__).'/../database/connection.db.php');
-    $db = getDatabaseConnection();
-
-    $sql = 'SELECT * FROM Item 
-            JOIN User ON sellerId=idUser 
-            JOIN Category ON categoryId=idCategory';
-
-    $stmt = $db->prepare($sql);
-
-    $stmt->execute();
-    $items = $stmt->fetchAll();
-    return $items;
-} ?>
+<?php require_once(dirname(__DIR__) . '/../database/items.db.php'); ?>
 
 <?php function drawfilteredMain() { ?>
     <main>

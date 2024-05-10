@@ -1,5 +1,5 @@
 <?php 
-function getUsers() {
+    function getUsers() {
         require_once('connection.db.php');
         $db = getDatabaseConnection();
         $stmt = $db->prepare('SELECT *
