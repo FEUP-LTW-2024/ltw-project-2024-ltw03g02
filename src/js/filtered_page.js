@@ -63,7 +63,7 @@ function _drawItemCard(item) {
         <button class="icon-btn buy-btn"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
         <div class="item-card-info">
             <div>
-                <img src="../../images/item_card/small_profile_pic.png" />
+                <img src="${item['profile_image_link']}" />
                 <span>${item['username']}</span>
             </div>
             <span class="price-info">€ ${item['price']}</span>

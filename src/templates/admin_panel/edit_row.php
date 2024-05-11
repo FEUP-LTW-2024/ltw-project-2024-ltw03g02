@@ -54,3 +54,37 @@
         </form>
     </section>
 <?php } ?>
+
+<?php 
+    function drawEditRow($table, $primaryKey, $action) { 
+        if (count($table) > 0) {
+            $columns = array_keys($table[0]);
+        ?>
+        <section id="edit-row-section">
+            <h2>Add New Item</h2>
+            <form id="edit-row-form" action="<?php echo $action ?>" method="post">
+                <div>
+                    <label for="<?php echo $primaryKey; ?>">Id</label>
+                    <input type="text" name="<?php echo $primaryKey; ?>" id="<?php echo $primaryKey; ?>-input" required>
+                </div>
+                <?php
+                    foreach ($columns as $column) {
+                        if ($column != $primaryKey) {
+                ?>
+                <div>
+                    <label for="<?php echo $column; ?>"><?php echo $column; ?></label>
+                    <input type="text" name="<?php echo $column; ?>" id="<?php echo $column; ?>-input" required>
+                </div>
+                <?php
+                        }
+                    }
+                ?>
+                <button class="primary-btn" type="submit">
+                    Edit <?php echo ucfirst(str_replace('id', '', $primaryKey)); ?>
+                </button>
+            </form>
+        </section>
+        <?php 
+        }
+    } 
+?>

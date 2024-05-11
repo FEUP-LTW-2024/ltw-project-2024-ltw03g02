@@ -43,7 +43,7 @@
                 $items = getItems();
                 drawList($items, 'idItem');
                 drawAddRow($items, 'idItem', '../../actions/admin_panel/action_add_item.php');
-                // drawEditRow();
+                drawEditRow($items, 'idItem', '../../actions/admin_panel/action_edit_item.php');
 
             } elseif ($state == 'categories') {
                 $categories = getCategories();
