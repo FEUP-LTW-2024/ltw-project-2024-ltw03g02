@@ -1,7 +1,7 @@
 <?php function drawAddUser() { ?>
     <section id="add-user-section">
         <h2>Add New User</h2>
-        <form id="add-user-form" action="../actions/action_add_user.php" method="post">
+        <form id="add-user-form" action="../actions/admin_panel/action_add_user.php" method="post">
             <div>
                 <label for="nome">Name</label>
                 <input type="text" name="nome" id="nome-input" required>

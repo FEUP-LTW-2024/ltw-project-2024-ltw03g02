@@ -1,7 +1,7 @@
 <?php function drawEditUser() { ?>
     <section id="edit-user-section">
         <h2>Edit User</h2>
-        <form id="edit-user-form" action="../actions/action_edit_user.php" method="post">
+        <form id="edit-user-form" action="../actions/admin_panel/action_edit_user.php" method="post">
             <div>
                 <label for="idUser">Id</label>
                 <input id="idUser-input-edit" type="text" name="idUser" class="input-edit-user idUser-input" required>

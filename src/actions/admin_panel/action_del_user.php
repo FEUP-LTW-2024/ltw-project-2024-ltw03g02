@@ -1,6 +1,6 @@
 <?php
     declare(strict_types = 1);
-    require_once('../database/connection.db.php');
+    require_once('../../database/connection.db.php');
 
     $json = file_get_contents('php://input');
 
@@ -17,10 +17,10 @@
 
     if (!$stmt->execute()) {
         echo "Error deleting user!";
-        die(header('Location: ../pages/admin_panel.php'));
+        die(header('Location: ../../pages/admin_panel.php'));
     } else {
         echo "User deleted successfully!";
-        die(header('Location: ../pages/admin_panel.php'));
+        die(header('Location: ../../pages/admin_panel.php'));
     }
 
 ?>

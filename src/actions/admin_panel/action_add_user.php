@@ -1,6 +1,6 @@
 <?php
     declare(strict_types = 1);
-    require_once('../database/connection.db.php');
+    require_once('../../database/connection.db.php');
 
     $db = getDatabaseConnection();
 
@@ -21,6 +21,6 @@
     $stmt->execute();
     
     echo "User added successfully!";
-    die(header('Location: ../pages/admin_panel.php'));
+    die(header('Location: ../../pages/admin_panel.php'));
 
 ?>
