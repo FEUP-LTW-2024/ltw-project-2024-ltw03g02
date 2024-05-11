@@ -69,9 +69,7 @@ nav {
     ul{
         border-top: 2px solid var(--light-grey);
         border-bottom: 2px solid var(--light-grey);
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: repeat(5, 1fr);
+        display: flex;
         align-items: center;
         .selected{
             a {

@@ -5,6 +5,7 @@
     overflow-x: scroll;
     max-height: 40vh;
     scroll-behavior: initial;
+    border-bottom: 1px solid #ddd;
     > * {
         margin: 3em;
     }
@@ -43,7 +44,7 @@ main form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items:last baseline;
     padding: 2em;
     border: 1px solid #ddd;
     border-radius: 5px;
