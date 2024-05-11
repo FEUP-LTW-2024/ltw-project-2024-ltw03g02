@@ -7,7 +7,9 @@ DROP TABLE IF EXISTS Brand;
 DROP TABLE IF EXISTS Review;
 DROP TABLE IF EXISTS UserOrder;
 DROP TABLE IF EXISTS FavoriteItem;
-DROP TRIGGER IF EXISTS update_user_rating;
+-- DROP TRIGGER IF EXISTS update_user_rating;
+DROP TABLE IF EXISTS clotheSize;
+DROP TABLE IF EXISTS condition;
 
 CREATE TABLE User (
     idUser INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -20,7 +22,6 @@ CREATE TABLE User (
     ),
     address TEXT NOT NULL,
     profile_image_link TEXT DEFAULT 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
-    rating FLOAT,
     phoneNumber INTEGER NOT NULL CHECK (100000000 <= phoneNumber AND phoneNumber <= 999999999),
     is_admin BOOLEAN DEFAULT FALSE,
     CONSTRAINT UNIQUE_username UNIQUE (username),
@@ -39,17 +40,16 @@ CREATE TABLE Item (
     ),
     picture TEXT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    condition VARCHAR(255) NOT NULL CHECK (
-        condition IN ('Etiquetado', 'Bom estado', 'Razoável', 'Mau estado')
-    ),
+    condition INTEGER NOT NULL,
     sellerId INTEGER NOT NULL,
     categoryId INTEGER NOT NULL,
     idBrand INTEGER NOT NULL,
-    clotheSize TEXT,
+    clotheSize INTEGER NOT NULL,
     listedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sellerId) REFERENCES User(idUser),
     FOREIGN KEY (categoryId) REFERENCES Category(idCategory),
-    FOREIGN KEY (idBrand) REFERENCES Brand(idBrand)
+    FOREIGN KEY (idBrand) REFERENCES Brand(idBrand),
+    FOREIGN KEY (clotheSize) REFERENCES clotheSize(idSize)
 );
 
 -- Create Message table
@@ -67,6 +67,16 @@ CREATE TABLE Message (
 CREATE TABLE Category (
     idCategory INTEGER PRIMARY KEY AUTOINCREMENT,
     categoryName VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE clotheSize (
+    idSize INTEGER PRIMARY KEY AUTOINCREMENT,
+    sizeName VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE condition (
+    idCondition INTEGER PRIMARY KEY AUTOINCREMENT,
+    conditionName VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE Brand (
@@ -98,20 +108,20 @@ CREATE TABLE UserOrder (
     PRIMARY KEY(idUser, idItem, data)
 );
 
-CREATE TRIGGER update_user_rating
-AFTER INSERT ON Review
-BEGIN
-    UPDATE User
-    SET rating = (SELECT AVG(stars) FROM Review WHERE idUser = NEW.idUser)
-    WHERE idUser = NEW.idUser;
-END;
+-- CREATE TRIGGER update_user_rating
+-- AFTER INSERT ON Review
+-- BEGIN
+--     UPDATE User
+--     SET rating = (SELECT AVG(stars) FROM Review WHERE idUser = NEW.idUser)
+--     WHERE idUser = NEW.idUser;
+-- END;
 
 
-INSERT INTO User (nome, username, email, pass, gender, address, rating, phoneNumber, is_admin)
+INSERT INTO User (nome, username, email, pass, gender, address, phoneNumber, is_admin)
 VALUES
-    ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', 'Homem', 'Rua das Árvores, n.10', 4.5, 919715443, 0),
-    ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 4.2, 987654321, 0),
-    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', 'adminpass', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 5.0, 911053549, 1);
+    ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', 'Homem', 'Rua das Árvores, n.10', 919715443, 0),
+    ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 987654321, 0),
+    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', 'adminpass', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 911053549, 1);
 
 INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
 VALUES
@@ -178,3 +188,16 @@ VALUES
     (2, 12, 5, 'Blusa casual perfeita para o dia a dia.', '2024-04-20'),
     (2, 1, 5, 'Calças com excelente qualidade, e com entrega rápida.', '2024-04-21');
     
+INSERT INTO clotheSize(sizeName) 
+VALUES
+    ('S'),
+    ('M'),
+    ('L'),
+    ('XL');
+
+INSERT INTO condition(conditionName)
+VALUES
+    ('Etiquetado'),
+    ('Bom estado'),
+    ('Razoável'),
+    ('Mau estado');
