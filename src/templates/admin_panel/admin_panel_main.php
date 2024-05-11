@@ -14,13 +14,13 @@
         <nav>
             <ul>
                 <li class="<?= $state == 'users' ? 'selected' : '' ?>">
-                    <a href="admin_panel.php?state=users">Users</a>
+                    <a href="admin_panel.php?page=admin_panel&state=users">Users</a>
                 </li>
                 <li class="<?= $state == 'items' ? 'selected' : '' ?>">
-                    <a href="admin_panel.php?state=items">Items</a>
+                    <a href="admin_panel.php?page=admin_panel&state=items">Items</a>
                 </li>
                 <li class="<?= $state == 'categories' ? 'selected' : '' ?>">
-                    <a href="admin_panel.php?state=categories">Categories</a>
+                    <a href="admin_panel.php?page=admin_panel&state=categories">Categories</a>
                 </li>
             </ul>
         </nav>
