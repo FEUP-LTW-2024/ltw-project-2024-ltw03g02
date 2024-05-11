@@ -28,4 +28,14 @@
         $items = $stmt->fetchAll();
         return $items;
     }
+
+    function getSizes() {
+        require_once('connection.db.php');
+        $db = getDatabaseConnection();
+        $stmt = $db->prepare('SELECT *
+                                FROM clotheSize;');
+        $stmt->execute();
+        $sizes = $stmt->fetchAll();
+        return $sizes;
+    }
 ?>

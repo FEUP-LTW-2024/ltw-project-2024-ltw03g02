@@ -67,7 +67,7 @@ function _drawItemCard(item) {
                 <span>${item['username']}</span>
             </div>
             <span class="price-info">€ ${item['price']}</span>
-            <span class="size-info">${item['clotheSize']}</span>
+            <span class="size-info">${item['sizeName']}</span>
             <span class="type-info">${item['type_item']}</span>
             <span class="category-info">${item['categoryName']}</span>
         </div>

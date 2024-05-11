@@ -32,8 +32,13 @@ for (let btn of del_btns) {
             url = '../actions/admin_panel/action_del_user.php';
         } else if (state === 'items') {
             url = '../actions/admin_panel/action_del_item.php';
-        } else {
+        } else if (state === 'categories'){
             url = '../actions/admin_panel/action_del_category.php';
+        } else if (state === 'sizes'){
+            url = '../actions/admin_panel/action_del_size.php';
+        } else {
+            console.log("Invalid state");
+            return;
         }
 
         fetch(url, {

@@ -2,10 +2,11 @@
     function filteredSearch(PDO $db, $clotheSize, $type_item, $categoryId, $orderBy) {
         $db = getDatabaseConnection();
 
-        $sql = 'SELECT picture, profile_image_link, username, price, clotheSize, type_item, categoryId, categoryName
+        $sql = 'SELECT picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
             FROM Item 
             JOIN User ON sellerId=idUser 
-            JOIN Category ON categoryId=idCategory';
+            JOIN Category ON categoryId=idCategory
+            JOIN clotheSize ON clotheSize=idSize';
         $sql .= ' WHERE 1=1';
         if ($clotheSize != null) {
             $sql .= ' AND clotheSize = :clotheSize';
@@ -45,10 +46,11 @@
         include_once('connection.db.php');
         $db = getDatabaseConnection();
 
-        $sql = 'SELECT picture, profile_image_link, username, price, clotheSize, type_item, categoryId, categoryName
+        $sql = 'SELECT picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
             FROM Item 
             JOIN User ON sellerId=idUser 
-            JOIN Category ON categoryId=idCategory;';
+            JOIN Category ON categoryId=idCategory
+            JOIN clotheSize ON clotheSize=idSize;';
 
         $stmt = $db->prepare($sql);
 
