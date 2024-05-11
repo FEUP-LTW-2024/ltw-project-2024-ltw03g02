@@ -25,23 +25,31 @@
             </ul>
         </nav>
         <?php
+            require_once(dirname(__DIR__) . '/../database/admin.db.php');
+
             if (!isset($_GET['state'])){
                 $state = 'users';
             } else {
                 $state = $_GET['state'];
             }
+
             if ($state == 'users'){
-                drawUsersList();
+                $users = getUsers();
+                drawList($users, 'idUser');
                 drawAddUser();
                 drawEditUser();
+
             } elseif ($state == 'items'){
-                drawItemsList();
-                drawAddItem();
-                drawEditItem();
+                $items = getItems();
+                drawList($items, 'idItem');
+                drawAddRow($items, 'idItem', '../../actions/admin_panel/action_add_item.php');
+                // drawEditRow();
+
             } elseif ($state == 'categories') {
-                drawCategoriesList();
-                drawAddCategory();
-                drawEditCategory();
+                $categories = getCategories();
+                drawList($categories, 'idCategory');
+                // drawAddRow();
+                // drawEditRow();
             }
         ?>
     </main>

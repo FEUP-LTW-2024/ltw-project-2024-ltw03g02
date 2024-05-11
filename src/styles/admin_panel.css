@@ -1,19 +1,14 @@
-.users-list {
+.table-list {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 3em;
-    padding-bottom: 0;
+    flex-direction: column;
+    padding: 0;
     overflow-y: scroll;
+    overflow-x: scroll;
+    max-height: 40vh;
     scroll-behavior: initial;
     > * {
         margin: 3em;
     }
-}
-
-#add-user-section{
-    display: block;
-    width: 100%;
 }
 
 table {
