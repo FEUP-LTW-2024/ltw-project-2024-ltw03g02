@@ -25,6 +25,9 @@
                 <li class="<?= $state == 'sizes' ? 'selected' : '' ?>">
                     <a href="admin_panel.php?page=admin_panel&state=sizes">Sizes</a>
                 </li>
+                <li class="<?= $state == 'conditions' ? 'selected' : '' ?>">
+                    <a href="admin_panel.php?page=admin_panel&state=conditions">Conditions</a>
+                </li>
             </ul>
         </nav>
         <?php
@@ -58,6 +61,11 @@
                 drawList($sizes, 'idSize');
                 drawAddRow($sizes, 'idSize', '../../actions/admin_panel/action_add_size.php');
                 drawEditRow($sizes, 'idSize', '../../actions/admin_panel/action_edit_size.php');
+            } elseif ($state == 'conditions') {
+                $conditions = getConditions();
+                drawList($conditions, 'idCondition');
+                drawAddRow($conditions, 'idCondition', '../../actions/admin_panel/action_add_condition.php');
+                drawEditRow($conditions, 'idCondition', '../../actions/admin_panel/action_edit_condition.php');
             }
         ?>
     </main>
