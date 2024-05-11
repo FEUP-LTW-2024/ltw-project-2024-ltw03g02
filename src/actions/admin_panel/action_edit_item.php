@@ -19,6 +19,7 @@
         listedAt = :listedAt
         WHERE idItem = :idItem;');
     
+$stmt->bindParam(':idItem', $_POST['idItem']);
 $stmt->bindParam(':title', $_POST['title']);
 $stmt->bindParam(':description', $_POST['description']);
 $stmt->bindParam(':color', $_POST['color']);

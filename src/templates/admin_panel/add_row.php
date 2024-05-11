@@ -57,7 +57,7 @@
             $columns = array_keys($table[0]);
         ?>
         <section id="add-row-section">
-            <h2>Add New Item</h2>
+            <h2>Add New <?php echo ucfirst(str_replace('id', '', $primaryKey)); ?></h2>
             <form id="add-row-form" action="<?php echo $action ?>" method="post">
                 <?php
                     foreach ($columns as $column) {

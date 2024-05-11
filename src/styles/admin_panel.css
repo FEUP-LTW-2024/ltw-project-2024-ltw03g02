@@ -1,7 +1,6 @@
 .table-list {
     display: flex;
     flex-direction: column;
-    padding: 0;
     overflow-y: scroll;
     overflow-x: scroll;
     max-height: 40vh;
@@ -9,10 +8,6 @@
     > * {
         margin: 3em;
     }
-}
-
-table {
-    width: 100%;
 }
 
 h1 {

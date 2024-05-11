@@ -48,8 +48,8 @@
             } elseif ($state == 'categories') {
                 $categories = getCategories();
                 drawList($categories, 'idCategory');
-                // drawAddRow();
-                // drawEditRow();
+                drawAddRow($categories, 'idCategory', '../../actions/admin_panel/action_add_category.php');
+                drawEditRow($categories, 'idCategory', '../../actions/admin_panel/action_edit_category.php');
             }
         ?>
     </main>
