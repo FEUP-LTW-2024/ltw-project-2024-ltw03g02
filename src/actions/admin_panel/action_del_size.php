@@ -6,18 +6,17 @@
 
     $data = json_decode($json, true);
 
-    $idUser = $data['id'];
+    $idSize = $data['id'];
 
     $db = getDatabaseConnection();
 
-    $stmt = $db->prepare('DELETE FROM User 
-        WHERE idUser = :idUser;');
+    $stmt = $db->prepare('DELETE FROM clotheSize 
+        WHERE idSize = :idSize;');
 
-    $stmt->bindParam(':idUser', $idUser);
+    $stmt->bindParam(':idSize', $idSize);
 
     if (!$stmt->execute())
-        echo "Error deleting user!";
+        echo "Error deleting size!";
     else
-        echo "User deleted successfully!";
-
+        echo "Size deleted successfully!";
 ?>

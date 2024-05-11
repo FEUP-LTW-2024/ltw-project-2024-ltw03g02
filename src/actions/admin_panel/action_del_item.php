@@ -6,14 +6,14 @@
 
     $data = json_decode($json, true);
 
-    $idUser = $data['id'];
+    $id = $data['id'];
 
     $db = getDatabaseConnection();
 
-    $stmt = $db->prepare('DELETE FROM User 
-        WHERE idUser = :idUser;');
+    $stmt = $db->prepare('DELETE FROM Item 
+        WHERE idItem = :id;');
 
-    $stmt->bindParam(':idUser', $idUser);
+    $stmt->bindParam(':id', $id);
 
     if (!$stmt->execute())
         echo "Error deleting user!";

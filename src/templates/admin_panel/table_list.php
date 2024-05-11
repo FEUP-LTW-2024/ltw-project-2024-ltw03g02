@@ -2,7 +2,7 @@
     require_once(dirname(__DIR__) . '/../database/users.db.php');
     $users = getUsers();
 ?>
-    <section class="users-list">
+    <section class="table-list">
         <table>
             <thead>
                 <tr>
@@ -37,6 +37,48 @@
                             <td><?php echo $user['is_admin']; ?></td>
                             <td><?php drawEditBtnWithId($user['idUser']); ?></td>
                             <td><?php drawDeleteBtnWithId($user['idUser']); ?></td>
+                        </tr>
+                        <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+    </section>
+<?php } ?>
+
+<?php function drawList($table, $primaryKey){ ?>
+    <section class="table-list">
+        <table>
+            <thead>
+                <tr>
+                    <?php
+                        if (count($table) > 0) {
+                            $columns = array_keys($table[0]);
+                            foreach ($columns as $column) {
+                                ?>
+                                    <th><?php echo $column; ?></th>
+                                <?php
+                            }
+                        }
+                    ?>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($table as $row) {
+                        ?>
+                        <tr>
+                            <?php
+                                foreach ($row as $key => $value) {
+                                    ?>
+                                        <td><?php echo $value; ?></td>
+                                    <?php
+                                }
+                            ?>
+                            <td><?php drawEditBtnWithId($row[$primaryKey]); ?></td>
+                            <td><?php drawDeleteBtnWithId($row[$primaryKey]); ?></td>
                         </tr>
                         <?php
                     }

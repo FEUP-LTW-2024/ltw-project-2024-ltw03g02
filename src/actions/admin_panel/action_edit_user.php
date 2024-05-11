@@ -20,7 +20,7 @@
     $stmt->bindParam(':nome', $_POST['nome']);
     $stmt->bindParam(':username', $_POST['username']);
     $stmt->bindParam(':email', $_POST['email']);
-    $stmt->bindParam(':pass', password_hash($_POST['pass'], PASSWORD_DEFAULT));
+    $stmt->bindParam(':pass', $_POST['pass']);
     $stmt->bindParam(':gender', $_POST['gender']);
     $stmt->bindParam(':address', $_POST['address']);
     $stmt->bindParam(':profile_image_link', $_POST['profile_image_link']);
@@ -30,5 +30,5 @@
     $stmt->execute();
     
     echo "User edited successfully!";
-    die(header('Location: ../../pages/admin_panel.php'));
+    die(header('Location: ../../pages/admin_panel.php?state=users'));
 ?>

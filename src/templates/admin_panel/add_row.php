@@ -1,7 +1,7 @@
 <?php function drawAddUser() { ?>
-    <section id="add-user-section">
+    <section id="add-row-section">
         <h2>Add New User</h2>
-        <form id="add-user-form" action="../actions/admin_panel/action_add_user.php" method="post">
+        <form id="add-row-form" action="../actions/admin_panel/action_add_user.php" method="post">
             <div>
                 <label for="nome">Name</label>
                 <input type="text" name="nome" id="nome-input" required>
@@ -51,16 +51,32 @@
     </section>
 <?php } ?>
 
-<?php function drawAddItem() { ?>
-    <section id="add-item-section">
-        <h2>Add New Item</h2>
-        <form id="add-item-form" action="../actions/admin_panel/action_add_item.php" method="post">
-            <div>
-                <label for="nome">Name</label>
-                <input type="text" name="nome" id="nome-input" required>
-            </div>
-
-            <button class="primary-btn" type="submit">Add User</button>
-        </form>
-    </section>
-<?php } ?>
+<?php 
+    function drawAddRow($table, $primaryKey, $action) { 
+        if (count($table) > 0) {
+            $columns = array_keys($table[0]);
+        ?>
+        <section id="add-row-section">
+            <h2>Add New <?php echo ucfirst(str_replace('id', '', $primaryKey)); ?></h2>
+            <form id="add-row-form" action="<?php echo $action ?>" method="post">
+                <?php
+                    foreach ($columns as $column) {
+                        if ($column != $primaryKey) {
+                ?>
+                <div>
+                    <label for="<?php echo $column; ?>"><?php echo $column; ?></label>
+                    <input type="text" name="<?php echo $column; ?>" id="<?php echo $column; ?>-input" required>
+                </div>
+                <?php
+                        }
+                    }
+                ?>
+                <button class="primary-btn" type="submit">
+                    Add <?php echo ucfirst(str_replace('id', '', $primaryKey)); ?>
+                </button>
+            </form>
+        </section>
+        <?php 
+        }
+    } 
+?>
