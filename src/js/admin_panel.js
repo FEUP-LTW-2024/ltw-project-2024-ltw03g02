@@ -6,6 +6,13 @@ for (let btn of edit_btns) {
         const input = document.getElementById("idUser-input-edit");
         input.value = id;
         
+        const row = e.currentTarget.parentNode.parentNode;
+        const cells = row.querySelectorAll('td');
+        const inputs = document.querySelectorAll('.input-edit-user'); 
+        for (let i = 0; i < cells.length && i < inputs.length; i++) {
+            inputs[i].value = cells[i].textContent;
+        }
+
         window.location.href = "#edit-user-section";
 
     });
@@ -17,7 +24,7 @@ for (let btn of del_btns) {
         const btnId = e.currentTarget.id;
         const idUser = btnId.split('-')[2];
         console.log("id: " + idUser);
-        fetch('../actions/action_del_user.php', {
+        fetch('../actions/admin_panel/action_del_user.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

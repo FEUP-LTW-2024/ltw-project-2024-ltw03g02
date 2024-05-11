@@ -15,9 +15,12 @@
         
     $stmt->bindParam(':idUser', $idUser);
 
-    if (!$stmt->execute())
+    if (!$stmt->execute()) {
         echo "Error deleting user!";
-    else
+        die(header('Location: ../pages/admin_panel.php'));
+    } else {
         echo "User deleted successfully!";
+        die(header('Location: ../pages/admin_panel.php'));
+    }
 
 ?>

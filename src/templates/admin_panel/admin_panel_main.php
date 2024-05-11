@@ -4,6 +4,13 @@
     <?php include_once('edit_user.php'); ?>
     <main>
         <h1>Admin Panel</h1>
+        <nav>
+            <ul>
+                <li><a href="admin_panel.php?state=users">Users</a></li>
+                <li><a href="admin_panel.php?state=products">Products</a></li>
+                <li><a href="admin_panel.php?state=categories">Categories</a></li>
+            </ul>
+        </nav>
         <?php
             $state = 'users';
             if ($state == 'users'){

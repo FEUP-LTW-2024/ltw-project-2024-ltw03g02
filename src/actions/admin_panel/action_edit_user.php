@@ -30,4 +30,5 @@
     $stmt->execute();
     
     echo "User edited successfully!";
+    die(header('Location: ../pages/admin_panel.php'));
 ?>
