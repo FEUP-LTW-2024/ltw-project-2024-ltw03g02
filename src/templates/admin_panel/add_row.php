@@ -50,3 +50,17 @@
         </form>
     </section>
 <?php } ?>
+
+<?php function drawAddItem() { ?>
+    <section id="add-item-section">
+        <h2>Add New Item</h2>
+        <form id="add-item-form" action="../actions/admin_panel/action_add_item.php" method="post">
+            <div>
+                <label for="nome">Name</label>
+                <input type="text" name="nome" id="nome-input" required>
+            </div>
+
+            <button class="primary-btn" type="submit">Add User</button>
+        </form>
+    </section>
+<?php } ?>

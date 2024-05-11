@@ -16,8 +16,8 @@
                 <li class="<?= $state == 'users' ? 'selected' : '' ?>">
                     <a href="admin_panel.php?state=users">Users</a>
                 </li>
-                <li class="<?= $state == 'products' ? 'selected' : '' ?>">
-                    <a href="admin_panel.php?state=products">Products</a>
+                <li class="<?= $state == 'items' ? 'selected' : '' ?>">
+                    <a href="admin_panel.php?state=items">Items</a>
                 </li>
                 <li class="<?= $state == 'categories' ? 'selected' : '' ?>">
                     <a href="admin_panel.php?state=categories">Categories</a>
@@ -34,10 +34,10 @@
                 drawUsersList();
                 drawAddUser();
                 drawEditUser();
-            } elseif ($state == 'products'){
-                drawProductsList();
-                drawAddProduct();
-                drawEditProduct();
+            } elseif ($state == 'items'){
+                drawItemsList();
+                drawAddItem();
+                drawEditItem();
             } elseif ($state == 'categories') {
                 drawCategoriesList();
                 drawAddCategory();
