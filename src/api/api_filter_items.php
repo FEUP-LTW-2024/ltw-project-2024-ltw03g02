@@ -1,7 +1,7 @@
 <?php
     declare(strict_types = 1);
     require_once('../database/connection.db.php');
-    require_once('../classes/item.class.php');
+    require_once('../database/items.db.php');
     $db = getDatabaseConnection();
 
     if (isset($_GET['clotheSize'])) {
@@ -28,7 +28,7 @@
         $orderBy = null;
     }
 
-    $items = Item::filteredSearch($db, $clotheSize, $type_item, $categoryId, $orderBy);
+    $items = filteredSearch($db, $clotheSize, $type_item, $categoryId, $orderBy);
     
     echo json_encode($items);
 
