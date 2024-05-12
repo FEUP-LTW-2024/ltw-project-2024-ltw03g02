@@ -38,4 +38,15 @@
         $sizes = $stmt->fetchAll();
         return $sizes;
     }
+
+    function getConditions() {
+        require_once('connection.db.php');
+        $db = getDatabaseConnection();
+        $stmt = $db->prepare('SELECT *
+                                FROM condition;');
+        $stmt->execute();
+        $conditions = $stmt->fetchAll();
+        return $conditions;
+    }
+
 ?>

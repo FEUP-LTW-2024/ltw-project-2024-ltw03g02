@@ -21,7 +21,7 @@ Requirements list:
 
 - [ ] Admins should be able to:
     - [x] Elevate a user to admin status.
-    - [ ] Introduce new item categories, sizes, conditions, and other pertinent entities.
+    - [x] Introduce new item categories, sizes, conditions, and other pertinent entities.
     - [x] Oversee and ensure the smooth operation of the entire system.
 
 

@@ -36,6 +36,8 @@ for (let btn of del_btns) {
             url = '../actions/admin_panel/action_del_category.php';
         } else if (state === 'sizes'){
             url = '../actions/admin_panel/action_del_size.php';
+        } else if (state === 'conditions'){
+            url = '../actions/admin_panel/action_del_condition.php';
         } else {
             console.log("Invalid state");
             return;
