@@ -1,4 +1,4 @@
-/* Profile Page Styles */
+
 
 .profile-container {
     max-width: 800px;
@@ -41,16 +41,98 @@
 }
 
 .my-items {
-    background-color: var(--lighter-grey);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: start;
 }
 
 .my-items h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
+    margin-bottom: 1em;
 }
 
-/* Individual Item Styles */
-/* Add your styles for displaying user's items here */
+.my-items .item-card {
+    --card-width: 150px;
+    --card-height: 300px;
+    margin: 1em;
+    border: 1px solid white;
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    background-color: var(--item-card-color);
+}
+
+.my-items .item-card:hover {
+    border: 1px solid var(--dark-green);
+}
+
+.my-items .item-card .icon-btn {
+    position: absolute;
+}
+
+.my-items .item-card .buy-btn {
+    bottom: 0;
+    right: 0;
+}
+
+.my-items .item-card .edit-btn {
+    top: 0;
+    right: 0;
+}
+
+.my-items .item-card .delete-btn {
+    top: 0;
+    left: 0;
+}
+
+.my-items .item-card > img {
+    width: 100%;
+    height: var(--card-width);
+    object-fit: cover;
+}
+
+.my-items .item-card > div {
+    margin: 0.2em;
+}
+
+.my-items .item-card .item-card-info {
+    padding: 0.4em;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+}
+
+.my-items .item-card .item-card-info > * {
+    margin-top: 0;
+    margin: 0.1em;
+}
+
+.my-items .item-card .item-card-info > div {
+    display: flex;
+    align-items: center;
+}
+
+.my-items .item-card .item-card-info > div img {
+    width: 1.5em;
+    height: 1.5em;
+    object-fit: cover;
+    margin-right: 0.5em;
+}
+
+.my-items .item-card .item-card-info > .price-info {
+    margin-top: 0.4em;
+    font-weight: bolder;
+    margin-right: 0;
+}
+
+.my-items .item-card .item-card-info > .size-info {
+    font-size: 1.1em;
+    font-weight: lighter;
+    margin: 0.3em 0;
+}
+
+.my-items .item-card .item-card-info > .type-info,
+.my-items .item-card .item-card-info > .category-info {
+    font-size: 0.8em;
+    font-weight: lighter;
+    margin-right: 0;
+}
