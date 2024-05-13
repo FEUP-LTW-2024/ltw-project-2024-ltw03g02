@@ -9,16 +9,20 @@
                     <input type="search" name="q" placeholder="Procure por vendedor, marca, produto...">
                 </form>
 
-                <?php if (isset($_SESSION['idUser'])): ?>
-                <a href="login.php" class="login-btn">
-                    <button class="primary-btn">Iniciar Sessão</button>
-                </a>
+
+                <?php 
+                session_start();
+                if (!isset($_SESSION['idUser'])): ?>
+                    <a href="login.php" class="login-btn">
+                        <button class="primary-btn">Iniciar Sessão</button>
+                    </a>
                 <?php else: ?>
-                <a href="../../actions/action_logout.php" class="login-btn">
-                    <button class="primary-btn">Terminar Sessão</button>
-                </a>
+                    <img id="profile_img_link" src="<?php echo $_SESSION['photo']; ?>">
+                    <a href="../../actions/action_logout.php" class="login-btn">
+                        <button class="primary-btn">Terminar Sessão</button>
+                    </a>
                 <?php endif; ?>
-                
+
                 <a href="cart_page.php" class="cart-btn">
                     <img src="/../images/shopping_cart.png" />
                 </a>
@@ -26,11 +30,6 @@
         </div>
         <?php
             $page = isset($_GET['page']) ? $_GET['page'] : '';
-
-            if (session_start()) {
-                $name = $_SESSION['nome'];
-                echo $name;
-            }
         ?>
         <nav>
             <ul>

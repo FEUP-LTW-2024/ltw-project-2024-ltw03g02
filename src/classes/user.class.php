@@ -38,6 +38,10 @@
       return $this->is_admin == 1 ? "Yes" : "No";
     }
 
+    public function getPhoto() : string {
+      return $this->profile_image_link;
+    }
+
     static function getUserWithPassword(PDO $db, string $email, string $pass) : ?User {
 
       $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');

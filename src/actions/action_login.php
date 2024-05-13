@@ -16,7 +16,7 @@
         $_SESSION['idUser'] = $user->idUser;
         $_SESSION['nome'] = $user->getName();
         $_SESSION['is_admin'] = $user->getIsAdmin();
-        // $_SESSION['photo'] = $user->getPhoto();
+        $_SESSION['photo'] = $user->getPhoto();
     
         unset($_SESSION['input']['username login']);
         unset($_SESSION['input']['pass login']);
