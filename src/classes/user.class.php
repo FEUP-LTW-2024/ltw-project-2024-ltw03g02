@@ -34,6 +34,10 @@
       return count($names) > 1 ? $names[0] . " " . $names[count($names)-1] : $names[0];
     }
 
+    public function getIsAdmin() : string {
+      return $this->is_admin == 1 ? "Yes" : "No";
+    }
+
     static function getUserWithPassword(PDO $db, string $email, string $pass) : ?User {
 
       $stmt = $db->prepare('SELECT * FROM User WHERE email = ?');
@@ -56,12 +60,16 @@
       } else return null;
     }
 
+    static function check_password($pass, $hash) {
+      return hash('sha256', $pass) == $hash;
+    }
+
     static function getUserWithUsername(PDO $db, string $username, string $pass) : ?User {
       $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
       $stmt->execute(array($username));
 
       $user = $stmt->fetch();
-      if ($user !== false && password_verify($pass, $user['pass'])) {
+      if ($user !== false && User::check_password($pass, $user['pass'])) {
           return new User(
               intval($user['idUser']),
               $user['nome'],
