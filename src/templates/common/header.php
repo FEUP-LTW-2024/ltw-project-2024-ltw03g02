@@ -17,7 +17,9 @@
                         <button class="primary-btn">Iniciar Sessão</button>
                     </a>
                 <?php else: ?>
-                    <img id="profile_img_link" src="<?php echo $_SESSION['photo']; ?>">
+                    <a href="../../pages/edit_profile.php">
+                        <img id="profile_img_link" src="<?php echo $_SESSION['photo']; ?>">
+                    </a>
                     <a href="../../actions/action_logout.php" class="login-btn">
                         <button class="primary-btn">Terminar Sessão</button>
                     </a>
