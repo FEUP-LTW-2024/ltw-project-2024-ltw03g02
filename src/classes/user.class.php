@@ -11,11 +11,10 @@
     public string $gender;
     public string $address;
     public string $profile_image_link;
-    public float $rating;
     public int $phoneNumber;
     public int $is_admin;
 
-    public function __construct(int $idUser, string $nome, string $username, string $email, string $pass, string $gender, string $address, string $profile_image_link, float $rating, int $phoneNumber, int $is_admin) { 
+    public function __construct(int $idUser, string $nome, string $username, string $email, string $pass, string $gender, string $address, string $profile_image_link, int $phoneNumber, int $is_admin) { 
       $this->idUser = $idUser;
       $this->nome = $nome;
       $this->username = $username;
@@ -24,7 +23,6 @@
       $this->gender = $gender;
       $this->address = $address;
       $this->profile_image_link = $profile_image_link;
-      $this->rating = $rating;
       $this->phoneNumber = $phoneNumber;
       $this->is_admin = $is_admin;
     }
@@ -117,7 +115,7 @@
 
     static function getUser(PDO $db, int $id) : User {
 
-      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User WHERE id = ?');
+      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, phoneNumber, is_admin FROM User WHERE idUser = ?');
       $stmt->execute(array($id));
   
       $user = $stmt->fetch();
@@ -131,7 +129,6 @@
         $user['gender'],
         $user['address'],
         $user['profile_image_link'],
-        floatval($user['rating']),
         intval($user['phoneNumber']),
         intval($user['is_admin']),
       );
@@ -216,5 +213,14 @@
 
       return $attemp != NULL;
     }
+
+    static function getItems(PDO $db, $idUser) {
+      $stmt = $db->prepare("SELECT * FROM Item WHERE sellerId = ?");
+      $stmt->execute([$idUser]);
+  
+      $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+      return $items;
+  }
   }
 ?>
