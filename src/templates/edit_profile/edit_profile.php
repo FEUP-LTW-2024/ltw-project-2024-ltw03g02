@@ -4,7 +4,7 @@
         <form id="edit-profile-form" action="../actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
             <div>
                 <label for="nome">Novo nome</label>
-                <input type="text" name="nome" class="nome-input" required>
+                <input type="text" name="nome" class="nome-input" value="<?php echo $_SESSION['nome']; ?>" required>
             </div>
             <div>
                 <label for="username">Novo username</label>
