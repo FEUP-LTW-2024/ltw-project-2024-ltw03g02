@@ -23,19 +23,28 @@
         > :hover {
             border: 1px solid var(--dark-green);
         }
-        > :last-child {
-            width: var(--card-width);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: none;
-        }
-        > :hover:last-child {
-            box-shadow: none;
-        }
         .item-card {
+            position: relative;
             background-color: var(--item-card-color);
+            
+            .icon-btn{
+                position: absolute;
+            }
+
+            .buy-btn {
+                bottom: 0;
+                right: 0;
+            }
+            
+            .edit-btn {
+                top: 0;
+                right: 0;
+            }
+
+            .delete-btn{
+                top: 0;
+                left: 0;
+            }
             > img {
                 width: 100%;
                 height: var(--card-width);
@@ -52,6 +61,16 @@
                 > * {
                     margin-top: 0;
                     margin: 0.1em;
+                }
+                > div {
+                    display: flex;
+                    align-items: center;
+                    img {
+                        width: 1.5em;
+                        height: 1.5em;
+                        object-fit: cover;
+                        margin-right: 0.5em;
+                    }
                 }
                 > .price-info {
                     margin-top: 0.4em;

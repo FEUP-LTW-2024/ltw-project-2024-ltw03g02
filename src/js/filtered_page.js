@@ -60,13 +60,14 @@ function _drawItemCard(item) {
     itemCard.classList.add('item-card');
     itemCard.innerHTML = `
         <img src="${item['picture']}">
+        <button class="icon-btn buy-btn"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
         <div class="item-card-info">
             <div>
-                <img src="../../images/item_card/small_profile_pic.png" />
+                <img src="${item['profile_image_link']}" />
                 <span>${item['username']}</span>
             </div>
             <span class="price-info">€ ${item['price']}</span>
-            <span class="size-info">${item['clotheSize']}</span>
+            <span class="size-info">${item['sizeName']}</span>
             <span class="type-info">${item['type_item']}</span>
             <span class="category-info">${item['categoryName']}</span>
         </div>
@@ -89,10 +90,6 @@ async function loadItems() {
     for (item of items){
         itemList.appendChild(_drawItemCard(item));
     }
-
-    buttonDiv = document.createElement('div');
-    buttonDiv.innerHTML = '<button id="expand-btn" class="primary-btn">Ver mais...</button>'
-    itemList.appendChild(buttonDiv);
 }
 
 function cleanFiltersHandler() {

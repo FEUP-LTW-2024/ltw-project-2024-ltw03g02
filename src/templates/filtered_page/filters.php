@@ -39,11 +39,12 @@
                 <select id="size-filter-select" name="size" onchange="changedFilterValueHandler()">
                     <option value="">-</option>
                     <?php
-                        $stmt = $db->prepare('SELECT DISTINCT clotheSize FROM Item;');
+                        $stmt = $db->prepare('SELECT DISTINCT Item.clotheSize, sizeName FROM Item
+                                                JOIN clotheSize ON Item.clotheSize=idSize;');
                         $stmt->execute();
                         $categories = $stmt->fetchAll();
                         foreach ($categories as $category) {
-                            echo '<option value="'.$category['clotheSize'].'">'.$category['clotheSize'].'</option>';
+                            echo '<option value="'.$category['clotheSize'].'">'.$category['sizeName'].'</option>';
                         }
                     ?>
                 </select>
