@@ -18,7 +18,7 @@
         <title>Clothes Cachet - USE or SELL</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../styles/common_style.css">
-        <link rel="stylesheet" type="text/css" href="../styles/cart_page.css">
+        <link rel="stylesheet" type="text/css" href="../styles/login.css">
         <?php include_once('../templates/common/simple_header.php'); ?>
         <?php include_once('../templates/common/login.tpl.php'); ?>
         <?php include_once('../templates/common/footer.php'); ?>
