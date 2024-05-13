@@ -1,5 +1,11 @@
 <?php function drawProfile() {
     require_once('../database/connection.db.php');
+    require_once('../classes/user.class.php');
+    require_once('../templates/filtered_page/item_card.php');
+    require_once('../templates/common/icon_btn.php');
+
+
+
     $db = getDatabaseConnection();
     $stmt = $db->prepare('SELECT * FROM User WHERE idUser = :idUser');
     $stmt->bindParam(':idUser', $_SESSION['idUser']);
@@ -22,9 +28,12 @@
         <div class="my-items">
             <h3>Meus artigos</h3>
                 <?php
-                    $items = getItems();
+                    $userId = $_SESSION['idUser']; 
+                    $user = User::getUser($db, $userId); 
+                    $items = User::getItems($db, $userId);
                     foreach ($items as $item) {
-                        drawItemCard($item['picture'], $item['username'], $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item']);
+                        $enableEdit = ($item['sellerId'] == $userId); 
+                        drawItemCard($item['picture'], $user->profile_image_link, $user->username, $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit);
                     }
                 ?>
         </div>
