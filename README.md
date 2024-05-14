@@ -4,7 +4,7 @@ Requirements list:
 
 - [ ] All users should be able to:
     - [ ] Register a new account.
-    - [ ] Log in and out.
+    - [x] Log in and out.
     - [ ] Edit their profile, including their name, username, password, and email.
 
 - [ ] Sellers should be able to:
@@ -19,7 +19,7 @@ Requirements list:
     - [ ] Add items to a wishlist or shopping cart.
     - [ ] Proceed to checkout with their shopping cart (simulate payment process).
 
-- [ ] Admins should be able to:
+- [x] Admins should be able to:
     - [x] Elevate a user to admin status.
     - [x] Introduce new item categories, sizes, conditions, and other pertinent entities.
     - [x] Oversee and ensure the smooth operation of the entire system.

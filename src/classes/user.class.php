@@ -55,7 +55,6 @@
           $user['gender'],
           $user['address'],
           $user['profile_image_link'],
-          floatval($user['rating']),
           intval($user['phoneNumber']),
           intval($user['is_admin']),
         );
@@ -81,7 +80,6 @@
               $user['gender'],
               $user['address'],
               $user['profile_image_link'],
-              floatval($user['rating']),
               intval($user['phoneNumber']),
               intval($user['is_admin']),
           );
