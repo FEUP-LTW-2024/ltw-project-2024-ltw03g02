@@ -5,8 +5,8 @@
                 <img src="../../images/logo.png" />
             </a>
             <div class="topbar-right-items">
-                <form action="/search" method="get">
-                    <input type="search" name="q" placeholder="Procure por vendedor, marca, produto...">
+                <form action="../../pages/filtered_page.php" method="get">
+                    <input type="search" name="searchTerm" placeholder="Procure por vendedor, marca, produto...">
                 </form>
 
 

@@ -42,6 +42,30 @@
         return $items;
     }
 
+    function searchBar($searchTerm) {
+        include_once('connection.db.php');
+        $db = getDatabaseConnection();
+        $sql = 'SELECT picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
+            FROM Item 
+            JOIN User ON sellerId=idUser 
+            JOIN Category ON categoryId=idCategory
+            JOIN clotheSize ON clotheSize=idSize';
+        $sql .= ' WHERE 1=1';
+        if (!empty($searchTerm)) {
+            $sql .= ' AND (username LIKE :searchTerm OR type_item LIKE :searchTerm OR categoryName LIKE :searchTerm OR sizeName LIKE :searchTerm)';
+        }
+        $sql .= ';';
+
+        $stmt = $db->prepare($sql);
+        if (!empty($searchTerm)) {
+            $stmt->bindValue(':searchTerm', '%' . $searchTerm . '%');
+        }
+        $stmt->execute();
+        $items = $stmt->fetchAll();
+        
+        return $items;
+    }
+
     function getItems() {
         include_once('connection.db.php');
         $db = getDatabaseConnection();

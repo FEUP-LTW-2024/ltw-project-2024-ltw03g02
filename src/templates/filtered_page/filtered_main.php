@@ -6,14 +6,23 @@
     <main>
         <?php drawFilters(); ?>
         <section class="items">
+            <div class="search-message">
+                <?php
+                    if (isset($_GET['searchTerm'])) {
+                        echo '<h3>Resultados da pesquisa "' . $_GET['searchTerm'] . '":</h3>';
+                    } else {
+                        echo '<h3>Todos os resultados</h3>';
+                    }
+                ?>
+            </div>
             <div class="item-list">
                 <?php
-                    if (isset($_SESSION['user']) && $_SESSION['user']['isAdmin']) {
-                        $enableEdit = 1;
+                    if (isset($_GET['searchTerm'])) {
+                        $items = searchBar($_GET['searchTerm']);
                     } else {
-                        $enableEdit = 0;
+                        $items = getItems();
                     }
-                    $items = getItems();
+                    $enableEdit = 0;
                     foreach ($items as $item) {
                         drawItemCard($item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit);
                     }

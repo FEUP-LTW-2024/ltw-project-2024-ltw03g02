@@ -42,7 +42,7 @@ class Filters {
     }
 }
 
-filters = new Filters("Homem", "Calças", "L", null);
+filters = new Filters(null, null, null, null);
 
 function _createFetchString() {
     let fetchString = '../api/api_filter_items.php?';
@@ -52,6 +52,10 @@ function _createFetchString() {
             fetchString += filterNames[index] + '=' + value + '&';
         }
     });
+    const urlParams = new URLSearchParams(window.location.searchTerm);
+    if (urlParams.has('searchTerm')){
+        fetchString += 'searchTerm=' + urlParams.get('searchTerm') + '&';
+    }
     return fetchString;
 }
 
@@ -86,7 +90,7 @@ async function loadItems() {
 
     itemList = document.querySelector('.item-list');
     itemList.innerHTML = '';
-    console.log(items);
+
     for (item of items){
         itemList.appendChild(_drawItemCard(item));
     }
@@ -97,6 +101,8 @@ function cleanFiltersHandler() {
     document.getElementById('clean-filters').style = 'visibility: hidden;';
     filters.reset();
     loadItems();
+
+    window.location.href = '/pages/filtered_page.php';
 }
 
 function changedFilterValueHandler(){
@@ -109,4 +115,15 @@ function changedFilterValueHandler(){
     }
     console.log('applyFiltersHandler() executed');
     loadItems();
+}
+
+window.onload = function() {
+    let params = new URLSearchParams(location.search);
+    let searchTerm = params.get('searchTerm');
+
+    if (searchTerm) {
+        document.getElementById('clean-filters').style.visibility = 'visible';
+    } else {
+        document.getElementById('clean-filters').style.visibility = 'hidden';
+    }
 }
