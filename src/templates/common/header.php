@@ -6,7 +6,7 @@
             </a>
             <div class="topbar-right-items">
                 <form action="../../pages/filtered_page.php" method="get">
-                    <input type="search" name="searchTerm" placeholder="Procure por vendedor, marca, produto...">
+                    <input id="search-bar" type="search" name="searchTerm" placeholder="Procure por vendedor, marca, produto...">
                 </form>
 
 
