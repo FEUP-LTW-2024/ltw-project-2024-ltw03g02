@@ -5,7 +5,7 @@ Requirements list:
 - [ ] All users should be able to:
     - [ ] Register a new account.
     - [x] Log in and out.
-    - [ ] Edit their profile, including their name, username, password, and email.
+    - [x] Edit their profile, including their name, username, password, and email.
 
 - [ ] Sellers should be able to:
     - [ ] List new items, providing details such as category, brand, model, size, and condition, along with images.
