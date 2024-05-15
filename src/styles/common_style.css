@@ -26,6 +26,7 @@
     align-items: center;
     flex-direction: row;
     padding: 1rem;
+
 }
 
 .topbar .topbar-right-items{
@@ -66,9 +67,9 @@ header .topbar .topbar-right-items .primary-btn {
 }
 
 #search-bar {
-    min-width: 25em;
+    min-width: 20em;
     padding: 0.6rem;
-    border-radius: 2px;
+    border-radius: 1.4em;
     border-color: var(--dark-green);
     border-width: 2px;
 }
@@ -77,11 +78,16 @@ header .topbar .topbar-right-items .primary-btn {
     border-width: 3px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1000px){
     #search-bar {
-        min-width: 15em;
+        width: 15em;
     }
-    
+}
+
+@media screen and (max-width: 900px){
+    #search-bar {
+        display: none;
+    }
 }
 
 #profile_img_link {

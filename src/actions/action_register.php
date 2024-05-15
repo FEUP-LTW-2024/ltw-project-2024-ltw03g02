@@ -1,43 +1,31 @@
 <?php
     declare(strict_types = 1);
-    require_once('../database/connection.db.php');
-    require_once('../classes/session.class.php');
-    require_once('../utils/validator.php');
-    $session = new Session();
-
-    $_SESSION['input']['nome newUser'] = htmlentities($_POST['nome']);
-    $_SESSION['input']['username newUser'] = htmlentities($_POST['username']);
-    $_SESSION['input']['email newUser'] = htmlentities($_POST['email']);
-    $_SESSION['input']['password1 newUser'] = htmlentities($_POST['password1']);
-    $_SESSION['input']['password2 newUser'] = htmlentities($_POST['password2']);
-    $_SESSION['input']['gender newUser'] = htmlentities($_POST['gender']);
-    $_SESSION['input']['address newUser'] = htmlentities($_POST['address']);
-    $_SESSION['input']['phoneNumber newUser'] = htmlentities($_POST['phoneNumber']);
-
-    if (!(valid_name($_POST['nome']) && valid_address($_POST['address']) && valid_email($_POST['email']) && valid_phone($_POST['phoneNumber']) && valid_CSRF($_POST['csrf']))) {
-        die(header('Location: /../pages/register.php'));
-    }
+    require_once('../../database/connection.db.php');
 
     $db = getDatabaseConnection();
-    if ($_POST['password1'] === $_POST['password2']) {
 
-        if (!valid_password($_POST['password1'])) {
-            die(header('Location: ../pages/register.php'));
+    $stmt = $db->prepare('INSERT INTO User 
+        (nome, username, email, pass, gender, address, profile_image_link, phoneNumber, is_admin)
+        VALUES (:nome, :username, :email, :pass, :gender, :address, :profile_image_link, :phoneNumber, :is_admin);');
+        
+        try {
+            $stmt->bindParam(':nome', $_POST['nome']);
+            $stmt->bindParam(':username', $_POST['username']);
+            $stmt->bindParam(':email', $_POST['email']);
+            $stmt->bindParam(':pass', hash('sha256', $_POST['pass']));
+            $stmt->bindParam(':gender', $_POST['gender']);
+            $stmt->bindParam(':address', $_POST['address']);
+            $stmt->bindParam(':profile_image_link', $_POST['profile_image_link']);
+            $stmt->bindParam(':phoneNumber', $_POST['phoneNumber']);
+            $stmt->bindParam(':is_admin', $_POST['is_admin']);
+        
+            $stmt->execute();
+        
+            echo "User added successfully!";
+            header('Location: ../../action_login.php');
+            die(header('Location: ../../pages/admin_panel.php'));
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
 
-        $cost = ['cost' => 8];
-        $stmt = $db->prepare('INSERT INTO User (nome, username, email, pass, gender, address, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute(array($_POST['nome'], $_POST['username'], $_POST['email'], password_hash($_POST['password1'], PASSWORD_DEFAULT, $cost), $_POST['gender'], $_POST['address'], $_POST['phoneNumber']));
-        session_start();
-        $_SESSION['idUser'] = $db->lastInsertId();
-
-    } else {
-        $session->addMessage('warning', "Password does not match");
-        die(header('Location: /../pages/register.php'));
-    }
-
-    unset($_SESSION['input']);
-
-    $session->addMessage('success', "User registered successfully!");
-    header('Location: /../pages/home_page.php');
 ?>
