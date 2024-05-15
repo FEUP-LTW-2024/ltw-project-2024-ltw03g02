@@ -7,5 +7,6 @@ function drawLogin(Session $session) { ?>
             <label>Password:<input type="password" name="pass" value="<?=htmlentities($_SESSION['input']['pass login'])?>"></label>
             <input id="button" class="primary-btn" type="submit" value="Entrar">
         </form>
+        <p>Não estás registado ainda? <a href="register.php" class="register-button">Regista-te aqui!</a></p>
     </section> 
 <?php } ?>
