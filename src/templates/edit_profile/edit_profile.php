@@ -3,6 +3,7 @@
     <section id="edit-profile">
         <h2>Editar perfil</h2>
         <form id="edit-profile-form" action="../../actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="idUser" value="<?php echo $_SESSION['idUser']; ?>">
             <div>
                 <label for="nome">Novo nome</label>
                 <input type="text" name="nome" class="nome-input" value="<?php echo $_SESSION['nome']; ?>" required>
