@@ -1,6 +1,6 @@
 <?php
     declare(strict_types = 1);
-    require_once('../../database/connection.db.php');
+    require_once('../database/connection.db.php');
 
     $db = getDatabaseConnection();
 
@@ -12,7 +12,7 @@
         gender = :gender, 
         address = :address, 
         profile_image_link = :profile_image_link, 
-        phoneNumber = :phoneNumber, 
+        phoneNumber = :phoneNumber 
         WHERE idUser = :idUser;');
 
     $stmt->bindParam(':idUser', $_POST['idUser']);
@@ -27,5 +27,6 @@
 
     $stmt->execute();
     
-    echo "Salvo!";
+    header('Location: ../../pages/profile_page.php');
+    die();
 ?>
