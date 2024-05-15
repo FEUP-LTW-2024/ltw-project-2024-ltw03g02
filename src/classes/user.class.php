@@ -32,6 +32,35 @@
       return count($names) > 1 ? $names[0] . " " . $names[count($names)-1] : $names[0];
     }
 
+    public function getUsername() : string {
+      return $this->username;
+    }
+    
+    public function getEmail() : string {
+      return $this->email;
+    }
+    
+    public function getPass() : string {
+      return $this->pass;
+    }
+    
+    public function getGender() : string {
+      return $this->gender;
+    }
+    
+    public function getAddress() : string {
+      return $this->address;
+    }
+    
+    public function getProfileImageLink() : string {
+      return $this->profile_image_link;
+    }
+    
+    public function getPhoneNumber() : int {
+      return $this->phoneNumber;
+    }
+
+
     public function getIsAdmin() : string {
       return $this->is_admin == 1 ? "Yes" : "No";
     }
