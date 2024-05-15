@@ -2,7 +2,7 @@
  function drawEditProfile() { ?>
     <section id="edit-profile">
         <h2>Editar perfil</h2>
-        <form id="edit-profile-form" action="../actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
+        <form id="edit-profile-form" action="../../actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
             <div>
                 <label for="nome">Novo nome</label>
                 <input type="text" name="nome" class="nome-input" value="<?php echo $_SESSION['nome']; ?>" required>
@@ -18,7 +18,7 @@
             </div>
             
             <div>
-                <label for="pass">Nova password</label>
+                <label for="pass">Nova password (insira a antiga se não quiser alterar)</label>
                 <input type="password" name="pass" class="pass-input" required>
             </div>
 
@@ -42,8 +42,7 @@
                 <input type="text" name="phoneNumber" class="phoneNumber-input" value="<?php echo $_SESSION['phoneNumber']; ?>"required>
             </div>
 
-            <button class="primary-btn" type="submit">Salvar mudanças</button>
-
+            <input type="submit" value="Salvar mudanças" class="primary-btn">
         </form>
     </section>
 <?php } ?>
