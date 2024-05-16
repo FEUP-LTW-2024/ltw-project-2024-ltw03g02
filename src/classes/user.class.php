@@ -11,10 +11,11 @@
     public string $gender;
     public string $address;
     public string $profile_image_link;
+    public float $rating;
     public int $phoneNumber;
     public int $is_admin;
 
-    public function __construct(int $idUser, string $nome, string $username, string $email, string $pass, string $gender, string $address, string $profile_image_link, int $phoneNumber, int $is_admin) { 
+    public function __construct(int $idUser, string $nome, string $username, string $email, string $pass, string $gender, string $address, string $profile_image_link, float $rating, int $phoneNumber, int $is_admin) { 
       $this->idUser = $idUser;
       $this->nome = $nome;
       $this->username = $username;
@@ -23,6 +24,7 @@
       $this->gender = $gender;
       $this->address = $address;
       $this->profile_image_link = $profile_image_link;
+      $this->rating = $rating;
       $this->phoneNumber = $phoneNumber;
       $this->is_admin = $is_admin;
     }

@@ -42,3 +42,14 @@
     }
 
 }
+.go-home-btn {
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+    background-color: var(--dark-green);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}

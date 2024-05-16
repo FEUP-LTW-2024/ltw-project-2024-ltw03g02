@@ -15,15 +15,7 @@
     
         $_SESSION['idUser'] = $user->idUser;
         $_SESSION['nome'] = $user->getName();
-        $_SESSION['is_admin'] = $user->getIsAdmin();
         $_SESSION['photo'] = $user->getPhoto();
-        $_SESSION['username'] = $user->getUsername();
-        $_SESSION['email'] = $user->getEmail();
-        $_SESSION['gender'] = $user->getGender();
-        $_SESSION['address'] = $user->getAddress();
-        $_SESSION['phoneNumber'] = $user->getphoneNumber();
-        $_SESSION['pass'] = $user->getPass();
-        
     
         unset($_SESSION['input']['username login']);
         unset($_SESSION['input']['pass login']);
@@ -34,4 +26,4 @@
         $session->addMessage('error', 'Login failed. Invalid username or password.');
         die(header('Location: ../pages/login.php'));
       }
-?>      
+?>          
