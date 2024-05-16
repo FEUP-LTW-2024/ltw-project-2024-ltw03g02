@@ -1,0 +1,175 @@
+.search-message {
+    padding: 1em 3em;
+    font-size: 1.2em;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    #expand-btn {
+        margin: 0.6em;
+        margin-bottom: 3em;
+        align-self: center;
+    }
+    .item-list {
+        --card-width: 150px; 
+        --card-height: 300px;
+        display: flex;
+        flex-wrap: wrap;    
+        align-items: center;
+        justify-content: center;
+        margin: 1em 0 2em 0;
+        > * {
+            margin: 1em;
+            border: 1px solid white;
+            width: var(--card-width);
+            height: var(--card-height);
+        }
+        > :hover {
+            border: 1px solid var(--dark-green);
+        }
+        .item-card {
+            position: relative;
+            background-color: var(--item-card-color);
+            
+            .icon-btn{
+                position: absolute;
+            }
+
+            .buy-btn {
+                bottom: 0;
+                right: 0;
+            }
+            
+            .edit-btn {
+                top: 0;
+                right: 0;
+            }
+
+            .delete-btn{
+                top: 0;
+                left: 0;
+            }
+            > img {
+                width: 100%;
+                height: var(--card-width);
+                object-fit: cover;
+            }
+            > div {
+                margin: 0.2em;
+            }
+            .item-card-info {
+                padding: 0.4em;
+                display: flex;
+                flex-direction: column;
+                align-items: self-start;
+                > * {
+                    margin-top: 0;
+                    margin: 0.1em;
+                }
+                > div {
+                    display: flex;
+                    align-items: center;
+                    img {
+                        width: 1.5em;
+                        height: 1.5em;
+                        object-fit: cover;
+                        margin-right: 0.5em;
+                    }
+                }
+                > .price-info {
+                    margin-top: 0.4em;
+                    font-weight: bolder;
+                    margin-right: 0;
+                }
+                > .size-info {
+                    font-size: 1.1em;
+                    font-weight: lighter;
+                    margin: 0.3em 0;
+                }
+                > .type-info, > .category-info {
+                    font-size: 0.8em;
+                    font-weight: lighter;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em 0;
+    > * {
+        margin: 0.5em 0;
+    }
+    > .filters-row {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        > * {
+            margin: 0em 2em;
+        }
+        > .filter {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            span {
+                font-size: 0.9em;
+                font-weight: lighter;
+                margin-bottom: 0.5em;
+                color: var(--dark-grey);
+            }
+            select {
+                width: 100%;
+                padding: 0.5em;
+                border-radius: 0em;
+                border: 3px solid var(--dark-green);
+                font-size: 0.9em;
+            }
+        }
+    }
+    .filtered-control-row{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        a {
+            text-decoration: none;
+            color: var(--dark-green);
+            margin-right: 3em;
+            font-size: 0.9em;
+            margin-bottom: 0;
+            visibility: hidden;
+        }
+        > button {
+            margin-right: 3em;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 546px){
+    .filters-row {
+        flex-wrap: wrap;
+        .filter{
+            max-width: 250px;
+            margin: 0.5em 5px;
+        }
+    }
+    
+}
+
+@media screen and (max-width: 545px) {
+    .filters-row {
+        flex-direction: column;
+        padding: 0 1em;
+    }
+
+    .filters-row .filter {
+        margin: 0.5em 0;
+    }
+    
+}

@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Sansita-BoldItalic';
+    src: url('../fonts/Sansita-BoldItalic.ttf') format('truetype');
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5rem 1.5rem 0rem;
+    align-items: center;
+    overflow: hidden;
+    height: 25rem;
+    img {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+    }
+    p {
+        text-align: center;
+        width: 25rem;
+        font-size: 1.2rem;
+        font-weight: bolder;
+        color: white;
+    }
+    .primary-btn {
+        margin: 0 auto;
+        text-align: center;
+        background-color: var(--light-green);
+    }
+    h1 {
+        font-family: Sansita-BoldItalic, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;
+        width: 100%;
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 900;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .hero {
+        height: 100%;
+        padding: 2rem 0rem;
+    }
+}
+
+/* Clothes Type Section */
+.clothes-type {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    flex-direction: row;
+    .clothes-type-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 20rem;
+        overflow: hidden;
+        border: 1px solid var(--light-grey);
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+        h3 {
+            font-size: 1rem;
+            padding: 0.5rem 0rem;
+            width: 100%;
+            text-align: center;
+            background-color: white;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .clothes-type {
+        .clothes-type-card{
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+
+/* Brands Section */
+.brands {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    h2 {
+        padding: 1rem 0rem;
+        font-size: 1.5rem;
+    }
+    .brands-list {
+        width: 100%;
+        margin: 1rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+    }
+}

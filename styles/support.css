@@ -1,0 +1,55 @@
+.support{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+
+    > * {
+        padding: 1.2rem;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+
+    .textarea{
+        background-color: var(--lighter-grey);
+        padding: 1rem;
+        padding-bottom: 5rem;
+        width: 100%;
+        border-style: none;
+    }
+
+    .primary-btn{
+        display: block;
+        text-align: right;
+        margin: 2rem 0 3rem auto;
+        background-color: var(--dark-green);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+}
+.go-home-btn {
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+    background-color: var(--dark-green);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}

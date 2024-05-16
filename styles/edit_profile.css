@@ -1,0 +1,32 @@
+#edit-profile {
+    padding: 2em;
+}
+
+#edit-profile-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    > div {
+        margin: 1em;
+        display: flex;
+        flex-direction: column;
+        > input {
+            padding: 0.5em;
+            margin: 0.5em;
+            border: 1px solid var(--dark-green);
+            border-radius: 5px;
+        }
+        button {
+            align-self: self-end;
+        }
+    }
+}
+
+.primary-btn {
+    cursor: pointer;
+}
