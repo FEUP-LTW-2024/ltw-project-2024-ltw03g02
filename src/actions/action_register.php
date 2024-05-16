@@ -27,7 +27,7 @@
 
         $cost = ['cost' => 8];
         $stmt = $db->prepare('INSERT INTO User (nome, username, email, pass, gender, address, phoneNumber) VALUES (?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute(array($_POST['nome'], $_POST['username'], $_POST['email'], password_hash($_POST['password1'], PASSWORD_DEFAULT, $cost), $_POST['gender'], $_POST['address'], $_POST['phoneNumber']));
+        $stmt->execute(array($_POST['nome'], $_POST['username'], $_POST['email'], hash('sha256', $_POST['pass']), $_POST['gender'], $_POST['address'], $_POST['phoneNumber']));
         session_start();
         $_SESSION['idUser'] = $db->lastInsertId();
 

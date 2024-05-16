@@ -86,14 +86,11 @@
           $user['gender'],
           $user['address'],
           $user['profile_image_link'],
+          floatval($user['rating']),
           intval($user['phoneNumber']),
           intval($user['is_admin']),
         );
       } else return null;
-    }
-
-    static function check_password($pass, $hash) {
-      return hash('sha256', $pass) == $hash;
     }
 
     static function getUserWithUsername(PDO $db, string $username, string $pass) : ?User {
@@ -101,7 +98,7 @@
       $stmt->execute(array($username));
 
       $user = $stmt->fetch();
-      if ($user !== false && User::check_password($pass, $user['pass'])) {
+      if ($user !== false && password_verify($pass, $user['pass'])) {
           return new User(
               intval($user['idUser']),
               $user['nome'],
@@ -111,6 +108,7 @@
               $user['gender'],
               $user['address'],
               $user['profile_image_link'],
+              floatval($user['rating']),
               intval($user['phoneNumber']),
               intval($user['is_admin']),
           );
@@ -144,7 +142,7 @@
 
     static function getUser(PDO $db, int $id) : User {
 
-      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, phoneNumber, is_admin FROM User WHERE idUser = ?');
+      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User WHERE id = ?');
       $stmt->execute(array($id));
   
       $user = $stmt->fetch();
@@ -158,10 +156,11 @@
         $user['gender'],
         $user['address'],
         $user['profile_image_link'],
+        floatval($user['rating']),
         intval($user['phoneNumber']),
         intval($user['is_admin']),
       );
-    }  
+    } 
 
     function save($db) {
       $stmt = $db->prepare('
