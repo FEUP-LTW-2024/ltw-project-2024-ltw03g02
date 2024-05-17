@@ -136,18 +136,19 @@ VALUES
     ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 4.2, 987654321, 0),
     ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', 'adminpass', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 5.0, 911053549, 1);
 
-INSERT INTO Item (title, description, color, picture, price, condition, sellerId, categoryId, idBrand, idType, clotheSize, listedAt)
+INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
 VALUES
-    ('T-shirt Masculina', 'T-shirt larga, confortável para homens', 'Preto', 'https://twicpics.celine.com/product-prd/images/large/2X75H626U.38AW_1_FW23_M.jpg?twic=v1/cover=1:1/resize-max=100/output=preview', 19.99, 'Etiquetado', 1, 1, 1, 1, 'L', '2024-01-10 10:00:00'),
-    ('Calça Jeans Feminina', 'Calça jeans elegante para mulheres', 'Azul', 'https://twicpics.celine.com/product-prd/images/large/2N860930F.07UW_1_LIBSP23.jpg?twic=v1/cover=1:1/resize-max=100/output=preview', 39.99, 'Bom estado', 2, 2, 2, 2, 'M', '2024-04-07 10:00:00'),
-    ('Top Benetton para Meninas', 'Top preto para meninas crianças que gostem de viver o estilo', 'Preto', 'https://pt.benetton.com/dw/image/v2/BBSF_PRD/on/demandware.static/-/Sites-ucb-master/default/dw28142888/images/Full_PDP_h/UCB-Bambino_24P_31H3CH01F_100_FS_Full_PDP_h.jpg', 120.30, 'Razoável', 1, 3, 3, 3, 'S', '2024-02-20 10:40:35'),
-    ('Camisa Masculina', 'Camisa formal para homens', 'Branco', 'https://www.totalprotex.pt/media/catalog/product/cache/default/image/9df78eab33525d08d6e5fb8d27136e95/b/i/bizflame-88-12-fr-shirt-0_4.jpg', 49.99, 'Bom estado', 1, 1, 7, 2, 'XL', '2023-12-10 21:51:00'),
-    ('Vestido Feminino', 'Vestido elegante para mulheres', 'Rosa', 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/7aba4c96881db01c0dfb64a0e514896b.jpg?imageMogr2/auto-orient%7CimageView2/2/w/800/q/70/format/webp', 59.99, 'Etiquetado', 2, 2, 5, 3, 'L', '2024-02-21 20:01:04'),
-    ('Sweat para meninos', 'Sweat fofa para meninos criança', 'Azul', 'https://www.vidaxl.pt/dw/image/v2/BFNS_PRD/on/demandware.static/-/Sites-vidaxl-catalog-master-sku/default/dw9467291c/hi-res/166/1604/182/5410/13369/image_1_13369.jpg', 14.99, 'Razoável', 3, 3, 6, 1, 'M', '2024-04-01 08:06:43'),
-    ('Pijama Masculino', 'Pijama quentinho e bonito para homens de 18 anos', 'Preto', 'https://womensecret.com/dw/image/v2/AAYL_PRD/on/demandware.static/-/Sites-gc-ws-master-catalog/default/dwf09e4c1f/images/hi-res/P_429682201D3.jpg', 79.99, 'Bom estado', 1, 1, 2, 1, 'L', '2023-11-27 01:51:00'),
-    ('Casaco Feminino', 'Casaco casual para mulheres', 'Branco', 'https://img.kwcdn.com/thumbnail/s/b59cade0f92c774b20100ef92be11a8f_4399c89a1a23.jpg?imageView2/2/w/800/q/70/format/webp', 29.99, 'Etiquetado', 2, 2, 10, 2, 'S', '2022-12-01 18:06:23'),
-    ('Calça Infantil', 'Calça confortável para crianças', 'Cinza', 'https://bughug.pt/wp-content/uploads/2024/03/73-650x650.png', 24.99, 'Mau estado', 3, 3, 12, 1, 'S', '2024-03-10 12:59:45'),
-    ('Calções Hugo Boss Homem', 'Calções casuais para homens, ideais para saídas', 'Bege', 'https://images.hugoboss.com/is/image/boss/hbeu50515314_255_350?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1713351095000&wid=1200&hei=1818', 34.99, 'Bom estado', 1, 1, 4, 3, 'M', '2024-03-01 23:46:13');
+    ('T-shirt Masculina', 'T-shirt larga, confortável para homens', 'Preto', 'Homem', 'https://twicpics.celine.com/product-prd/images/large/2X75H626U.38AW_1_FW23_M.jpg?twic=v1/cover=1:1/resize-max=100/output=preview', 19.99, 'Etiquetado', 1, 1, 1, 3, '2024-01-10 10:00:00'),
+    ('Calça Jeans Feminina', 'Calça jeans elegante para mulheres', 'Azul', 'Mulher', 'https://twicpics.celine.com/product-prd/images/large/2N860930F.07UW_1_LIBSP23.jpg?twic=v1/cover=1:1/resize-max=100/output=preview', 39.99, 'Bom estado', 2, 2, 2, 2, '2024-04-07 10:00:00'),
+    ('Top Benetton para Meninas', 'Top preto para meninas crianças que gostem de viver o estilo', 'Preto', 'Criança', 'https://pt.benetton.com/dw/image/v2/BBSF_PRD/on/demandware.static/-/Sites-ucb-master/default/dw28142888/images/Full_PDP_h/UCB-Bambino_24P_31H3CH01F_100_FS_Full_PDP_h.jpg', 120.30, 'Razoável', 1, 3, 3, 1, '2024-02-20 10:40:35'),
+    ('Camisa Masculina', 'Camisa formal para homens', 'Branco', 'Homem', 'https://www.totalprotex.pt/media/catalog/product/cache/default/image/9df78eab33525d08d6e5fb8d27136e95/b/i/bizflame-88-12-fr-shirt-0_4.jpg', 49.99, 'Bom estado', 1, 1, 7, 4, '2023-12-10 21:51:00'),
+    ('Vestido Feminino', 'Vestido elegante para mulheres', 'Rosa', 'Mulher', 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/7aba4c96881db01c0dfb64a0e514896b.jpg?imageMogr2/auto-orient%7CimageView2/2/w/800/q/70/format/webp', 59.99, 'Etiquetado', 2, 2, 5, 3, '2024-02-21 20:01:04'),
+    ('Sweat para meninos', 'Sweat fofa para meninos criança', 'Azul', 'Criança', 'https://www.vidaxl.pt/dw/image/v2/BFNS_PRD/on/demandware.static/-/Sites-vidaxl-catalog-master-sku/default/dw9467291c/hi-res/166/1604/182/5410/13369/image_1_13369.jpg', 14.99, 'Razoável', 3, 3, 6, 2, '2024-04-01 08:06:43'),
+    ('Pijama Masculino', 'Pijama quentinho e bonito para homens de 18 anos', 'Preto', 'Homem', 'https://womensecret.com/dw/image/v2/AAYL_PRD/on/demandware.static/-/Sites-gc-ws-master-catalog/default/dwf09e4c1f/images/hi-res/P_429682201D3.jpg', 79.99, 'Bom estado', 1, 1, 2, 3, '2023-11-27 01:51:00'),
+    ('Casaco Feminino', 'Casaco casual para mulheres', 'Branco', 'Homem', 'https://img.kwcdn.com/thumbnail/s/b59cade0f92c774b20100ef92be11a8f_4399c89a1a23.jpg?imageView2/2/w/800/q/70/format/webp', 29.99, 'Etiquetado', 2, 2, 10, 1, '2022-12-01 18:06:23'),
+    ('Calça Infantil', 'Calça confortável para crianças', 'Cinza', 'Criança', 'https://bughug.pt/wp-content/uploads/2024/03/73-650x650.png', 24.99, 'Mau estado', 3, 3, 12, 1, '2024-03-10 12:59:45'),
+    ('Calções Hugo Boss Homem', 'Calções casuais para homens, ideais para saídas', 'Bege', 'Homem', 'https://images.hugoboss.com/is/image/boss/hbeu50515314_255_350?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1713351095000&wid=1200&hei=1818', 34.99, 'Bom estado', 1, 1, 4, 2, '2024-03-01 23:46:13');
+
 
 
 INSERT INTO Category(categoryName) 
@@ -195,6 +196,20 @@ VALUES
     ('Homem'),
     ('Mulher'),
     ('Criança');   
+    
+INSERT INTO clotheSize(sizeName) 
+VALUES
+    ('S'),
+    ('M'),
+    ('L'),
+    ('XL');
+    
+INSERT INTO condition(conditionName)
+VALUES
+    ('Etiquetado'),
+    ('Bom estado'),
+    ('Razoável'),
+    ('Mau estado');
     
 INSERT INTO Review (idUser, idItem, stars, comment, data)
 VALUES
