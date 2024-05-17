@@ -18,7 +18,7 @@
     font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
-/* Header Style */
+/* Header Style Starts Here */
 
 .topbar {
     display: flex;
@@ -98,6 +98,13 @@ header .topbar .topbar-right-items .primary-btn {
     object-fit: cover;
 }
 
+.register-btn {
+    color: var(--dark-green);
+    text-decoration: none;
+    width: 5.8em;
+    text-align: center;
+}
+
 nav {
     ul{
         border-top: 2px solid var(--light-grey);
@@ -142,6 +149,8 @@ nav {
         flex-direction: column;
     }
 }
+
+/* Header Style Ends Here */
 
 /* Footer Styles */
 
