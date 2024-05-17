@@ -130,11 +130,13 @@ BEGIN
 END;
 
 
-INSERT INTO User (nome, username, email, pass, gender, address, rating, phoneNumber, is_admin)
+INSERT INTO User (nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin)
 VALUES
-    ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', 'Homem', 'Rua das Árvores, n.10', 4.5, 919715443, 0),
-    ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 4.2, 987654321, 0),
-    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', 'adminpass', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 5.0, 911053549, 1);
+    ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', 'Homem', 'Rua das Árvores, n.10', 'https://www.tvguide.com/a/img/catalog/provider/1/1/1-593743038.jpg', 4.5, 919715443, 0),
+    ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Panda_Cub_from_Wolong%2C_Sichuan%2C_China.JPG', 4.2, 987654321, 0),
+    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 'https://static.giga.de/wp-content/uploads/2015/01/google-chrome-dino.png', 5.0, 911053549, 1),
+    ('Ricardo Cardoso', 'ricardo0015', 'ricardo0015@example.com', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e', 'Homem', 'Rua Inês Teixeira nº32', 'http://s2.glbimg.com/C8ORi7DA7326QPtHKxd0a7JGKco=/695x0/s.glbimg.com/po/tt2/f/original/2015/09/15/ness.jpg', 5.0, 932123432, 1),
+    ('Daunísia Jone', 'dawen', 'dawen@example.com', 'Rua André Restivo, nº3', 'https://i.pinimg.com/736x/3f/58/60/3f58604beda34909dd5984ef4458a96f.jpg', 5.0, 911053549, 1);
 
 INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
 VALUES
