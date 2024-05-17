@@ -18,6 +18,12 @@ function drawRegister() {
             <label>Phone Number: <input type="number" name="phoneNumber" value="<?=htmlentities($_SESSION['input']['phoneNumber newUser'])?>"></label>
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <button type="submit">Register</button>
+            <?php
+                if (isset($_SESSION['error'])) {
+                    echo "<script>alert('".$_SESSION['error']."');</script>";
+                    unset($_SESSION['error']);
+                }
+            ?>
         </form>
     </section> 
 <?php } ?>

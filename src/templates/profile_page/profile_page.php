@@ -25,15 +25,19 @@
             <a href="edit_profile.php" class="btn">Editar perfil</a>
             <a href="messages.php" class="btn">Mensagens</a>
         </div>
+        <h3>Meus artigos</h3>
         <div class="my-items">
-            <h3>Meus artigos</h3>
                 <?php
                     $userId = $_SESSION['idUser']; 
                     $user = User::getUser($db, $userId); 
                     $items = User::getItems($db, $userId);
-                    foreach ($items as $item) {
-                        $enableEdit = ($item['sellerId'] == $userId); 
-                        drawItemCard($item['picture'], $user->profile_image_link, $user->username, $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit);
+                    if (count($items) == 0) {
+                        echo "<p>Não tem artigos para mostrar</p>";
+                    } else {
+                        foreach ($items as $item) {
+                            $enableEdit = ($item['sellerId'] == $userId); 
+                            drawItemCard($item['picture'], $user->profile_image_link, $user->username, $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit);
+                        }
                     }
                 ?>
         </div>

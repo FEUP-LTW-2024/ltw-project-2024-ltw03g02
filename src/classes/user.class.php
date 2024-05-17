@@ -146,7 +146,7 @@
 
     static function getUser(PDO $db, int $id) : User {
 
-      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User WHERE id = ?');
+      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User WHERE idUser = ?');
       $stmt->execute(array($id));
   
       $user = $stmt->fetch();
