@@ -4,6 +4,12 @@ header .topbar {
     align-items: center;
 }
 
+p {
+    margin: 3em;
+    a {
+        text-decoration: none;
+    }
+}
 
 #registerpage {
     display: flex;
