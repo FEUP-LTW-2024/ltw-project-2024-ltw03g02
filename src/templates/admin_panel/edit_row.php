@@ -21,8 +21,8 @@
             </div>
             
             <div>
-                <label for="pass">Password</label>
-                <input type="text" name="pass" class="input-edit-row pass-input" required>
+                <label for="pass">Password (don't fill to leave unchanged)</label>
+                <input type="text" name="pass" class="input-edit-row pass-input">
             </div>
 
             <div>
@@ -38,6 +38,11 @@
             <div>
                 <label for="profile_image_link">Profile Image</label>
                 <input type="text" name="profile_image_link" class="input-edit-row profile_image_link-input" required>
+            </div>
+
+            <div>
+                <label for="rating">Rating</label>
+                <input type="text" name="rating" class="input-edit-row rating-input" required>
             </div>
 
             <div>
