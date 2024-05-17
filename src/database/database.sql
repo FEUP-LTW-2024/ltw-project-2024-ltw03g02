@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS User;
-DROP TABLE IF EXISTS clothesType;
 DROP TABLE IF EXISTS Item;
 DROP TABLE IF EXISTS Message;
 DROP TABLE IF EXISTS Category;
@@ -9,6 +8,8 @@ DROP TABLE IF EXISTS UserOrder;
 DROP TABLE IF EXISTS FavoriteItem;
 DROP TABLE IF EXISTS Apoio;
 DROP TABLE IF EXISTS Devolutions;
+DROP TABLE IF EXISTS clotheSize;
+DROP TABLE IF EXISTS condition;
 DROP TRIGGER IF EXISTS update_user_rating;
 
 CREATE TABLE User (
@@ -36,6 +37,9 @@ CREATE TABLE Item (
     color VARCHAR(255) NOT NULL CHECK (
         color IN ('Preto', 'Azul', 'Vermelho', 'Bege', 'Branco', 'Castanho', 'Cinza', 'Dourado', 'Laranja', 'Lilás', 'Violeta', 'Rosa', 'Roxo', 'Verde')
     ),
+    type_item VARCHAR(255) NOT NULL CHECK (
+        type_item IN ('Homem', 'Mulher', 'Criança')
+    ),
     picture TEXT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     condition VARCHAR(255) NOT NULL CHECK (
@@ -44,13 +48,11 @@ CREATE TABLE Item (
     sellerId INTEGER NOT NULL,
     categoryId INTEGER NOT NULL,
     idBrand INTEGER NOT NULL,
-    idType INTEGER NOT NULL,
-    clotheSize TEXT,
+    clotheSize INTEGER NOT NULL,
     listedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sellerId) REFERENCES User(idUser),
     FOREIGN KEY (categoryId) REFERENCES Category(idCategory),
-    FOREIGN KEY (idBrand) REFERENCES Brand(idBrand),
-    FOREIGN KEY (idType) REFERENCES clothesType(idType)
+    FOREIGN KEY (idBrand) REFERENCES Brand(idBrand)
 );
 
 -- Create Message table
@@ -99,17 +101,22 @@ CREATE TABLE UserOrder (
     PRIMARY KEY(idUser, idItem, data)
 );
 
-CREATE TABLE clothesType (
-    idType INTEGER PRIMARY KEY AUTOINCREMENT,
-    typeName VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE Apoio (
     idApoio INTEGER PRIMARY KEY AUTOINCREMENT,
     idUser INTEGER NOT NULL,
     message TEXT NOT NULL,
     sentAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (idUser) REFERENCES User(idUser)
+);
+
+CREATE TABLE clotheSize (
+    idSize INTEGER PRIMARY KEY AUTOINCREMENT,
+    sizeName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE condition (
+    idCondition INTEGER PRIMARY KEY AUTOINCREMENT,
+    conditionName VARCHAR(255) NOT NULL
 );
 
 -- Create Devolutions table
@@ -136,7 +143,7 @@ VALUES
     ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Panda_Cub_from_Wolong%2C_Sichuan%2C_China.JPG', 4.2, 987654321, 0),
     ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 'https://static.giga.de/wp-content/uploads/2015/01/google-chrome-dino.png', 5.0, 911053549, 1),
     ('Ricardo Cardoso', 'ricardo0015', 'ricardo0015@example.com', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e', 'Homem', 'Rua Inês Teixeira nº32', 'http://s2.glbimg.com/C8ORi7DA7326QPtHKxd0a7JGKco=/695x0/s.glbimg.com/po/tt2/f/original/2015/09/15/ness.jpg', 5.0, 932123432, 1),
-    ('Daunísia Jone', 'dawen', 'dawen@example.com', 'Rua André Restivo, nº3', 'https://i.pinimg.com/736x/3f/58/60/3f58604beda34909dd5984ef4458a96f.jpg', 5.0, 911053549, 1);
+    ('Daunísia Jone', 'dawen', 'dawen@example.com', 'c63c2d34ebe84032ad47b87af194fedd17dacf8222b2ea7f4ebfee3dd6db2dfb', 'Mulher', 'Rua André Restivo, nº3', 'https://i.pinimg.com/736x/3f/58/60/3f58604beda34909dd5984ef4458a96f.jpg', 5.0, 911053549, 1);
 
 INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
 VALUES
@@ -192,12 +199,6 @@ VALUES
     ('Gucci'),
     ('Balenciaga'),
     ('Primark');
-
-INSERT INTO clothesType(typeName)
-VALUES
-    ('Homem'),
-    ('Mulher'),
-    ('Criança');   
     
 INSERT INTO clotheSize(sizeName) 
 VALUES
