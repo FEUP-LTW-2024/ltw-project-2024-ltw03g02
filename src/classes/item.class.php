@@ -14,7 +14,7 @@
     public int $sellerId;
     public int $categoryId;
     public int $idBrand;
-    public string $clotheSize;
+    public int $clotheSize;
     public string $listedAt;
 
     public function __construct(int $idItem, string $title, string $description, string $color, string $type_item, string $picture, float $price, string $condition, int $sellerId, int $categoryId, int $idBrand, string $clotheSize, string $listedAt) { 
@@ -191,7 +191,7 @@
             intval($item['sellerId']),
             intval($item['categoryId']),
             intval($item['idBrand']),
-            $item['clotheSize'],
+            intval($item['clotheSize']),
             $item['listedAt'],
       );
     }  

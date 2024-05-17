@@ -117,6 +117,27 @@ function changedFilterValueHandler(){
     loadItems();
 }
 
+function buyBtnPressedHandler(idItem) {
+    console.log('buyBtnPressedHandler() executed');
+    console.log('buy button pressed');
+
+    fetch('../actions/action_add_to_cart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'idItem=' + idItem,
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .then(() => {
+        window.location.reload(true);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
 window.onload = function() {
     let params = new URLSearchParams(location.search);
     let searchTerm = params.get('searchTerm');

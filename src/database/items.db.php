@@ -70,7 +70,7 @@
         include_once('connection.db.php');
         $db = getDatabaseConnection();
 
-        $sql = 'SELECT picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
+        $sql = 'SELECT idItem, picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
             FROM Item 
             JOIN User ON sellerId=idUser 
             JOIN Category ON categoryId=idCategory

@@ -1,4 +1,4 @@
-<?php function drawItemCard($picture, $profile_picture, $username, $price, $size, $category, $type, $enableEdit) { ?>
+<?php function drawItemCard($id, $picture, $profile_picture, $username, $price, $size, $category, $type, $enableEdit) { ?>
     <div class="item-card">
         <img src="<?php echo $picture; ?>" />
         <?php
@@ -7,7 +7,7 @@
                 drawDeleteBtn('#');
             } 
         ?>
-        <button class="icon-btn buy-btn"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
+        <button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(<?php echo $id ?>);"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
         <div class="item-card-info">
             <div>
                 <img src="<?php echo $profile_picture; ?>" />

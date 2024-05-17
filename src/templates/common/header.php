@@ -25,10 +25,12 @@
                         <button class="primary-btn">Terminar Sessão</button>
                     </a>
                 <?php endif; ?>
-
-                <a href="cart_page.php" class="cart-btn">
-                    <img src="/../images/shopping_cart.png" />
-                </a>
+                <?php if (isset($_SESSION['cart'])): ?>
+                    <a href="cart_page.php" class="cart-btn">
+                        <span><?php echo count($_SESSION['cart']); ?></span>
+                        <img src="../../images/shopping_cart.png" />
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
         <?php

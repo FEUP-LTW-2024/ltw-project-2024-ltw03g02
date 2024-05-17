@@ -1,7 +1,9 @@
 <?php function drawCartMain() { ?>
     <main>
         <h1>O teu carrinho</h1>
-        <?php if (empty($_SESSION['cart'])): ?>
+        <?php
+            session_start();
+            if (!isset($_SESSION['cart'])): ?>
         <div class="empty-cart-message">
             <img src="../images/cart_page/empty-cart.png" />
             <h3>O teu carrinho está vazio</h3>
@@ -11,15 +13,23 @@
         <?php else: ?>
             <section class="order">
                 <h3>Pedido</h3>
-                <?php foreach ($_SESSION['cart'] as $item): ?>
+                <?php
+                require_once('../database/cart.db.php');
+                $cart = $_SESSION['cart'];
+                $items = getCartItems($cart);
+                $subtotal = 0;
+                foreach ($items as $item): ?>
                     <div class="order-item">
-                        <img class="order-item-img" src="<?php echo $item['image']; ?>" />
-                        <p class="order-item-name"><?php echo $item['name']; ?></p>
+                        <img class="order-item-img" src="<?php echo $item['picture']; ?>" />
+                        <p class="order-item-name"><?php echo $item['title']; ?></p>
                         <span><?php echo $item['price']; ?> €</span>
                     </div>
-                <?php endforeach; ?>
+                <?php
+                    $subtotal += $item['price']; 
+                    endforeach; 
+                ?>
             </section>
-            <h2>Subtotal: <span>7,00 €</span></h2>
+            <h2>Subtotal: <span><?php echo $subtotal; ?> €</span></h2>
             <section class="payment">
                 <h3>Forma de Pagamento</h3>
                 <div class="payment-option">

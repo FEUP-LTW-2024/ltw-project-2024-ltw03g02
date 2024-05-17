@@ -31,12 +31,14 @@ main {
     }
     .order-item {
         display: flex;
-        justify-content: space-between;
-        align-items: top;
         flex-direction: row;
-        .order-item-img {
+        margin: 0.5rem 0;
+        height: 5em;
+        img {
             width: 5rem;
-            height: 5rem;
+            height: 100%;
+            object-fit: cover;
+            
         }
         .order-item-name {
             width: 100%;
