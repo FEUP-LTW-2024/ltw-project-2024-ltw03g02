@@ -1,3 +1,16 @@
+header .topbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    margin: 3em;
+    a {
+        text-decoration: none;
+    }
+}
+
 #registerpage {
     display: flex;
     flex-direction: column;

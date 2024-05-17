@@ -29,6 +29,10 @@
       $this->is_admin = $is_admin;
     }
 
+    public function getUserId() : int {
+      return $this->idUser;
+    }
+
     public function getName() : string {
       $names = explode(" ", $this->nome);
       return count($names) > 1 ? $names[0] . " " . $names[count($names)-1] : $names[0];
@@ -93,12 +97,16 @@
       } else return null;
     }
 
+    static function check_password($pass, $hash) {
+      return hash('sha256', $pass) == $hash;
+    }
+
     static function getUserWithUsername(PDO $db, string $username, string $pass) : ?User {
       $stmt = $db->prepare('SELECT * FROM User WHERE username = ?');
       $stmt->execute(array($username));
 
       $user = $stmt->fetch();
-      if ($user !== false && password_verify($pass, $user['pass'])) {
+      if ($user !== false && User::check_password($pass, $user['pass'])) {
           return new User(
               intval($user['idUser']),
               $user['nome'],
@@ -140,9 +148,34 @@
       return $users;
     }
 
+    static function getAllUsers(PDO $db) : array {
+      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User');
+      $stmt->execute();
+  
+      $users = array();
+      while ($user = $stmt->fetch()) {
+          $users[] = new User(
+              intval($user['idUser']),
+              $user['nome'],
+              $user['username'],
+              $user['email'],
+              $user['pass'],
+              $user['gender'],
+              $user['address'],
+              $user['profile_image_link'],
+              floatval($user['rating']),
+              intval($user['phoneNumber']),
+              intval($user['is_admin']),
+          );
+      }
+  
+      return $users;
+  }
+
+
     static function getUser(PDO $db, int $id) : User {
 
-      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User WHERE id = ?');
+      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User WHERE idUser = ?');
       $stmt->execute(array($id));
   
       $user = $stmt->fetch();
