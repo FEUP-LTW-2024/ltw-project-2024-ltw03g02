@@ -6,6 +6,9 @@
     require_once(dirname(__DIR__).'/classes/user.class.php');
     $session = new Session();
 
+    session_destroy();
+    session_start();
+
     $_SESSION['input']['username login'] = htmlentities($_POST['username']);
     $_SESSION['input']['pass login'] = htmlentities($_POST['pass']);
       $db = getDatabaseConnection();
