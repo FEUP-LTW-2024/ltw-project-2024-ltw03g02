@@ -23,8 +23,9 @@
                         $items = getItems();
                     }
                     $enableEdit = 0;
+                    $enableBuy = 1;
                     foreach ($items as $item) {
-                        drawItemCard($item['idItem'], $item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit);
+                        drawItemCard($item['idItem'], $item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy);
                     }
                 ?>
                 <!-- <div>

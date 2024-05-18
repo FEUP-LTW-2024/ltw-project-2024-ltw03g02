@@ -36,7 +36,8 @@
                     } else {
                         foreach ($items as $item) {
                             $enableEdit = ($item['sellerId'] == $userId); 
-                            drawItemCard($item['picture'], $user->profile_image_link, $user->username, $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit);
+                            $enableBuy = 0;
+                            drawItemCard($item['idItem'], $item['picture'], $user->profile_image_link, $user->username, $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy);
                         }
                     }
                 ?>
