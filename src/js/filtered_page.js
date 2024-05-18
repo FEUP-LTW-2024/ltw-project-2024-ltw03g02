@@ -131,7 +131,7 @@ function buyBtnPressedHandler(idItem) {
     .then(response => response.text())
     .then(data => console.log(data))
     .then(() => {
-        window.location.reload(true);
+        document.getElementById('cart-items-num').innerText = parseInt(document.getElementById('cart-items-num').innerText) + 1;
     })
     .catch((error) => {
         console.error('Error:', error);
