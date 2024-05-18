@@ -43,7 +43,7 @@
     }
 
     public static function getMessagesForUser(PDO $pdo, $idUser) {
-        $sql = 'SELECT * FROM Message WHERE receiverId = ? ORDER BY sentAt DESC';
+        $sql = 'SELECT * FROM Message WHERE receiverId = ? ORDER BY sentAt ASC';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$idUser]);
 
@@ -60,7 +60,7 @@
                 FROM Message 
                 INNER JOIN User ON Message.senderId = User.idUser 
                 WHERE (senderId = ? AND receiverId = ?) OR (senderId = ? AND receiverId = ?) 
-                ORDER BY sentAt DESC';
+                ORDER BY sentAt ASC';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$idUser1, $idUser2, $idUser2, $idUser1]);
     
@@ -73,6 +73,25 @@
         }
     
         return $messages;
+    }
+
+    public static function getLastMessage(PDO $pdo, $senderId, $receiverId) {
+      $sql = 'SELECT * FROM Message WHERE (senderId = :senderId AND receiverId = :receiverId) OR (senderId = :receiverId AND receiverId = :senderId) ORDER BY sentAt DESC LIMIT 1';
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([':senderId' => $senderId, ':receiverId' => $receiverId]);
+  
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      if ($row) {
+          return new Message(
+              $row['idMessage'],
+              $row['senderId'], 
+              $row['receiverId'], 
+              $row['messageText'], 
+              $row['sentAt']  
+          );
+      }
+  
+      return "No messages found";
     }
 
 }    

@@ -273,6 +273,34 @@
 
       return $attemp != NULL;
     }
+    public static function getUsersWithConversations(PDO $db, $idUser) {
+      $query = "SELECT DISTINCT User.* FROM User 
+                JOIN Message ON (User.idUser = Message.senderId OR User.idUser = Message.receiverId) 
+                WHERE (Message.senderId = :idUser OR Message.receiverId = :idUser) 
+                AND User.idUser != :idUser";
+  
+      $stmt = $db->prepare($query);
+      $stmt->execute([':idUser' => $idUser]);
+  
+      $users = [];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $users[] = new User(
+            $row['idUser'],
+            $row['nome'],
+            $row['username'],
+            $row['email'],
+            $row['pass'],
+            $row['gender'],
+            $row['address'],
+            $row['profile_image_link'],
+            $row['rating'],
+            $row['phoneNumber'],
+            $row['is_admin']
+        );
+    }
+
+    return $users;
+    }
 
     static function getItems(PDO $db, $idUser) {
       $stmt = $db->prepare("SELECT * FROM Item WHERE sellerId = ?");

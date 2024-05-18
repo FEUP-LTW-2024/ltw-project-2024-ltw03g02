@@ -23,7 +23,7 @@ CREATE TABLE User (
     ),
     address TEXT NOT NULL,
     profile_image_link TEXT DEFAULT 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
-    rating FLOAT,
+    rating FLOAT DEFAULT 0.0,
     phoneNumber INTEGER NOT NULL CHECK (100000000 <= phoneNumber AND phoneNumber <= 999999999),
     is_admin BOOLEAN DEFAULT FALSE,
     CONSTRAINT UNIQUE_username UNIQUE (username),
