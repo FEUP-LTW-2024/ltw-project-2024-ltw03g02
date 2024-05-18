@@ -64,7 +64,7 @@ function _drawItemCard(item) {
     itemCard.classList.add('item-card');
     itemCard.innerHTML = `
         <img src="${item['picture']}">
-        <button class="icon-btn buy-btn"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
+        <button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(${item['idItem']});"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
         <div class="item-card-info">
             <div>
                 <img src="${item['profile_image_link']}" />
