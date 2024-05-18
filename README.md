@@ -16,7 +16,7 @@ Requirements list:
 - [ ] Buyers should be able to:
     - [x] Browse items using filters like category, price, and condition.
     - [ ] Engage with sellers to ask questions or negotiate prices.
-    - [ ] Add items to a wishlist or shopping cart.
+    - [x] Add items to a wishlist or shopping cart.
     - [ ] Proceed to checkout with their shopping cart (simulate payment process).
 
 - [x] Admins should be able to:
