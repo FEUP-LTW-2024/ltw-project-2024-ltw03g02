@@ -2,8 +2,8 @@
 
 Requirements list:
 
-- [ ] All users should be able to:
-    - [ ] Register a new account.
+- [x] All users should be able to:
+    - [x] Register a new account.
     - [x] Log in and out.
     - [x] Edit their profile, including their name, username, password, and email.
 

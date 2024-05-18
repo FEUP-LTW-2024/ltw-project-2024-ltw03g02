@@ -13,6 +13,7 @@
                 <?php 
                 session_start();
                 if (!isset($_SESSION['idUser'])): ?>
+                    <a href="register.php" class="register-btn">Regista-te</a>
                     <a href="login.php" class="login-btn">
                         <button class="primary-btn">Iniciar Sessão</button>
                     </a>

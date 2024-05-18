@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS User;
-DROP TABLE IF EXISTS clothesType;
 DROP TABLE IF EXISTS Item;
 DROP TABLE IF EXISTS Message;
 DROP TABLE IF EXISTS Category;
@@ -7,9 +6,11 @@ DROP TABLE IF EXISTS Brand;
 DROP TABLE IF EXISTS Review;
 DROP TABLE IF EXISTS UserOrder;
 DROP TABLE IF EXISTS FavoriteItem;
--- DROP TRIGGER IF EXISTS update_user_rating;
+DROP TABLE IF EXISTS Apoio;
+DROP TABLE IF EXISTS Devolutions;
 DROP TABLE IF EXISTS clotheSize;
 DROP TABLE IF EXISTS condition;
+DROP TRIGGER IF EXISTS update_user_rating;
 
 CREATE TABLE User (
     idUser INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,6 +23,7 @@ CREATE TABLE User (
     ),
     address TEXT NOT NULL,
     profile_image_link TEXT DEFAULT 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg',
+    rating FLOAT,
     phoneNumber INTEGER NOT NULL CHECK (100000000 <= phoneNumber AND phoneNumber <= 999999999),
     is_admin BOOLEAN DEFAULT FALSE,
     CONSTRAINT UNIQUE_username UNIQUE (username),
@@ -36,7 +38,7 @@ CREATE TABLE Item (
         color IN ('Preto', 'Azul', 'Vermelho', 'Bege', 'Branco', 'Castanho', 'Cinza', 'Dourado', 'Laranja', 'Lilás', 'Violeta', 'Rosa', 'Roxo', 'Verde')
     ),
     type_item VARCHAR(255) NOT NULL CHECK (
-        type_item IN ('Mulher', 'Homem', 'Criança')
+        type_item IN ('Homem', 'Mulher', 'Criança')
     ),
     picture TEXT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
@@ -49,7 +51,8 @@ CREATE TABLE Item (
     FOREIGN KEY (sellerId) REFERENCES User(idUser),
     FOREIGN KEY (categoryId) REFERENCES Category(idCategory),
     FOREIGN KEY (idBrand) REFERENCES Brand(idBrand),
-    FOREIGN KEY (clotheSize) REFERENCES clotheSize(idSize)
+    FOREIGN KEY (clotheSize) REFERENCES clotheSize(idSize),
+    FOREIGN KEY (condition) REFERENCES condition(idCondition)
 );
 
 -- Create Message table
@@ -67,16 +70,6 @@ CREATE TABLE Message (
 CREATE TABLE Category (
     idCategory INTEGER PRIMARY KEY AUTOINCREMENT,
     categoryName VARCHAR(255) NOT NULL UNIQUE
-);
-
-CREATE TABLE clotheSize (
-    idSize INTEGER PRIMARY KEY AUTOINCREMENT,
-    sizeName VARCHAR(255) NOT NULL UNIQUE
-);
-
-CREATE TABLE condition (
-    idCondition INTEGER PRIMARY KEY AUTOINCREMENT,
-    conditionName VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE Brand (
@@ -108,20 +101,49 @@ CREATE TABLE UserOrder (
     PRIMARY KEY(idUser, idItem, data)
 );
 
--- CREATE TRIGGER update_user_rating
--- AFTER INSERT ON Review
--- BEGIN
---     UPDATE User
---     SET rating = (SELECT AVG(stars) FROM Review WHERE idUser = NEW.idUser)
---     WHERE idUser = NEW.idUser;
--- END;
+CREATE TABLE Apoio (
+    idApoio INTEGER PRIMARY KEY AUTOINCREMENT,
+    idUser INTEGER NOT NULL,
+    message TEXT NOT NULL,
+    sentAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idUser) REFERENCES User(idUser)
+);
+
+CREATE TABLE clotheSize (
+    idSize INTEGER PRIMARY KEY AUTOINCREMENT,
+    sizeName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE condition (
+    idCondition INTEGER PRIMARY KEY AUTOINCREMENT,
+    conditionName VARCHAR(255) NOT NULL
+);
+
+-- Create Devolutions table
+CREATE TABLE Devolutions (
+    idDevolutions INTEGER PRIMARY KEY AUTOINCREMENT,
+    idUser INTEGER NOT NULL,
+    message TEXT NOT NULL,
+    sentAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idUser) REFERENCES User(idUser)
+);
+
+CREATE TRIGGER update_user_rating
+AFTER INSERT ON Review
+BEGIN
+    UPDATE User
+    SET rating = (SELECT AVG(stars) FROM Review WHERE idUser = NEW.idUser)
+    WHERE idUser = NEW.idUser;
+END;
 
 
-INSERT INTO User (nome, username, email, pass, gender, address, phoneNumber, is_admin)
+INSERT INTO User (nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin)
 VALUES
-    ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', 'Homem', 'Rua das Árvores, n.10', 919715443, 0),
-    ('Jane Smith', 'janesmith', 'janesmith@example.com', 'pass1234', 'Mulher', 'Praceta Luis Falcão 45', 987654321, 0),
-    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', 'adminpass', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 911053549, 1);
+    ('John Doe', 'johndoe', 'johndoe@example.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Homem', 'Rua das Árvores, n.10', 'https://www.tvguide.com/a/img/catalog/provider/1/1/1-593743038.jpg', 4.5, 919715443, 0),
+    ('Jane Smith', 'janesmith', 'janesmith@example.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Mulher', 'Praceta Luis Falcão 45', 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Panda_Cub_from_Wolong%2C_Sichuan%2C_China.JPG', 4.2, 987654321, 0),
+    ('Daniel Basílio', 'dbasilio', 'dbasilio@example.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'Homem', 'Avenida Jorge Nuno Pinto da Costa, 4560-231', 'https://static.giga.de/wp-content/uploads/2015/01/google-chrome-dino.png', 5.0, 911053549, 1),
+    ('Ricardo Cardoso', 'ricardo0015', 'ricardo0015@example.com', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e', 'Homem', 'Rua Inês Teixeira nº32', 'http://s2.glbimg.com/C8ORi7DA7326QPtHKxd0a7JGKco=/695x0/s.glbimg.com/po/tt2/f/original/2015/09/15/ness.jpg', 5.0, 932123432, 1),
+    ('Daunísia Jone', 'dawen', 'dawen@example.com', 'c63c2d34ebe84032ad47b87af194fedd17dacf8222b2ea7f4ebfee3dd6db2dfb', 'Mulher', 'Rua André Restivo, nº3', 'https://i.pinimg.com/736x/3f/58/60/3f58604beda34909dd5984ef4458a96f.jpg', 5.0, 911053549, 1);
 
 INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
 VALUES
@@ -135,6 +157,7 @@ VALUES
     ('Casaco Feminino', 'Casaco casual para mulheres', 'Branco', 'Homem', 'https://img.kwcdn.com/thumbnail/s/b59cade0f92c774b20100ef92be11a8f_4399c89a1a23.jpg?imageView2/2/w/800/q/70/format/webp', 29.99, 'Etiquetado', 2, 2, 10, 1, '2022-12-01 18:06:23'),
     ('Calça Infantil', 'Calça confortável para crianças', 'Cinza', 'Criança', 'https://bughug.pt/wp-content/uploads/2024/03/73-650x650.png', 24.99, 'Mau estado', 3, 3, 12, 1, '2024-03-10 12:59:45'),
     ('Calções Hugo Boss Homem', 'Calções casuais para homens, ideais para saídas', 'Bege', 'Homem', 'https://images.hugoboss.com/is/image/boss/hbeu50515314_255_350?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1713351095000&wid=1200&hei=1818', 34.99, 'Bom estado', 1, 1, 4, 2, '2024-03-01 23:46:13');
+
 
 
 INSERT INTO Category(categoryName) 
@@ -177,6 +200,20 @@ VALUES
     ('Balenciaga'),
     ('Primark');
     
+INSERT INTO clotheSize(sizeName) 
+VALUES
+    ('S'),
+    ('M'),
+    ('L'),
+    ('XL');
+    
+INSERT INTO condition(conditionName)
+VALUES
+    ('Etiquetado'),
+    ('Bom estado'),
+    ('Razoável'),
+    ('Mau estado');
+    
 INSERT INTO Review (idUser, idItem, stars, comment, data)
 VALUES
     (2, 17, 4, 'Produto de qualidade, recomendo!', '2024-04-13'), 
@@ -188,16 +225,3 @@ VALUES
     (2, 12, 5, 'Blusa casual perfeita para o dia a dia.', '2024-04-20'),
     (2, 1, 5, 'Calças com excelente qualidade, e com entrega rápida.', '2024-04-21');
     
-INSERT INTO clotheSize(sizeName) 
-VALUES
-    ('S'),
-    ('M'),
-    ('L'),
-    ('XL');
-
-INSERT INTO condition(conditionName)
-VALUES
-    ('Etiquetado'),
-    ('Bom estado'),
-    ('Razoável'),
-    ('Mau estado');

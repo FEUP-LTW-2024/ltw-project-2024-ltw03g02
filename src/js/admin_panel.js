@@ -11,6 +11,9 @@ for (let btn of edit_btns) {
         const cells = row.querySelectorAll('td');
         const inputs = document.querySelectorAll('.input-edit-row'); 
         for (let i = 0; i < cells.length && i < inputs.length; i++) {
+            if (inputs[i].name === 'pass') {
+                continue;
+            }
             inputs[i].value = cells[i].textContent;
         }
 
