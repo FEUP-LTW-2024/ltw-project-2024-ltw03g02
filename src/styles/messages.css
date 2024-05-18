@@ -1,0 +1,49 @@
+h1{
+    margin-bottom: 40px;
+}
+
+.user-box { 
+    display: flex; 
+    align-items: center; 
+}
+
+.profile_pictures { 
+    width: 58px; 
+    height: 58px; 
+    border-radius: 50%; 
+    border: 2px solid darkgreen; 
+    margin-right: 10px; 
+    margin-bottom: 12px;
+}
+
+.username { 
+    display: inline-block; 
+    font-size: 16px; 
+    color: #000; 
+    align-self: flex-start; 
+    transform: translateY(-16px);
+}
+.last-message:first-child{
+    font-size: 16px; 
+    color: #000; 
+    align-self: flex-start;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.header-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: darkgreen; /* Add this line */
+    color: white;
+    width: 200px;
+    height: 40px;
+}
