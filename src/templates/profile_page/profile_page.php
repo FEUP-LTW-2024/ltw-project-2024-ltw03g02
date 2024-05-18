@@ -41,7 +41,7 @@
                 if (count($items) == 0) {
                     ?>
                         <div id="add-item-btn" class="item-card">
-                            <p>Carregue no mais para adicionar um artigo</p>
+                            <p>Carregue no "+" para adicionar um artigo</p>
                             <?php drawPlusBtnWithLink('list_item_page.php'); ?>
                         </div>
                     <?php
