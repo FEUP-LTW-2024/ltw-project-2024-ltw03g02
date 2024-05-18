@@ -6,9 +6,6 @@
     require_once(dirname(__DIR__).'/classes/user.class.php');
     $session = new Session();
 
-    session_destroy();
-    session_start();
-
     $_SESSION['input']['username login'] = htmlentities($_POST['username']);
     $_SESSION['input']['pass login'] = htmlentities($_POST['pass']);
       $db = getDatabaseConnection();
@@ -20,6 +17,12 @@
         $_SESSION['nome'] = $user->getName();
         $_SESSION['is_admin'] = $user->getIsAdmin();
         $_SESSION['photo'] = $user->getPhoto();
+        $_SESSION['username'] = $user->getUsername();
+        $_SESSION['email'] = $user->getEmail();
+        $_SESSION['gender'] = $user->getGender();
+        $_SESSION['address'] = $user->getAddress();
+        $_SESSION['phoneNumber'] = $user->getphoneNumber();
+        $_SESSION['pass'] = $user->getPass();
         
     
         unset($_SESSION['input']['username login']);
@@ -31,4 +34,4 @@
         $session->addMessage('error', 'Login failed. Invalid username or password.');
         die(header('Location: ../pages/login.php'));
       }
-?>                  
+?>      
