@@ -1,4 +1,4 @@
-<?php include_once('item_card.php'); ?>
+<?php include_once(dirname(__DIR__) . '/../templates/common/item_card.php'); ?>
 <?php include_once('filters.php'); ?>
 <?php require_once(dirname(__DIR__) . '/../database/items.db.php'); ?>
 

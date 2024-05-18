@@ -1,7 +1,7 @@
 <?php function drawProfile() {
     require_once('../database/connection.db.php');
     require_once('../classes/user.class.php');
-    require_once('../templates/filtered_page/item_card.php');
+    require_once('../templates/common/item_card.php');
     require_once('../templates/common/icon_btn.php');
 
 
