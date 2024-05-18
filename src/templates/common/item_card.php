@@ -10,8 +10,9 @@
             } 
         ?>
         <?php
-            if ($enableBuy) {
-                echo '<button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(<?php echo $id ?>);"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>';
+            if ($enableBuy) { ?>
+            <button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(<?php echo $id ?>);"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
+        <?php
             }
         ?>
         <div class="item-card-info">
