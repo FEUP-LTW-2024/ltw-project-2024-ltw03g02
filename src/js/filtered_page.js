@@ -63,7 +63,9 @@ function _drawItemCard(item) {
     const itemCard = document.createElement('div');
     itemCard.classList.add('item-card');
     itemCard.innerHTML = `
-        <img src="${item['picture']}">
+        <a href="../pages/show_item.php?idItem=${item['idItem']}">
+            <img src="${item['picture']}">
+        </a>
         <button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(${item['idItem']});"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
         <div class="item-card-info">
             <div>
