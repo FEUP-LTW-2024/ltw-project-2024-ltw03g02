@@ -146,6 +146,15 @@ h3 {
     margin-right: 0;
 }
 
+.my-items {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 
 #edit-item-form {
     display: flex;
