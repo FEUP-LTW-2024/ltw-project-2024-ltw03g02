@@ -238,6 +238,10 @@ footer {
     }
 
     .buy-btn {
+        width: 3.5em;
+        height: 3.5em;
+        cursor: pointer;
+        padding: 0.4em;
         bottom: 0;
         right: 0;
     }
