@@ -24,11 +24,11 @@
             <a href="edit_profile.php" class="btn">Editar perfil</a>
             <a href="messages.php" class="btn">Mensagens</a>
         </div>
-        <h3>Meus artigos</h3>
         <?php if (isset($_GET['idItemEdit'])) {
             $idItemEdit = $_GET['idItemEdit'];
-            drawEditItem($idUserEdit);
+            drawEditItem($idItemEdit);
         } ?>
+        <h3>Meus artigos</h3>
         <div class="my-items">
             <?php
                 $userId = $_SESSION['idUser']; 

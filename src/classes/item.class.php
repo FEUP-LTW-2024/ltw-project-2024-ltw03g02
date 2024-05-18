@@ -187,7 +187,7 @@
             $item['type_item'],
             $item['picture'],
             floatval($item['price']),
-            $item['condition'],
+            intval($item['condition']),
             intval($item['sellerId']),
             intval($item['categoryId']),
             intval($item['idBrand']),
