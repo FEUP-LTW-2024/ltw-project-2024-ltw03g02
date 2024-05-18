@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var form = document.getElementById('devolution-form');
-    var textarea = document.getElementById('support');
+    var form = document.getElementById('chat-form');
+    var textarea = document.getElementById('chat-input');
     var popup = document.getElementById('success-popup');
-    var homeButton = document.getElementById('go-home');
+    var chatContainer = document.getElementById('chat-container');
 
     form.addEventListener('submit', function(e) {
+        e.preventDefault();
         if (textarea.value.trim() === '') {
-            e.preventDefault();
-            alert('Write anything!');
+            alert('Please enter a message!');
             return;
         }
         e.preventDefault();
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
         });
     });
-
-    homeButton.addEventListener('click', function() {
-        window.location.href = '/../pages/home_page.php';  // replace with your homepage URL
-    });
 });
+
+function saveIdUser(idUser) {
+    localStorage.setItem('idUser', idUser);
+}
