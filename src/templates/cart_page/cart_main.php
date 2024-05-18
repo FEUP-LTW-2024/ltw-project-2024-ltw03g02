@@ -5,13 +5,13 @@ function drawCartMain() { ?>
         <h1>O teu carrinho</h1>
         <?php
             session_start();
-            if (!isset($_SESSION['cart'])): ?>
-        <div class="empty-cart-message">
-            <img src="../images/cart_page/empty-cart.png" />
-            <h3>O teu carrinho está vazio</h3>
-            <p>Adiciona alguns itens ao teu carrinho.</p>
-            <a href="filtered_page.php" class="primary-btn">Ir para a loja</a>
-        </div>
+            if (!isset($_SESSION['cart']) or !count($_SESSION['cart'])): ?>
+                <div class="empty-cart-message">
+                    <img src="../images/cart_page/empty-cart.png" />
+                    <h3>O teu carrinho está vazio</h3>
+                    <p>Adiciona alguns itens ao teu carrinho.</p>
+                    <a href="filtered_page.php" class="primary-btn">Ir para a loja</a>
+                </div>
         <?php else: ?>
             <section class="order">
                 <h3>Pedido</h3>

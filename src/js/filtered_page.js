@@ -121,7 +121,7 @@ function buyBtnPressedHandler(idItem) {
     console.log('buyBtnPressedHandler() executed');
     console.log('buy button pressed');
 
-    fetch('../actions/action_add_to_cart.php', {
+    fetch('../actions/cart/action_add_to_cart.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

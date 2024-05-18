@@ -8,6 +8,7 @@
         <?php include_once('../templates/common/simple_header.php'); ?>
         <?php include_once('../templates/cart_page/cart_main.php'); ?>
         <?php include_once('../templates/common/footer.php'); ?>
+        <script src="../js/cart_page.js" defer></script>
     </head>
     <body>
         <?php drawSimpleHeader(); ?>
