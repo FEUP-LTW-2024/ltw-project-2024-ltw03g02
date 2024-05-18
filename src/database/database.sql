@@ -147,8 +147,8 @@ VALUES
 
 INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
 VALUES
-    ('T-shirt Masculina', 'T-shirt larga, confortável para homens', 'Preto', 'Homem', 'https://twicpics.celine.com/product-prd/images/large/2X75H626U.38AW_1_FW23_M.jpg?twic=v1/cover=1:1/resize-max=100/output=preview', 19.99, 'Etiquetado', 1, 1, 1, 3, '2024-01-10 10:00:00'),
-    ('Calça Jeans Feminina', 'Calça jeans elegante para mulheres', 'Azul', 'Mulher', 'https://twicpics.celine.com/product-prd/images/large/2N860930F.07UW_1_LIBSP23.jpg?twic=v1/cover=1:1/resize-max=100/output=preview', 39.99, 'Bom estado', 2, 2, 2, 2, '2024-04-07 10:00:00'),
+    ('T-shirt Masculina', 'T-shirt larga, confortável para homens', 'Preto', 'Homem', 'https://opcaounica.pt/wp-content/uploads/2020/06/1006_01.jpg', 19.99, 'Etiquetado', 1, 1, 1, 3, '2024-01-10 10:00:00'),
+    ('Calça Jeans Feminina', 'Calça jeans elegante para mulheres', 'Azul', 'Mulher', 'https://static.kiabi.pt/images/calcoes-em-camurca-sintetica-preto-null-xv682_1_zc2.jpg', 39.99, 'Bom estado', 2, 2, 2, 2, '2024-04-07 10:00:00'),
     ('Top Benetton para Meninas', 'Top preto para meninas crianças que gostem de viver o estilo', 'Preto', 'Criança', 'https://pt.benetton.com/dw/image/v2/BBSF_PRD/on/demandware.static/-/Sites-ucb-master/default/dw28142888/images/Full_PDP_h/UCB-Bambino_24P_31H3CH01F_100_FS_Full_PDP_h.jpg', 120.30, 'Razoável', 1, 3, 3, 1, '2024-02-20 10:40:35'),
     ('Camisa Masculina', 'Camisa formal para homens', 'Branco', 'Homem', 'https://www.totalprotex.pt/media/catalog/product/cache/default/image/9df78eab33525d08d6e5fb8d27136e95/b/i/bizflame-88-12-fr-shirt-0_4.jpg', 49.99, 'Bom estado', 1, 1, 7, 4, '2023-12-10 21:51:00'),
     ('Vestido Feminino', 'Vestido elegante para mulheres', 'Rosa', 'Mulher', 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/7aba4c96881db01c0dfb64a0e514896b.jpg?imageMogr2/auto-orient%7CimageView2/2/w/800/q/70/format/webp', 59.99, 'Etiquetado', 2, 2, 5, 3, '2024-02-21 20:01:04'),
