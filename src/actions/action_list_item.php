@@ -1,6 +1,6 @@
 <?php
     declare(strict_types = 1);
-    require_once('../../database/connection.db.php');
+    require_once('../database/connection.db.php');
 
     $db = getDatabaseConnection();
 
@@ -18,12 +18,18 @@
     $stmt->bindParam(':sellerId', $_POST['sellerId']);
     $stmt->bindParam(':categoryId', $_POST['categoryId']);
     $stmt->bindParam(':idBrand', $_POST['idBrand']);
-    $stmt->bindParam(':clotheSize', $_POST['clotheSize']);
-    $stmt->bindParam(':listedAt', $_POST['listedAt']);
+    $stmt->bindParam(':clotheSize', $_POST['idSize']);
 
-    $stmt->execute();
-    
-    echo "Item added successfully!";
-    die(header('Location: ../../pages/profile_page.php'));
+    $listedAt = date('Y-m-d H:i:s');
+    $stmt->bindParam(':listedAt', $listedAt);
+
+    try {
+        $stmt->execute();
+        var_dump($_POST);
+        echo "Item added successfully!";
+        die(header('Location: ../../pages/profile_page.php'));
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 
 ?>

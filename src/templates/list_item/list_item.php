@@ -39,7 +39,6 @@
                     $types = getTypeItems();
                     foreach ($types as $typeRow) {
                         $type_item = $typeRow['type_item'];
-                        $selected = $type_item == $item['type_item'] ? 'selected' : '';
                         echo "<option value=\"$type_item\" $selected>$type_item</option>";
                     }
                     ?>
@@ -59,14 +58,15 @@
                     <?php
                     $conditions = getConditions();
                     foreach ($conditions as $conditionRow) {
-                        $condition = $conditionRow['condition'];
-                        $selected = $condition == $item['condition'] ? 'selected' : '';
-                        echo "<option value=\"$condition\" $selected>$condition</option>";
+                        $idCondition = $conditionRow['idCondition'];
+                        $conditionName = $conditionRow['conditionName'];
+                        echo "<option value=\"$idCondition\" $selected>$conditionName</option>";
                     }
                     ?>
                 </select>
             </div>
-            <input type="hidden" name="sellerId" class="input-list-row sellerId-input" value="<?php echo $item['sellerId']; ?>" required>
+            <?php session_start(); ?>
+            <input type="hidden" name="sellerId" class="input-list-row sellerId-input" value="<?php echo $_SESSION['idUser'] ?>" required>
             <div>
                 <label for="categoryId">Category</label>
                 <select name="categoryId" class="input-list-row categoryId-input" required>
@@ -75,7 +75,6 @@
                     foreach ($categories as $categoryRow) {
                         $categoryId = $categoryRow['idCategory'];
                         $categoryName = $categoryRow['categoryName'];
-                        $selected = $categoryId == $item['categoryId'] ? 'selected' : '';
                         echo "<option value=\"$categoryId\" $selected>$categoryName</option>";
                     }
                     ?>
@@ -89,7 +88,6 @@
                     foreach ($brands as $brandRow) {
                         $brandId = $brandRow['idBrand'];
                         $brandName = $brandRow['brandName'];
-                        $selected = $brandId == $item['idBrand'] ? 'selected' : '';
                         echo "<option value=\"$brandId\" $selected>$brandName</option>";
                     }
                     ?>
@@ -103,13 +101,12 @@
                     foreach ($sizes as $sizeRow) {
                         $sizeId = $sizeRow['idSize'];
                         $sizeName = $sizeRow['sizeName'];
-                        $selected = $sizeId == $item['idSize'] ? 'selected' : '';
                         echo "<option value=\"$sizeId\" $selected>$sizeName</option>";
                     }
                     ?>
                 </select>
             </div>
-            <button class="primary-btn" type="submit">Edit Item</button>
+            <button class="primary-btn" type="submit">Add Item</button>
         </form>
     </div>
     <?php

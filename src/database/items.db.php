@@ -153,7 +153,7 @@
         include_once('connection.db.php');
         $db = getDatabaseConnection();
 
-        $sql = 'SELECT DISTINCT condition FROM Item;';
+        $sql = 'SELECT idCondition, conditionName FROM condition;';
 
         $stmt = $db->prepare($sql);
 
