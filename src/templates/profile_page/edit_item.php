@@ -65,9 +65,10 @@
                     <?php
                     $conditions = getConditions();
                     foreach ($conditions as $conditionRow) {
-                        $condition = $conditionRow['condition'];
+                        $idCondition = $conditionRow['idCondition'];
+                        $conditionName = $conditionRow['conditionName'];
                         $selected = $condition == $item['condition'] ? 'selected' : '';
-                        echo "<option value=\"$condition\" $selected>$condition</option>";
+                        echo "<option value=\"$idCondition\" $selected>$conditionName</option>";
                     }
                     ?>
                 </select>
