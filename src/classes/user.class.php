@@ -29,10 +29,6 @@
       $this->is_admin = $is_admin;
     }
 
-    public function getUserId() : int {
-      return $this->idUser;
-    }
-
     public function getName() : string {
       $names = explode(" ", $this->nome);
       return count($names) > 1 ? $names[0] . " " . $names[count($names)-1] : $names[0];
@@ -147,30 +143,6 @@
   
       return $users;
     }
-
-    static function getAllUsers(PDO $db) : array {
-      $stmt = $db->prepare('SELECT idUser, nome, username, email, pass, gender, address, profile_image_link, rating, phoneNumber, is_admin FROM User');
-      $stmt->execute();
-
-      $users = array();
-      while ($user = $stmt->fetch()) {
-          $users[] = new User(
-              intval($user['idUser']),
-              $user['nome'],
-              $user['username'],
-              $user['email'],
-              $user['pass'],
-              $user['gender'],
-              $user['address'],
-              $user['profile_image_link'],
-              floatval($user['rating']),
-              intval($user['phoneNumber']),
-              intval($user['is_admin']),
-          );
-      }
-
-      return $users;
-    }  
 
     static function getUser(PDO $db, int $id) : User {
 
