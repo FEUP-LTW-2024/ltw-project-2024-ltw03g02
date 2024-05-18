@@ -15,7 +15,7 @@
     <div class="edit-item">
         <?php drawXmarkBtnWithLink('profile_page.php') ?>
         <h2>Edit Item</h2>
-        <form id="edit-item-form" action="../actions/admin_panel/action_edit_item.php" method="post">
+        <form id="edit-item-form" action="../actions/profile_page/action_edit_item.php" method="post">
             <input id="id-input-edit" type="hidden" name="idItem" class="input-edit-row idItem-input" value="<?php echo $item['idItem']; ?>" required>
             <div>
                 <label for="title">Title</label>

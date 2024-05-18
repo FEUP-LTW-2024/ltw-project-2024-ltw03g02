@@ -194,6 +194,7 @@ footer {
     width: 30px;
     height: 30px;
     padding: 2px;
+    cursor: pointer; 
     margin: 0.3em;
     img{
         width: 100%;
@@ -230,9 +231,11 @@ footer {
 /* ItemCard Styles */
 
 .item-card {
+    --card-width: 150px;
+    --card-height: 300px;
+    width: var(--card-width);
     position: relative;
     background-color: var(--item-card-color);
-    
     .icon-btn{
         position: absolute;
     }
@@ -257,7 +260,7 @@ footer {
     }
     > a{
         padding: 0;
-        cursor: pointer;
+        cursor: default;
         > img {
             width: 100%;
             height: var(--card-width);

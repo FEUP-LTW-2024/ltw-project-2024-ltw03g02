@@ -4,6 +4,7 @@
     require_once('../templates/common/item_card.php');
     require_once('../templates/common/icon_btn.php');
     require_once('../templates/profile_page/edit_item.php');
+    require_once('../templates/profile_page/del_item.php');
 
 
     $db = getDatabaseConnection();
@@ -27,7 +28,10 @@
         <?php if (isset($_GET['idItemEdit'])) {
             $idItemEdit = $_GET['idItemEdit'];
             drawEditItem($idItemEdit);
-        } ?>
+        } elseif (isset($_GET['idItemDelete'])) {
+            $idItemDelete = $_GET['idItemDelete'];
+            drawDeleteItem($idItemDelete);
+        }?>
         <h3>Meus artigos</h3>
         <div class="my-items">
             <?php
@@ -40,7 +44,8 @@
                     foreach ($items as $item) {
                         $enableEdit = ($item['sellerId'] == $userId); 
                         $enableBuy = 0;
-                        $otherVars = array('profile_page.php?idItemEdit='.'1', 'delete_item.php');
+                        $itemId = $item['idItem'];
+                        $otherVars = array("profile_page.php?idItemEdit=$itemId", "profile_page.php?idItemDelete=$itemId");
                         drawItemCard($item['idItem'], $item['picture'], $user->profile_image_link, $user->username, $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy, $otherVars);
                     }
                 }
