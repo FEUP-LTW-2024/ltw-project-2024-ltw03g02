@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var form = document.getElementById('devolution-form');
+    var form = document.getElementById('client-form');
     var textarea = document.getElementById('support');
     var popup = document.getElementById('success-popup');
     var homeButton = document.getElementById('go-home');
