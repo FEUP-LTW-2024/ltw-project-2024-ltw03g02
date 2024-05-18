@@ -17,13 +17,18 @@
             </div>
             <div class="item-list">
                 <?php
+                    session_start();
                     if (isset($_GET['searchTerm'])) {
                         $items = searchBar($_GET['searchTerm']);
                     } else {
                         $items = getItems();
                     }
                     $enableEdit = 0;
-                    $enableBuy = 1;
+                    if (isset($_SESSION['idUser'])) {
+                        $enableBuy = 1;
+                    } else {
+                        $enableBuy = 0;
+                    }
                     foreach ($items as $item) {
                         drawItemCard($item['idItem'], $item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy);
                     }

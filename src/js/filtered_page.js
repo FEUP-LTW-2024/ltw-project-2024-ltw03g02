@@ -1,3 +1,17 @@
+async function isLoggedIn() {
+    const response = await fetch('../actions/cart/is_logged_in.php');
+    const isLoggedIn = await response.text();
+    return isLoggedIn === 'true';
+}
+
+isLoggedIn().then(isLoggedIn => {
+    if (isLoggedIn) {
+        console.log('User is logged in');
+    } else {
+        console.log('User is not logged in');
+    }
+});
+
 class Filters {
     constructor(type, category, size, orderBy){
         this.filtersList = [
@@ -59,14 +73,20 @@ function _createFetchString() {
     return fetchString;
 }
 
-function _drawItemCard(item) {
+function _drawItemCard(item, loggedIn) {
     const itemCard = document.createElement('div');
     itemCard.classList.add('item-card');
+    if(loggedIn) {
+        buyBtn = `<button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(${item['idItem']});"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>`;
+    } else {
+        buyBtn = '';
+    }
     itemCard.innerHTML = `
         <a href="../pages/show_item.php?idItem=${item['idItem']}">
             <img src="${item['picture']}">
         </a>
-        <button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(${item['idItem']});"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
+        ` + buyBtn + 
+        `
         <div class="item-card-info">
             <div>
                 <img src="${item['profile_image_link']}" />
@@ -92,10 +112,12 @@ async function loadItems() {
 
     itemList = document.querySelector('.item-list');
     itemList.innerHTML = '';
-
-    for (item of items){
-        itemList.appendChild(_drawItemCard(item));
-    }
+    
+    isLoggedIn().then(isLoggedIn => {
+        for (item of items){
+            itemList.appendChild(_drawItemCard(item, isLoggedIn));
+        }
+    });
 }
 
 function cleanFiltersHandler() {
@@ -110,7 +132,7 @@ function cleanFiltersHandler() {
 function changedFilterValueHandler(){
     console.log('changedFilterValueHandler() executed');
     filters.updateFilterValues();
-    if (filters.isEmpty()){
+    if (filters.isEmpty() && !new URLSearchParams(window.location.search).has('searchTerm')){
         document.getElementById('clean-filters').style = 'visibility: hidden;';
     } else {
         document.getElementById('clean-filters').style = 'visibility: visible;';
