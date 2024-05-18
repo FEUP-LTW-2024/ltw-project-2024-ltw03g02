@@ -3,19 +3,19 @@
     <section id="edit-profile">
         <h2>Editar perfil</h2>
         <form id="edit-profile-form" action="../../actions/action_edit_profile.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="idUser" value="<?php echo $_SESSION['idUser']; ?>">
+            <input type="hidden" name="idUser" value="<?php echo isset($_SESSION['idUser']) ? $_SESSION['idUser'] : ''; ?>">
             <div>
                 <label for="nome">Novo nome</label>
-                <input type="text" name="nome" class="nome-input" value="<?php echo $_SESSION['nome']; ?>" required>
+                <input type="text" name="nome" class="nome-input" value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
             </div>
             <div>
                 <label for="username">Novo username</label>
-                <input type="text" name="username" class="username-input" value="<?php echo $_SESSION['username']; ?>"required>
+                <input type="text" name="username" class="username-input" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''; ?>" required>
             </div>            
 
             <div>
                 <label for="email">Novo email</label>
-                <input type="text" name="email" class="email-input" value="<?php echo $_SESSION['email']; ?>"required>
+                <input type="text" name="email" class="email-input" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?>" required>
             </div>
             
             <div>
@@ -25,22 +25,22 @@
 
             <div>
                 <label for="gender">Novo gênero</label>
-                <input type="text" name="gender" class="gender-input" value="<?php echo $_SESSION['gender']; ?>"required>
+                <input type="text" name="gender" class="gender-input" value="<?php echo isset($_SESSION['gender']) ? $_SESSION['gender'] : ''; ?>" required>
             </div>
 
             <div>
                 <label for="address">Novo endereço</label>
-                <input type="text" name="address" class="address-input" value="<?php echo $_SESSION['address']; ?>"required>
+                <input type="text" name="address" class="address-input" value="<?php echo isset($_SESSION['address']) ? $_SESSION['address'] : ''; ?>" required>
             </div>
 
             <div>
                 <label for="profile_image_link">Nova foto de perfil (link)</label>
-                <input type="text" name="profile_image_link" class="profile_image_link-input" value="<?php echo $_SESSION['photo']; ?>"required>
+                <input type="text" name="profile_image_link" class="profile_image_link-input" value="<?php echo isset($_SESSION['photo']) ? $_SESSION['photo'] : ''; ?>" required>
             </div>
 
             <div>
                 <label for="phoneNumber">Novo contacto</label>
-                <input type="text" name="phoneNumber" class="phoneNumber-input" value="<?php echo $_SESSION['phoneNumber']; ?>"required>
+                <input type="text" name="phoneNumber" class="phoneNumber-input" value="<?php echo isset($_SESSION['phoneNumber']) ? $_SESSION['phoneNumber'] : ''; ?>" required>
             </div>
 
             <input type="submit" value="Salvar mudanças" class="primary-btn">

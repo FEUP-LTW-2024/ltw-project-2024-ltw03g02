@@ -22,7 +22,7 @@
                     </a>
                 <?php else: ?>
                     <a href="../../pages/profile_page.php">
-                        <img id="profile_img_link" src="<?php echo $_SESSION['photo']; ?>">
+                        <img id="profile_img_link" src="<?php echo isset($_SESSION['photo']) ? $_SESSION['photo'] : 'default_image_path'; ?>">
                     </a>
                     <a href="../../actions/action_logout.php" class="login-btn">
                         <button class="primary-btn">Terminar Sessão</button>
@@ -46,7 +46,7 @@
         ?>
         <nav>
             <ul>
-                <li <?php echo ($page == 'Sobre Nós') ? 'class="selected"' : ''; ?>><a href="#">Sobre Nós</a></li>
+                <li <?php echo ($page == 'Sobre Nós') ? 'class="selected"' : ''; ?>><a href="../../pages/about_us.php">Sobre Nós</a></li>
                 <li <?php echo ($page == 'loja') ? 'class="selected"' : ''; ?>><a href="../../pages/filtered_page.php?page=loja">Loja</a></li>
                 <li <?php echo ($page == 'novidades') ? 'class="selected"' : ''; ?>><a href="../../pages/filtered_page.php?page=novidades">Novidades</a></li>
                 <li <?php echo ($page == 'Vendedores') ? 'class="selected"' : ''; ?>><a href="#">Vendedores</a></li>
