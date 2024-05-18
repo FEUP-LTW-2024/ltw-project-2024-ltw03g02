@@ -50,7 +50,7 @@
                 <li <?php echo ($page == 'loja') ? 'class="selected"' : ''; ?>><a href="../../pages/filtered_page.php?page=loja">Loja</a></li>
                 <li <?php echo ($page == 'novidades') ? 'class="selected"' : ''; ?>><a href="../../pages/filtered_page.php?page=novidades">Novidades</a></li>
                 <li <?php echo ($page == 'Vendedores') ? 'class="selected"' : ''; ?>><a href="#">Vendedores</a></li>
-                <?php if ($_SESSION['is_admin'] == "Yes"): ?>
+                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == "Yes"): ?>
                     <li <?php echo ($page == 'admin_panel') ? 'class="selected"' : ''; ?>><a href="../../pages/admin_panel.php?page=admin_panel">Admin Panel</a></li>
                 <?php endif; ?>
             </ul>

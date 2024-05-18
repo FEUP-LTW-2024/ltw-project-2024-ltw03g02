@@ -9,13 +9,13 @@ Requirements list:
 
 - [ ] Sellers should be able to:
     - [ ] List new items, providing details such as category, brand, model, size, and condition, along with images.
-    - [ ] Track and manage their listed items.
-    - [ ] Respond to inquiries from buyers regarding their items and add further information if needed.
+    - [x] Track and manage their listed items.
+    - [x] Respond to inquiries from buyers regarding their items and add further information if needed.
     - [ ] Print shipping forms for items that have been sold.
 
 - [ ] Buyers should be able to:
     - [x] Browse items using filters like category, price, and condition.
-    - [ ] Engage with sellers to ask questions or negotiate prices.
+    - [x] Engage with sellers to ask questions or negotiate prices.
     - [x] Add items to a wishlist or shopping cart.
     - [ ] Proceed to checkout with their shopping cart (simulate payment process).
 

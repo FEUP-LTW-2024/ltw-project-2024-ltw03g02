@@ -7,9 +7,9 @@ h3 {
 }
 
 .profile-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -144,4 +144,90 @@ h3 {
     font-size: 0.8em;
     font-weight: lighter;
     margin-right: 0;
+}
+
+
+#edit-item-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items:last baseline;
+    padding: 2em;
+    border: 1px solid #ddd;
+    border-radius: 1em;
+    width: 100%;
+    > div {
+        margin: 1em;
+        display: flex;
+        flex-direction: column;
+        > input {
+            padding: 0.5em;
+            margin: 0.5em;
+            border: 1px solid var(--dark-green);
+            border-radius: 5px;
+        }
+        button {
+            align-self: self-end;
+        }
+    }
+}
+
+.edit-item {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.25s linear, transform 0.25s ease-in-out;
+}
+
+body.loaded .edit-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+select {
+    width: 100%;
+    padding: 0.5em;
+    border: 2px solid var(--dark-green);
+    border-radius: 5px;
+    cursor: pointer;
+    option {
+        cursor: pointer;
+    }
+}
+
+.delete-item {
+    width: 100%;
+    > div {
+        padding: 2em;
+        border: 1px solid rgba(255, 0, 0, 0.4);
+        border-radius: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        > * {
+            margin: 1em;
+            padding: 0;
+        }
+    }
+
+    .item-card {
+        border: 1px double black;
+    }
+
+    .primary-btn {
+        background-color: red;
+        color: white;
+        font-weight: bolder;
+        padding: 1em 2em;
+    }
+}
+
+.delete-item {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.25s linear, transform 0.25s ease-in-out;
+}
+
+body.loaded .delete-item {
+    opacity: 1;
+    transform: translateY(0);
 }

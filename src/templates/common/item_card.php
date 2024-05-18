@@ -1,13 +1,17 @@
-<?php function drawItemCard($id, $picture, $profile_picture, $username, $price, $size, $category, $type, $enableEdit, $enableBuy) { ?>
+<?php function drawItemCard($id, $picture, $profile_picture, $username, $price, $size, $category, $type, $enableEdit, $enableBuy, $otherVars) { ?>
     <div class="item-card">
         <a href="show_item.php?idItem=<?php echo $id ?>">
             <img src="<?php echo $picture; ?>" />
         </a>
         <?php
-            if ($enableEdit) {
-                drawEditBtn('#');
-                drawDeleteBtn('#');
-            } 
+            if (isset($otherVars)) {
+                $editPage = $otherVars[0];
+                $deletePage = $otherVars[1];
+                if ($enableEdit) {
+                    drawEditBtnWithLink($editPage);
+                    drawDeleteBtnWithLink($deletePage);
+                } 
+            }
         ?>
         <?php
             if ($enableBuy) { ?>
