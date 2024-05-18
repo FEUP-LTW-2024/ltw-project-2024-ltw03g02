@@ -39,7 +39,12 @@
                 $user = User::getUser($db, $userId); 
                 $items = User::getItems($db, $userId);
                 if (count($items) == 0) {
-                    echo "<p>Não tem artigos para mostrar</p>";
+                    ?>
+                        <div id="add-item-btn" class="item-card">
+                            <p>Carregue no mais para adicionar um artigo</p>
+                            <?php drawPlusBtnWithLink('list_item_page.php'); ?>
+                        </div>
+                    <?php
                 } else {
                     foreach ($items as $item) {
                         $enableEdit = ($item['sellerId'] == $userId); 
@@ -48,6 +53,11 @@
                         $otherVars = array("profile_page.php?idItemEdit=$itemId", "profile_page.php?idItemDelete=$itemId");
                         drawItemCard($item['idItem'], $item['picture'], $user->profile_image_link, $user->username, $item['price'], $item['clotheSize'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy, $otherVars);
                     }
+                    ?>
+                        <div id="add-item-btn" class="item-card">
+                            <?php drawPlusBtnWithLink('list_item_page.php'); ?>
+                        </div>
+                    <?php
                 }
         ?>
         </div>

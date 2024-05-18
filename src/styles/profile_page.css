@@ -231,3 +231,27 @@ body.loaded .delete-item {
     opacity: 1;
     transform: translateY(0);
 }
+
+#add-item-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    p {
+        position: absolute;
+        bottom: 6em;
+        width: 100%;
+        padding: 1em;
+        text-align: center;
+    }
+    > a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > button {
+            width: 3em;
+            height: 3em;
+        }
+    }
+}
