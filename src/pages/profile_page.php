@@ -8,6 +8,7 @@
         <?php include_once('../templates/common/header.php'); ?>
         <?php include_once('../templates/profile_page/profile_page.php'); ?>
         <?php include_once('../templates/common/footer.php'); ?>
+        <script src="../js/profile_page.js" defer></script>
 
     </head>
     <body>

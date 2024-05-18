@@ -30,7 +30,7 @@
                         $enableBuy = 0;
                     }
                     foreach ($items as $item) {
-                        drawItemCard($item['idItem'], $item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy);
+                        drawItemCard($item['idItem'], $item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy, null);
                     }
                 ?>
                 <!-- <div>
