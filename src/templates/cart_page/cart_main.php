@@ -1,4 +1,6 @@
-<?php function drawCartMain() { ?>
+<?php 
+require_once(dirname(__DIR__) . '/../templates/common/icon_btn.php');
+function drawCartMain() { ?>
     <main>
         <h1>O teu carrinho</h1>
         <?php
@@ -18,11 +20,18 @@
                 $cart = $_SESSION['cart'];
                 $items = getCartItems($cart);
                 $subtotal = 0;
-                foreach ($items as $item): ?>
+                foreach ($items as $index => $item): ?>
                     <div class="order-item">
                         <img class="order-item-img" src="<?php echo $item['picture']; ?>" />
-                        <p class="order-item-name"><?php echo $item['title']; ?></p>
-                        <span><?php echo $item['price']; ?> €</span>
+                        <div class="order-item-name">
+                            <p><?php echo $item['title']; ?></p>
+                        </div>
+                        <div class="price-box">
+                            <span><?php echo $item['price']; ?> €</span>
+                        </div>
+                        <div class="delete-box">
+                            <?php drawDeleteBtnWithId($index); ?>
+                        </div>
                     </div>
                 <?php
                     $subtotal += $item['price']; 
@@ -45,7 +54,7 @@
                     <label>PayPal</label>
                 </div>
             </section>
-            <button class="primary-btn">Processar pedido</button>
+            <button id="process-payment" class="primary-btn">Processar pedido</button>
         <?php endif; ?>
     </main>
 <?php } ?>
