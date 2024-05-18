@@ -17,6 +17,9 @@
                     <a href="login.php" class="login-btn">
                         <button class="primary-btn">Iniciar Sessão</button>
                     </a>
+                    <a href="login.php" class="cart-btn">
+                            <img src="../../images/shopping_cart.png" />
+                    </a>
                 <?php else: ?>
                     <a href="../../pages/profile_page.php">
                         <img id="profile_img_link" src="<?php echo $_SESSION['photo']; ?>">
@@ -24,11 +27,18 @@
                     <a href="../../actions/action_logout.php" class="login-btn">
                         <button class="primary-btn">Terminar Sessão</button>
                     </a>
+                    <?php if (isset($_SESSION['cart'])): ?>
+                        <a href="cart_page.php" class="cart-btn">
+                            <span id="cart-items-num"><?php echo count($_SESSION['cart']); ?></span>
+                            <img src="../../images/shopping_cart.png" />
+                        </a>
+                    <?php else: ?>
+                        <a href="cart_page.php" class="cart-btn">
+                            <span id="cart-items-num">0</span>
+                            <img src="../../images/shopping_cart.png" />
+                        </a>
+                    <?php endif; ?>
                 <?php endif; ?>
-
-                <a href="cart_page.php" class="cart-btn">
-                    <img src="/../images/shopping_cart.png" />
-                </a>
             </div>
         </div>
         <?php

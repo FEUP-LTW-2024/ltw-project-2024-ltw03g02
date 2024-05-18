@@ -1,13 +1,20 @@
-<?php function drawItemCard($picture, $profile_picture, $username, $price, $size, $category, $type, $enableEdit) { ?>
+<?php function drawItemCard($id, $picture, $profile_picture, $username, $price, $size, $category, $type, $enableEdit, $enableBuy) { ?>
     <div class="item-card">
-        <img src="<?php echo $picture; ?>" />
+        <a href="show_item.php?idItem=<?php echo $id ?>">
+            <img src="<?php echo $picture; ?>" />
+        </a>
         <?php
             if ($enableEdit) {
                 drawEditBtn('#');
                 drawDeleteBtn('#');
             } 
         ?>
-        <button class="icon-btn buy-btn"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
+        <?php
+            if ($enableBuy) { ?>
+            <button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(<?php echo $id ?>);"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>
+        <?php
+            }
+        ?>
         <div class="item-card-info">
             <div>
                 <img src="<?php echo $profile_picture; ?>" />

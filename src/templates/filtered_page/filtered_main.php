@@ -1,4 +1,4 @@
-<?php include_once('item_card.php'); ?>
+<?php include_once(dirname(__DIR__) . '/../templates/common/item_card.php'); ?>
 <?php include_once('filters.php'); ?>
 <?php require_once(dirname(__DIR__) . '/../database/items.db.php'); ?>
 
@@ -17,14 +17,20 @@
             </div>
             <div class="item-list">
                 <?php
+                    session_start();
                     if (isset($_GET['searchTerm'])) {
                         $items = searchBar($_GET['searchTerm']);
                     } else {
                         $items = getItems();
                     }
                     $enableEdit = 0;
+                    if (isset($_SESSION['idUser'])) {
+                        $enableBuy = 1;
+                    } else {
+                        $enableBuy = 0;
+                    }
                     foreach ($items as $item) {
-                        drawItemCard($item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit);
+                        drawItemCard($item['idItem'], $item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], $enableEdit, $enableBuy);
                     }
                 ?>
                 <!-- <div>

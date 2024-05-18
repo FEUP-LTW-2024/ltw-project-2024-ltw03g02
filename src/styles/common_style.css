@@ -226,3 +226,83 @@ footer {
 }
 
 /* Icon button end */
+
+/* ItemCard Styles */
+
+.item-card {
+    position: relative;
+    background-color: var(--item-card-color);
+    
+    .icon-btn{
+        position: absolute;
+    }
+
+    .buy-btn {
+        width: 3.5em;
+        height: 3.5em;
+        cursor: pointer;
+        padding: 0.4em;
+        bottom: 0;
+        right: 0;
+    }
+    
+    .edit-btn {
+        top: 0;
+        right: 0;
+    }
+
+    .delete-btn{
+        top: 0;
+        left: 0;
+    }
+    > a{
+        padding: 0;
+        cursor: pointer;
+        > img {
+            width: 100%;
+            height: var(--card-width);
+            object-fit: cover;
+        }
+    } 
+    > div {
+        margin: 0.2em;
+    }
+    .item-card-info {
+        padding: 0.4em;
+        display: flex;
+        flex-direction: column;
+        align-items: self-start;
+        > * {
+            margin-top: 0;
+            margin: 0.1em;
+        }
+        > div {
+            display: flex;
+            align-items: center;
+            img {
+                width: 1.5em;
+                height: 1.5em;
+                object-fit: cover;
+                margin-right: 0.5em;
+                border-radius: 50%;
+            }
+        }
+        > .price-info {
+            margin-top: 0.4em;
+            font-weight: bolder;
+            margin-right: 0;
+        }
+        > .size-info {
+            font-size: 1.1em;
+            font-weight: lighter;
+            margin: 0.3em 0;
+        }
+        > .type-info, > .category-info {
+            font-size: 0.8em;
+            font-weight: lighter;
+            margin-right: 0;
+        }
+    }
+}
+
+/* ItemCard Styles End */
