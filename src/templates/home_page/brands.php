@@ -12,7 +12,7 @@
                 <img src="../images/home_page/brand3.png" />
             </div>
             <div class="brand">
-                <button class="primary-btn">Ver mais...</button>
+                <a href="filtered_page.php?page=loja"><button class="primary-btn">Ver mais...</button></a>
             </div>
         </div>
     </section>
