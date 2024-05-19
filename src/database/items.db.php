@@ -96,14 +96,20 @@
     function getItem($idItem) {
         include_once('connection.db.php');
         $db = getDatabaseConnection();
-
-        $sql = 'SELECT * FROM Item WHERE idItem=:idItem;';
-
+        error_log($idItem);
+        $sql = 'SELECT title, description, type_item, color, picture, price, condition, username, categoryName, brandName, sizeName, profile_image_link, condition
+                FROM Item
+                JOIN User ON sellerId=idUser
+                JOIN Category ON categoryId=idCategory
+                JOIN clotheSize ON clotheSize=idSize
+                JOIN Brand ON Item.idBrand=Item.idBrand
+                WHERE idItem=:idItem;';
+    
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':idItem', $idItem);
-
+    
         $stmt->execute();
-        $item = $stmt->fetch();
+        $item = $stmt->fetch(PDO::FETCH_ASSOC);
         return $item;
     }
 

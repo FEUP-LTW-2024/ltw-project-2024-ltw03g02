@@ -265,7 +265,7 @@ footer {
     }
     > a{
         padding: 0;
-        cursor: default;
+        cursor: pointer;
         > img {
             width: 100%;
             height: var(--card-width);
