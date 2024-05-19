@@ -17,7 +17,6 @@
             </div>
             <div class="item-list">
                 <?php
-                    session_start();
                     if (isset($_GET['searchTerm'])) {
                         $items = searchBar($_GET['searchTerm']);
                     } else {

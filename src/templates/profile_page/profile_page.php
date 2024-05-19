@@ -1,6 +1,8 @@
 <?php function drawProfile() {
     require_once('../database/connection.db.php');
     require_once('../classes/user.class.php');
+    require_once('../classes/item.class.php');
+    require_once('../database/items.db.php');
     require_once('../templates/common/item_card.php');
     require_once('../templates/common/icon_btn.php');
     require_once('../templates/profile_page/edit_item.php');
@@ -48,7 +50,7 @@
                     <?php
                 } else {
                     foreach ($items as $item) {
-                        $enableEdit = ($item['sellerId'] == $userId); 
+                        $enableEdit = (array_key_exists('sellerId', $item) && $item['sellerId'] == $userId); 
                         $enableBuy = 0;
                         $itemId = $item['idItem'];
                         $otherVars = array("profile_page.php?idItemEdit=$itemId", "profile_page.php?idItemDelete=$itemId");
