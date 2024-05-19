@@ -23,6 +23,12 @@ main {
     margin: auto;
 }
 
+h1 {
+    text-align: center;
+    margin-top: 5px;
+    color: var(--dark-grey);
+}
+
 /* Header Style Starts Here */
 
 .topbar {

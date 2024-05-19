@@ -1,0 +1,126 @@
+.sellers-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+    flex-direction: row;
+    .seller-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em 0em;
+        border: 1px solid var(--light-grey);
+        background-color: var(--lighter-grey);
+        border-radius: 5px;
+        width: 20em;
+        > img {
+            width: 10em;
+            height: 10em;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-top: 0.3em;
+        }
+        h3 {
+            font-size: 1.3rem;
+            padding: 0.5rem 0rem;
+            width: 100%;
+            text-align: center;
+        }
+        .seller-card-info {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 0.5em;
+            padding: 2em;
+            width: 100%;
+            > * {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                img {
+                    width: 1.5em;
+                    height: 1.5em;
+                    object-fit: cover;
+                    margin-right: 0.5em;
+                }
+            }
+            .nome-info {
+                font-size: 1.2em;
+                font-weight: bolder;
+                align-self: center;
+            }
+            .rating-info {
+                font-size: 1.1em;
+                font-weight: bolder;
+                align-self: center;
+            }
+            .contact-info {
+                font-size: 0.8em;
+                font-weight: bold;
+                border: 1px solid #ddd;
+                padding: 0.5em;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                width: 100%;
+                gap: 1em;
+                height: 10em;
+                margin-top: 1em;
+                overflow: hidden;
+                justify-content: space-around;
+                .phone-info {
+                    font-size: 1.1em;
+                    font-weight: lighter;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+                .email-info {
+                    font-size: 1.1em;
+                    font-weight: lighter;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+                .address-info {
+                    font-size: 1.1em;
+                    font-weight: lighter;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                }
+            }
+        }
+        .seller-btn-box{
+            width: 100%;
+            padding: 0em 2em;
+            margin-bottom: 2em;
+            a {
+                text-decoration: none;
+                width: 100%;
+                button {
+                    width: 100%;
+                    padding: 1em;
+                    font-size: 0.9em;
+                }
+            }
+        }
+    }
+}
+
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.sellers-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 2em;
+}
