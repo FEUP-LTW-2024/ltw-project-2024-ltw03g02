@@ -58,48 +58,63 @@ class Filters {
 
 filters = new Filters(null, null, null, null);
 
-function _createFetchString() {
-    let fetchString = '../api/api_filter_items.php?';
-    let filterNames = ['type_item', 'categoryId', 'clotheSize', 'orderBy'];
-    filters.currFilterValues.forEach((value, index) => {
-        if (value != null){
-            fetchString += filterNames[index] + '=' + value + '&';
-        }
-    });
-    const urlParams = new URLSearchParams(window.location.searchTerm);
-    if (urlParams.has('searchTerm')){
-        fetchString += 'searchTerm=' + urlParams.get('searchTerm') + '&';
-    }
-    return fetchString;
-}
+// ******************* LEGACY CODE ******************* //
+// function _createFetchString() {
+//     let fetchString = '../api/api_filter_items.php?';
+//     let filterNames = ['type_item', 'categoryId', 'clotheSize', 'orderBy'];
+//     filters.currFilterValues.forEach((value, index) => {
+//         if (value != null){
+//             fetchString += filterNames[index] + '=' + value + '&';
+//         }
+//     });
+//     const urlParams = new URLSearchParams(window.location.searchTerm);
+//     if (urlParams.has('searchTerm')){
+//         fetchString += 'searchTerm=' + urlParams.get('searchTerm') + '&';
+//     }
 
-function _drawItemCard(item, loggedIn) {
-    const itemCard = document.createElement('div');
-    itemCard.classList.add('item-card');
-    if(loggedIn) {
-        buyBtn = `<button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(${item['idItem']});"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>`;
-    } else {
-        buyBtn = '';
-    }
-    itemCard.innerHTML = `
-        <a href="../pages/show_item.php?idItem=${item['idItem']}">
-            <img src="${item['picture']}">
-        </a>
-        ` + buyBtn + 
-        `
-        <div class="item-card-info">
-            <div>
-                <img src="${item['profile_image_link']}" />
-                <span>${item['username']}</span>
-            </div>
-            <span class="price-info">€ ${item['price']}</span>
-            <span class="size-info">${item['sizeName']}</span>
-            <span class="type-info">${item['type_item']}</span>
-            <span class="category-info">${item['categoryName']}</span>
-        </div>
-    `;
-    return itemCard;
-}
+//     return fetchString;
+// }
+
+// function _drawItemCard(item, loggedIn) {
+//     const itemCard = document.createElement('div');
+//     itemCard.classList.add('item-card');
+//     if(loggedIn) {
+//         buyBtn = `<button class="icon-btn buy-btn" onclick="buyBtnPressedHandler(${item['idItem']});"><img src="../../images/icon_btn/cart_plus_solid.svg" /></button>`;
+//     } else {
+//         buyBtn = '';
+//     }
+//     itemCard.innerHTML = `
+//         <a href="../pages/show_item.php?idItem=${item['idItem']}">
+//             <img src="${item['picture']}">
+//         </a>
+//         ` + buyBtn + 
+//         `
+//         <div class="item-card-info">
+//             <div>
+//                 <img src="${item['profile_image_link']}" />
+//                 <span>${item['username']}</span>
+//             </div>
+//             <span class="price-info">€ ${item['price']}</span>
+//             <span class="size-info">${item['sizeName']}</span>
+//             <span class="type-info">${item['type_item']}</span>
+//             <span class="category-info">${item['categoryName']}</span>
+//         </div>
+//     `;
+//     return itemCard;
+// }
+
+// function changedFilterValueHandler(){
+//     console.log('changedFilterValueHandler() executed');
+//     filters.updateFilterValues();
+//     if (filters.isEmpty() && !new URLSearchParams(window.location.search).has('searchTerm')){
+//         document.getElementById('clean-filters').style = 'visibility: hidden;';
+//     } else {
+//         document.getElementById('clean-filters').style = 'visibility: visible;';
+//     }
+//     console.log('applyFiltersHandler() executed');
+//     loadItems();
+// }
+// ******************* LEGACY CODE ******************* //
 
 async function loadItems() {
     const response = await fetch(_createFetchString(), {
@@ -129,37 +144,72 @@ function cleanFiltersHandler() {
     window.location.href = '/pages/filtered_page.php';
 }
 
-function changedFilterValueHandler(){
-    console.log('changedFilterValueHandler() executed');
-    filters.updateFilterValues();
-    if (filters.isEmpty() && !new URLSearchParams(window.location.search).has('searchTerm')){
-        document.getElementById('clean-filters').style = 'visibility: hidden;';
-    } else {
-        document.getElementById('clean-filters').style = 'visibility: visible;';
+function resetPages(url) {
+    if (url.searchParams.has('pageNum')) {
+        url.searchParams.delete('pageNum');
     }
-    console.log('applyFiltersHandler() executed');
-    loadItems();
 }
 
-function buyBtnPressedHandler(idItem) {
-    console.log('buyBtnPressedHandler() executed');
-    console.log('buy button pressed');
+function changedFilterValueHandler(filterName){
+    console.log('changedFilterValueHandler() executed');
+    filters.updateFilterValues();   
 
-    fetch('../actions/cart/action_add_to_cart.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'idItem=' + idItem,
-    })
-    .then(response => response.text())
-    .then(data => console.log(data))
-    .then(() => {
-        document.getElementById('cart-items-num').innerText = parseInt(document.getElementById('cart-items-num').innerText) + 1;
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+    switch(filterName){
+        case 'type-filter-select':
+            var selectElement = document.getElementById('type-filter-select');
+            var selectedValue = selectElement.value;
+            var url = new URL(window.location.href);
+            if (selectedValue === "") {
+                url.searchParams.delete('type_item');
+                resetPages(url);
+            } else {
+                url.searchParams.set('type_item', selectedValue);
+                resetPages(url);
+            }
+            window.location.href = url.toString();
+            break;
+        case 'category-filter-select':
+            var selectElement = document.getElementById('category-filter-select');
+            var selectedValue = selectElement.value;
+            var url = new URL(window.location.href);
+            if (selectedValue === "") {
+                url.searchParams.delete('idCategory');
+                resetPages(url);
+
+            } else {
+                url.searchParams.set('idCategory', selectedValue);
+                resetPages(url);
+            }
+            window.location.href = url.toString();
+            break;
+        case 'size-filter-select':
+            var selectElement = document.getElementById('size-filter-select');
+            var selectedValue = selectElement.value;
+            var url = new URL(window.location.href);
+            if (selectedValue === "") {
+                url.searchParams.delete('clotheSize');
+                resetPages(url);
+            } else {
+                url.searchParams.set('clotheSize', selectedValue);
+                resetPages(url);
+            }
+            window.location.href = url.toString();
+            break;
+        case 'order-by-filter-select':
+            var selectElement = document.getElementById('order-by-filter-select');
+            var selectedValue = selectElement.value;
+            var url = new URL(window.location.href);
+            if (selectedValue === "") {
+                url.searchParams.delete('orderBy');
+                resetPages(url);
+            } else {
+                url.searchParams.set('orderBy', selectedValue);
+                resetPages(url);
+            }
+            window.location.href = url.toString();
+            break;
+    }
+    
 }
 
 window.onload = function() {

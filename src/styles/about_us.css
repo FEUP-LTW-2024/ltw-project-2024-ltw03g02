@@ -1,0 +1,28 @@
+h2 {
+    margin-left: 5px;
+}
+
+p {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+p:last-of-type {
+    margin-bottom: 40px;
+}
+
+main {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+h2 {
+    color: var(--dark-green);
+}
+
+p {
+    text-align: justify;
+    margin-right: 1em;
+}

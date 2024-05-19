@@ -1,6 +1,8 @@
 <?php
-    function filteredSearch(PDO $db, $clotheSize, $type_item, $categoryId, $orderBy) {
+    function filteredSearch($clotheSize, $type_item, $categoryId, $orderBy, $searchTerm, $itemsPerPage, $offset) {
         $db = getDatabaseConnection();
+
+        // first I get the items here
 
         $sql = 'SELECT idItem, picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
             FROM Item 
@@ -17,11 +19,56 @@
         if ($categoryId != null) {
             $sql .= ' AND categoryId = :categoryId';
         }  
+        if (!empty($searchTerm)) {
+            $sql .= ' AND (username LIKE :searchTerm OR type_item LIKE :searchTerm OR categoryName LIKE :searchTerm OR sizeName LIKE :searchTerm)';
+        }
         if ($orderBy != null) {
             $orderBy = strtoupper($orderBy);
             if ($orderBy == 'ASC' || $orderBy == 'DESC') {
                 $sql .= ' ORDER BY price ' . $orderBy;
             }
+        }
+        $sql .= ' LIMIT :itemsPerPage OFFSET :offset';
+        $sql .= ';';
+
+        $stmt = $db->prepare($sql);
+        if($type_item != null){
+            $stmt->bindParam(':type_item', $type_item);
+        }
+        if($clotheSize != null){
+            $stmt->bindParam(':clotheSize', $clotheSize);
+        }
+        if($categoryId != null){
+            $stmt->bindParam(':categoryId', $categoryId);
+        }
+        if (!empty($searchTerm)) {
+            $stmt->bindValue(':searchTerm', '%' . $searchTerm . '%');
+        }
+        $stmt->bindValue(':itemsPerPage', $itemsPerPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+        $stmt->execute();
+        $items = $stmt->fetchAll();
+
+        // now to count the items here
+
+        $sql = 'SELECT count(*) as totalItems
+            FROM Item 
+            JOIN User ON sellerId=idUser 
+            JOIN Category ON categoryId=idCategory
+            JOIN clotheSize ON clotheSize=idSize';
+        $sql .= ' WHERE 1=1';
+        if ($clotheSize != null) {
+            $sql .= ' AND clotheSize = :clotheSize';
+        } 
+        if ($type_item != null) {
+            $sql .= ' AND type_item = :type_item';
+        }
+        if ($categoryId != null) {
+            $sql .= ' AND categoryId = :categoryId';
+        }  
+        if (!empty($searchTerm)) {
+            $sql .= ' AND (username LIKE :searchTerm OR type_item LIKE :searchTerm OR categoryName LIKE :searchTerm OR sizeName LIKE :searchTerm)';
         }
         $sql .= ';';
 
@@ -35,65 +82,34 @@
         if($categoryId != null){
             $stmt->bindParam(':categoryId', $categoryId);
         }
-
-        $stmt->execute();
-        $items = $stmt->fetchAll();
-      
-        return $items;
-    }
-
-    function searchBar($searchTerm) {
-        include_once('connection.db.php');
-        $db = getDatabaseConnection();
-        $sql = 'SELECT idItem, picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
-            FROM Item 
-            JOIN User ON sellerId=idUser 
-            JOIN Category ON categoryId=idCategory
-            JOIN clotheSize ON clotheSize=idSize';
-        $sql .= ' WHERE 1=1';
-        if (!empty($searchTerm)) {
-            $sql .= ' AND (username LIKE :searchTerm OR type_item LIKE :searchTerm OR categoryName LIKE :searchTerm OR sizeName LIKE :searchTerm)';
-        }
-        $sql .= ';';
-
-        $stmt = $db->prepare($sql);
         if (!empty($searchTerm)) {
             $stmt->bindValue(':searchTerm', '%' . $searchTerm . '%');
         }
+
         $stmt->execute();
-        $items = $stmt->fetchAll();
-        
-        return $items;
+        $totalItems = $stmt->fetchColumn();
+
+        return [$items, $totalItems];
+
     }
-
-    function getItems() {
-        include_once('connection.db.php');
-        $db = getDatabaseConnection();
-
-        $sql = 'SELECT idItem, picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
-            FROM Item 
-            JOIN User ON sellerId=idUser 
-            JOIN Category ON categoryId=idCategory
-            JOIN clotheSize ON clotheSize=idSize;';
-
-        $stmt = $db->prepare($sql);
-
-        $stmt->execute();
-        $items = $stmt->fetchAll();
-        return $items;
-    } 
 
     function getItem($idItem) {
         include_once('connection.db.php');
         $db = getDatabaseConnection();
-
-        $sql = 'SELECT * FROM Item WHERE idItem=:idItem;';
-
+        error_log($idItem);
+        $sql = 'SELECT title, description, type_item, color, picture, price, condition, username, categoryName, brandName, sizeName, profile_image_link, condition
+                FROM Item
+                JOIN User ON sellerId=idUser
+                JOIN Category ON categoryId=idCategory
+                JOIN clotheSize ON clotheSize=idSize
+                JOIN Brand ON Item.idBrand=Item.idBrand
+                WHERE idItem=:idItem;';
+    
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':idItem', $idItem);
-
+    
         $stmt->execute();
-        $item = $stmt->fetch();
+        $item = $stmt->fetch(PDO::FETCH_ASSOC);
         return $item;
     }
 
@@ -153,7 +169,7 @@
         include_once('connection.db.php');
         $db = getDatabaseConnection();
 
-        $sql = 'SELECT DISTINCT condition FROM Item;';
+        $sql = 'SELECT idCondition, conditionName FROM condition;';
 
         $stmt = $db->prepare($sql);
 
@@ -173,6 +189,25 @@
         $stmt->execute();
         $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $brands;
+    }
+
+    function getItemsBySeller($sellerId) {
+        include_once('connection.db.php');
+        $db = getDatabaseConnection();
+
+        $sql = 'SELECT idItem, picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
+            FROM Item 
+            JOIN User ON sellerId=idUser 
+            JOIN Category ON categoryId=idCategory
+            JOIN clotheSize ON clotheSize=idSize
+            WHERE sellerId = :sellerId;';
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':sellerId', $sellerId);
+
+        $stmt->execute();
+        $items = $stmt->fetchAll();
+        return $items;
     }
 
 ?>

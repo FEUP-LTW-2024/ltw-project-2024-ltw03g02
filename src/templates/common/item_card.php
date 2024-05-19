@@ -1,6 +1,6 @@
 <?php function drawItemCard($id, $picture, $profile_picture, $username, $price, $size, $category, $type, $enableEdit, $enableBuy, $otherVars) { ?>
     <div class="item-card">
-        <a href="show_item.php?idItem=<?php echo $id ?>">
+        <a href="item_page.php?idItem=<?php echo $id ?>">
             <img src="<?php echo $picture; ?>" />
         </a>
         <?php

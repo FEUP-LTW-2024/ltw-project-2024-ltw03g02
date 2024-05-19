@@ -18,6 +18,17 @@
     font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 5px;
+    color: var(--dark-grey);
+}
+
 /* Header Style Starts Here */
 
 .topbar {
@@ -260,7 +271,7 @@ footer {
     }
     > a{
         padding: 0;
-        cursor: default;
+        cursor: pointer;
         > img {
             width: 100%;
             height: var(--card-width);
