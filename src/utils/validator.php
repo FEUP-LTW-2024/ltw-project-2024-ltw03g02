@@ -107,7 +107,7 @@
     }
 
     function valid_CSRF(String $attemp) : bool {
-        if ($_SESSION['csrf'] !== $attemp) {
+        if (!isset($_SESSION['csrf']) || $_SESSION['csrf'] !== $attemp) {
             $session = new Session();
             $session->addMessage('error', "Operação inválida");
             return false;
