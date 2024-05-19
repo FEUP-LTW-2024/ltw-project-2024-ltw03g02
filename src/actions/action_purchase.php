@@ -1,29 +1,46 @@
 <?php
     declare(strict_types = 1);
+    
+    function insertInUserOrder($sellerId, $buyerId, $idItem, $paymentOption, $price){
+        $db = getDatabaseConnection();
+        $stmt = $db->prepare('INSERT INTO UserOrder (idBuyer, idSeller, idItem, paymentOption, productPrice) VALUES (?, ?, ?, ?, ?);');
+        $stmt->execute([$buyerId, $sellerId, $idItem, $paymentOption, $price]);
+        return $db->lastInsertId();
+    }
+
+    function setItemSold($idItem, $idOrder){
+        $db = getDatabaseConnection();
+        $stmt = $db->prepare('UPDATE Item SET isSold = 1, idOrder = ? WHERE idItem = ?;');
+        $stmt->execute([$idOrder, $idItem]);
+    }
+
+?>
+
+
+<?php
     require_once('../database/connection.db.php');
     require_once('../classes/session.class.php');
     require_once('../database/cart.db.php');
     require_once('../classes/item.class.php');
-    require_once('../utils/validator.php');
+    require_once('../database/items.db.php');
 
-    $session = new Session();
-
-    // Check if user is logged in
-    if (!isset($_SESSION['idUser'])) {
-        die(header('Location: ../pages/login.php'));
-    }
+    session_start();
 
     $idUser = $_SESSION['idUser'];
-    $option = htmlentities($_POST['payment']);
+    $cart = $_SESSION['cart'];
 
-    $db = getDatabaseConnection();
-
-    $stmt = $db->prepare('INSERT INTO UserOrder (idUser, idItem, method, state) VALUES (?, ?, ?, "Vendido")');
-    foreach ($_SESSION['cart'] as $idItem) {
-        $stmt->execute(array($idUser, $idItem, $option));
+    foreach ($cart as $idItem) {
+        $item = getItem($idItem);
+        $sellerId = $item['sellerId'];
+        $buyerId = $idUser;
+        $idItem = $item['idItem'];
+        $paymentOption = $_POST['paymentOption'];
+        $price = $item['price'];
+        $idOrder = insertInUserOrder($sellerId, $buyerId, $idItem, $paymentOption, $price);
+        setItemSold($idItem, $idOrder);
     }
-    
-    $_SESSION['cart'] = array();
+
+    $_SESSION['cart'] = [];
 
     header('Location: ../pages/finished.php');
 ?>

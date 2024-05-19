@@ -26,6 +26,7 @@
         <div class="profile-actions">
             <a href="edit_profile.php" class="btn">Editar perfil</a>
             <a href="messages.php" class="btn">Mensagens</a>
+            <a href="sold_items.php" class="btn">Itens Vendidos</a>
         </div>
         <?php if (isset($_GET['idItemEdit'])) {
             $idItemEdit = $_GET['idItemEdit'];

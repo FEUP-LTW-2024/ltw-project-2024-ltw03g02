@@ -41,16 +41,18 @@ function drawCartMain() { ?>
             <h2>Subtotal: <span><?php echo $subtotal; ?> €</span></h2>
             <form id="purchase-form" action="../actions/action_purchase.php" method="post">
                 <h3>Forma de Pagamento</h3>
+                <input type="hidden" name="subtotal" value="<?php echo $subtotal; ?>">
+                <input type="hidden" name="items" value="<?php echo json_encode($cart); ?>">
                 <div class="payment-option">
-                    <input type="radio" name="payment" value="mbway" checked>
+                    <input type="radio" name="paymentOption" value="mbway" checked>
                     <label>MB WAY</label>
                 </div>
                 <div class="payment-option">
-                    <input type="radio" name="payment" value="multibanco" checked>
+                    <input type="radio" name="paymentOption" value="multibanco" checked>
                     <label>Multibanco</label>
                 </div>
                 <div class="payment-option">
-                    <input type="radio" name="payment" value="paypal" checked>
+                    <input type="radio" name="paymentOption" value="paypal" checked>
                     <label>PayPal</label>
                 </div>
             <button id="process-payment" class="primary-btn">Processar pedido</button>
