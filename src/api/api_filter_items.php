@@ -2,7 +2,6 @@
     declare(strict_types = 1);
     require_once('../database/connection.db.php');
     require_once('../database/items.db.php');
-    $db = getDatabaseConnection();
 
     if (isset($_GET['clotheSize'])) {
         $clotheSize = $_GET['clotheSize'];
@@ -28,8 +27,26 @@
         $orderBy = null;
     }
 
-    $items = filteredSearch($db, $clotheSize, $type_item, $categoryId, $orderBy);
+    if (isset($_GET['itemsPerPage'])) {
+        $itemsPerPage = $_GET['itemsPerPage'];
+    } else {
+        $itemsPerPage = 10;
+    }
+
+    if (isset($_GET['offset'])) {
+        $offset = $_GET['offset'];
+    } else {
+        $offset = 0;
+    }
+
+    if (isset($_GET['searchTerm'])) {
+        $searchTerm = $_GET['searchTerm'];
+    } else {
+        $searchTerm = '';
+    }
+
+    list($items, $totalItems) = filteredSearch($clotheSize, $type_item, $categoryId, $orderBy, $searchTerm, $itemsPerPage, $offset);
     
-    echo json_encode($items);
+    echo json_encode([$items, $totalItems]);
 
 ?>

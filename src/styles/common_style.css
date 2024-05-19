@@ -18,6 +18,11 @@
     font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
 /* Header Style Starts Here */
 
 .topbar {
