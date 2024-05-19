@@ -145,5 +145,8 @@ main {
     }
     .payment-option{
         margin: 0.6rem 1rem;
+        input[type='radio'] {
+            margin: 0.5rem;
+        }
     }
 }

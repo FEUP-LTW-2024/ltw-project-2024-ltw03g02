@@ -48,6 +48,7 @@ CREATE TABLE Item (
     idBrand INTEGER NOT NULL,
     clotheSize INTEGER NOT NULL,
     listedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    isSold BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (sellerId) REFERENCES User(idUser),
     FOREIGN KEY (categoryId) REFERENCES Category(idCategory),
     FOREIGN KEY (idBrand) REFERENCES Brand(idBrand),
@@ -145,7 +146,7 @@ VALUES
     ('Ricardo Cardoso', 'ricardo0015', 'ricardo0015@example.com', '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e', 'Homem', 'Rua Inês Teixeira nº32', 'http://s2.glbimg.com/C8ORi7DA7326QPtHKxd0a7JGKco=/695x0/s.glbimg.com/po/tt2/f/original/2015/09/15/ness.jpg', 5.0, 932123432, 1),
     ('Daunísia Jone', 'dawen', 'dawen@example.com', 'c63c2d34ebe84032ad47b87af194fedd17dacf8222b2ea7f4ebfee3dd6db2dfb', 'Mulher', 'Rua André Restivo, nº3', 'https://i.pinimg.com/736x/3f/58/60/3f58604beda34909dd5984ef4458a96f.jpg', 5.0, 911053549, 1);
 
-INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt)
+INSERT INTO Item (title, description, color, type_item, picture, price, condition, sellerId, categoryId, idBrand, clotheSize, listedAt, sold)
 VALUES
     ('T-shirt Masculina', 'T-shirt larga, confortável para homens', 'Preto', 'Homem', 'https://opcaounica.pt/wp-content/uploads/2020/06/1006_01.jpg', 19.99, 'Etiquetado', 1, 1, 1, 3, '2024-01-10 10:00:00'),
     ('Calça Jeans Feminina', 'Calça jeans elegante para mulheres', 'Azul', 'Mulher', 'https://static.kiabi.pt/images/calcoes-em-camurca-sintetica-preto-null-xv682_1_zc2.jpg', 39.99, 'Bom estado', 2, 2, 2, 2, '2024-04-07 10:00:00'),
