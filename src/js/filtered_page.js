@@ -148,6 +148,12 @@ function cleanFiltersHandler() {
     window.location.href = '/pages/filtered_page.php';
 }
 
+function resetPages(url) {
+    if (url.searchParams.has('pageNum')) {
+        url.searchParams.delete('pageNum');
+    }
+}
+
 function changedFilterValueHandler(filterName){
     console.log('changedFilterValueHandler() executed');
     filters.updateFilterValues();   
@@ -159,8 +165,10 @@ function changedFilterValueHandler(filterName){
             var url = new URL(window.location.href);
             if (selectedValue === "") {
                 url.searchParams.delete('type_item');
+                resetPages(url);
             } else {
                 url.searchParams.set('type_item', selectedValue);
+                resetPages(url);
             }
             window.location.href = url.toString();
             break;
@@ -170,8 +178,11 @@ function changedFilterValueHandler(filterName){
             var url = new URL(window.location.href);
             if (selectedValue === "") {
                 url.searchParams.delete('idCategory');
+                resetPages(url);
+
             } else {
                 url.searchParams.set('idCategory', selectedValue);
+                resetPages(url);
             }
             window.location.href = url.toString();
             break;
@@ -181,8 +192,10 @@ function changedFilterValueHandler(filterName){
             var url = new URL(window.location.href);
             if (selectedValue === "") {
                 url.searchParams.delete('clotheSize');
+                resetPages(url);
             } else {
                 url.searchParams.set('clotheSize', selectedValue);
+                resetPages(url);
             }
             window.location.href = url.toString();
             break;
@@ -192,8 +205,10 @@ function changedFilterValueHandler(filterName){
             var url = new URL(window.location.href);
             if (selectedValue === "") {
                 url.searchParams.delete('orderBy');
+                resetPages(url);
             } else {
                 url.searchParams.set('orderBy', selectedValue);
+                resetPages(url);
             }
             window.location.href = url.toString();
             break;
