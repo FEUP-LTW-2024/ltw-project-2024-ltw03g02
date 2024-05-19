@@ -96,7 +96,7 @@ CREATE TABLE UserOrder (
     idUser INTEGER REFERENCES User,
     idItem INTEGER REFERENCES Item,
     address TEXT NOT NULL,
-    data DATETIME NOT NULL,
+    data DATETIME DEFAULT CURRENT_TIMESTAMP,
     state TEXT NOT NULL,
     PRIMARY KEY(idUser, idItem, data)
 );
@@ -161,11 +161,11 @@ VALUES
     ('Shorts Infantil', 'Shorts confortável para crianças', 'Verde', 'Criança', 'https://i.pinimg.com/736x/0a/d3/78/0ad378e484487add42537b26aad8b995.jpg', 14.99, 'Bom estado', 3, 3, 9, 1, '2024-06-10 12:59:45'),
     ('Camiseta Adidas Homem', 'Camiseta esportiva para homens', 'Branco', 'Homem', 'https://ae01.alicdn.com/kf/Hae87a2bdfd94479191f86f72821c9495G/Camiseta-esportiva-de-compress-o-para-homens-camiseta-de-compress-o-de-r-pida-secagem-para.jpg', 24.99, 'Bom estado', 1, 1, 5, 2, '2024-07-01 23:46:13'),
     ('Vestido Infantil', 'Vestido bonito para meninas', 'Rosa', 'Criança', 'https://ae01.alicdn.com/kf/HTB14JyfJpXXXXb6XpXXq6xXFXXXz/Flor-do-la-o-menina-vestidos-roupas-crian-as-crian-as-vestidos-de-tutu-de-casamento.jpg', 19.99, 'Etiquetado', 3, 3, 10, 1, '2024-08-20 12:00:00'),
-    ('Calça Levi''s Homem', "Calça jeans Levi''s para homens", 'Azul', 'Homem', 'https://http2.mlstatic.com/calca-masculina-levis-jeans-original-504-tradicional-levis-D_NQ_NP_954291-MLB26429676258_112017-F.jpg', 49.99, 'Bom estado', 1, 1, 6, 3, '2024-09-01 10:00:00'),
+    ('Calça Levis Homem', 'Calça jeans Levis para homens', 'Azul', 'Homem', 'https://http2.mlstatic.com/calca-masculina-levis-jeans-original-504-tradicional-levis-D_NQ_NP_954291-MLB26429676258_112017-F.jpg', 49.99, 'Bom estado', 1, 1, 6, 3, '2024-09-01 10:00:00'),
     ('Blusa Mango Mulher', 'Blusa casual para mulheres', 'Azul', 'Mulher', 'https://ae01.alicdn.com/kf/HTB1yRE3KpXXXXaKXpXXq6xXFXXXu/Escrit-rio-uniforme-blusas-mulheres-blusas-formais-camisas-para-trabalho-de-ver-o-de-manga-curta.jpg', 29.99, 'Etiquetado', 2, 2, 11, 1, '2024-10-01 10:00:00'),
     ('Camiseta Nike Feminina', 'Camiseta esportiva para mulheres', 'Branco', 'Mulher', 'https://i.pinimg.com/originals/51/01/b0/5101b0fae9d0f0fdbe3576f76a39f20d.jpg', 24.99, 'Bom estado', 2, 2, 5, 2, '2024-07-01 23:46:13'),
     ('Vestido Infantil Floral', 'Vestido floral para meninas', 'Branco', 'Criança', 'https://ecameleca.vteximg.com.br/arquivos/ids/160240-2000-2000/vestido-infantil-flores-pink-ninali.jpg?v=636294913202200000', 19.99, 'Etiquetado', 3, 3, 10, 1, '2024-08-20 12:00:00'),
-    ('Calça Diesel Homem', "Calça jeans Diesel para homens", 'Azul', 'Homem', 'https://images.etiquetaunica.com.br/products/calca-diesel-timmen-reta-jeans-masculina-czx4_542131.jpg', 49.99, 'Bom estado', 1, 1, 6, 3, '2024-09-01 10:00:00'),
+    ('Calça Diesel Homem', 'Calça jeans Diesel para homens', 'Azul', 'Homem', 'https://images.etiquetaunica.com.br/products/calca-diesel-timmen-reta-jeans-masculina-czx4_542131.jpg', 49.99, 'Bom estado', 1, 1, 6, 3, '2024-09-01 10:00:00'),
     ('Blusa Zara Feminina', 'Blusa casual da Zara para mulheres', 'Preto', 'Mulher', 'https://static.mujerhoy.com/www/multimedia/201907/20/media/cortadas/5-zara-blusa-verde.jpg', 29.99, 'Etiquetado', 2, 2, 8, 1, '2024-05-01 18:06:23'),
     ('Shorts Infantil Adidas', 'Shorts esportivo da Adidas para crianças', 'Azul', 'Criança', 'https://www.planetatenis.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/s/h/shorts_adidas_2_move_3-stripes_gn3108_a.jpg', 14.99, 'Bom estado', 3, 3, 9, 1, '2024-06-10 12:59:45');
 
