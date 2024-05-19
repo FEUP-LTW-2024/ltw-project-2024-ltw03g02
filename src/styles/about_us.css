@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+    margin-top: 5px;
+    color: var(--dark-green);
+}
+
+h2 {
+    margin-left: 5px;
+}
+
+p {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+p:last-of-type {
+    margin-bottom: 40px;
+}
