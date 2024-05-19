@@ -46,7 +46,7 @@
         ?>
         <nav>
             <ul>
-                <li <?php echo ($page == 'Sobre Nós') ? 'class="selected"' : ''; ?>><a href="../../pages/about_us.php">Sobre Nós</a></li>
+                <li <?php echo ($page == 'about_us') ? 'class="selected"' : ''; ?>><a href="../../pages/about_us.php?page=about_us">Sobre Nós</a></li>
                 <li <?php echo ($page == 'loja') ? 'class="selected"' : ''; ?>><a href="../../pages/filtered_page.php?page=loja">Loja</a></li>
                 <li <?php echo ($page == 'novidades') ? 'class="selected"' : ''; ?>><a href="../../pages/filtered_page.php?page=novidades">Novidades</a></li>
                 <li <?php echo ($page == 'Vendedores') ? 'class="selected"' : ''; ?>><a href="#">Vendedores</a></li>

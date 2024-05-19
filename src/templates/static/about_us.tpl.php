@@ -1,5 +1,6 @@
 <?php function aboutUs(){ ?>
-
+    
+<main>
 <h1>Sobre Nós</h1>
 <br>
 <br>
@@ -15,5 +16,6 @@
 <br>
 <h2>Junte-se a Nós</h2>
 <p>Ao escolher a Clothes Cachet, você está fazendo parte de um movimento global por uma moda mais sustentável e consciente. Agradecemos por nos escolher e estamos animados para compartilhar essa jornada com você. Explore nossa coleção e descubra peças únicas que combinam perfeitamente com seu estilo e valores.</p>
+</main>
 
 <?php } ?>
