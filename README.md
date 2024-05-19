@@ -17,7 +17,7 @@ Requirements list:
     - [x] Browse items using filters like category, price, and condition.
     - [x] Engage with sellers to ask questions or negotiate prices.
     - [x] Add items to a wishlist or shopping cart.
-    - [ ] Proceed to checkout with their shopping cart (simulate payment process).
+    - [x] Proceed to checkout with their shopping cart (simulate payment process).
 
 - [x] Admins should be able to:
     - [x] Elevate a user to admin status.
