@@ -3,6 +3,7 @@ function drawLogin(Session $session) { ?>
     <section id="loginpage">
         <h1>Login</h1>
         <form action = "/../actions/action_login.php" method = "post">
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
             <label>Username: <input type="text" name="username" value="<?=htmlentities($_SESSION['input']['username login'])?>"></label>
             <label>Password:<input type="password" name="pass" value="<?=htmlentities($_SESSION['input']['pass login'])?>"></label>
             <input id="button" class="primary-btn" type="submit" value="Entrar">

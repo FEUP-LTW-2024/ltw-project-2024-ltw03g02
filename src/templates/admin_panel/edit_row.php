@@ -2,6 +2,7 @@
     <section id="edit-row-section">
         <h2>Edit User</h2>
         <form id="edit-user-form" action="../actions/admin_panel/action_edit_user.php" method="post">
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
             <div>
                 <label for="idUser">Id</label>
                 <input id="id-input-edit" type="text" name="idUser" class="input-edit-row idUser-input" required>
@@ -68,6 +69,7 @@
         <section id="edit-row-section">
             <h2>Edit <?php echo ucfirst(str_replace('id', '', $primaryKey)); ?></h2>
             <form id="edit-row-form" class="input-edit-row" action="<?php echo $action ?>" method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
                 <div>
                     <label for="<?php echo $primaryKey; ?>">Id</label>
                     <input type="text" name="<?php echo $primaryKey; ?>" id="id-input-edit" required>

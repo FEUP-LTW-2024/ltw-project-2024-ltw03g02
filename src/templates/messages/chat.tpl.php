@@ -48,6 +48,7 @@
         <section>
             <form id="chat-form" action="/../../actions/action_insert_chat.php" method="POST">
                 <textarea id="chat-input" name="messageText" rows="3" cols="60" placeholder="Type your message" class="message_box_chat"></textarea>
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
                 <input type="hidden" id="receiverId" name="receiverId" value="<?php echo $receiverId; ?>">
                 <input type="submit" value="Send" class="primary-btn">
             </form>
