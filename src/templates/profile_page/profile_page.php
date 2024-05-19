@@ -48,7 +48,7 @@
                     <?php
                 } else {
                     foreach ($items as $item) {
-                        $enableEdit = ($item['sellerId'] == $userId); 
+                        $enableEdit = 1; 
                         $enableBuy = 0;
                         $itemId = $item['idItem'];
                         $otherVars = array("profile_page.php?idItemEdit=$itemId", "profile_page.php?idItemDelete=$itemId");
