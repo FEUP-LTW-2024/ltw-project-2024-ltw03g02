@@ -49,6 +49,7 @@
 
 /* Clothes Type Section */
 .clothes-type {
+    
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(3, 1fr);
@@ -76,7 +77,18 @@
             background-color: white;
         }
     }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    a:hover {
+        color: var(--dark-green);
+        /* border: 1px solid var(--dark-green); */
+        box-shadow: 0px 0px 2px 2px var(--dark-green);
+        z-index: 1;
+    }
 }
+
 
 @media screen and (max-width: 768px){
     .clothes-type {
