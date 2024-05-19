@@ -108,6 +108,15 @@
     }
 }
 
+#no-items-message {
+    padding: 3em 3em;
+    padding-bottom: 1em;
+    font-size: 1.2em;
+    align-self: center;
+    font-weight: lighter;
+    color: var(--dark-grey);
+}
+
 @media screen and (max-width: 768px) and (min-width: 546px){
     .filters-row {
         flex-wrap: wrap;

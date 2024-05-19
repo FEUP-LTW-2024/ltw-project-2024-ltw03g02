@@ -69,7 +69,12 @@
                     ?>
             </div>
             <?php
-                drawPagination($totalPages, $pageNumber); ?>
+                if ($totalItems == 0) {
+                    echo '<h3 id="no-items-message">Não foram encontrados resultados :(</h3>';
+                } else {
+                    drawPagination($totalPages, $pageNumber);
+                }
+            ?>
             <div class="item-list">
                 <?php
                     session_start();
