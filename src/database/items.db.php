@@ -153,7 +153,7 @@
         include_once('connection.db.php');
         $db = getDatabaseConnection();
 
-        $sql = 'SELECT DISTINCT condition FROM Item;';
+        $sql = 'SELECT idCondition, conditionName FROM condition;';
 
         $stmt = $db->prepare($sql);
 
@@ -173,6 +173,25 @@
         $stmt->execute();
         $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $brands;
+    }
+
+    function getItemsBySeller($sellerId) {
+        include_once('connection.db.php');
+        $db = getDatabaseConnection();
+
+        $sql = 'SELECT idItem, picture, profile_image_link, username, price, sizeName, type_item, categoryId, categoryName
+            FROM Item 
+            JOIN User ON sellerId=idUser 
+            JOIN Category ON categoryId=idCategory
+            JOIN clotheSize ON clotheSize=idSize
+            WHERE sellerId = :sellerId;';
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':sellerId', $sellerId);
+
+        $stmt->execute();
+        $items = $stmt->fetchAll();
+        return $items;
     }
 
 ?>

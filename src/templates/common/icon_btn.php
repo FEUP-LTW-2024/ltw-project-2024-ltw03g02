@@ -35,3 +35,9 @@
         <button class="icon-btn xmark-btn" ><img src="../../images/icon_btn/xmark_solid.svg" /></button>
     </a>
 <?php } ?>
+
+<?php function drawPlusBtnWithLink($link) { ?>
+    <a href="<?php echo $link; ?>">
+        <button class="icon-btn plus-btn" ><img src="../../images/icon_btn/plus_solid.svg" /></button>
+    </a>
+<?php } ?>
