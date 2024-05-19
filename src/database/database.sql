@@ -96,7 +96,7 @@ CREATE TABLE FavoriteItem (
 CREATE TABLE UserOrder (
     idUser INTEGER REFERENCES User,
     idItem INTEGER REFERENCES Item,
-    address TEXT NOT NULL,
+    method TEXT NOT NULL,
     data DATETIME DEFAULT CURRENT_TIMESTAMP,
     state TEXT NOT NULL,
     PRIMARY KEY(idUser, idItem, data)
