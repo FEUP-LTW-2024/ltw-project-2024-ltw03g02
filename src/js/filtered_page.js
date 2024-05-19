@@ -58,27 +58,23 @@ class Filters {
 
 filters = new Filters(null, null, null, null);
 
-function _createFetchString() {
-    let fetchString = '../api/api_filter_items.php?';
-    let filterNames = ['type_item', 'categoryId', 'clotheSize', 'orderBy'];
-    filters.currFilterValues.forEach((value, index) => {
-        if (value != null){
-            fetchString += filterNames[index] + '=' + value + '&';
-        }
-    });
-    const urlParams = new URLSearchParams(window.location.searchTerm);
-    if (urlParams.has('searchTerm')){
-        fetchString += 'searchTerm=' + urlParams.get('searchTerm') + '&';
-    }
-
-    const itemsPerPage = 10;
-    fetchString += 'itemsPerPage=' + itemsPerPage + '&';
-    fetchString += 'offset=' + ((pageNumber - 1) * itemsPerPage);
-
-    return fetchString;
-}
-
 // ******************* LEGACY CODE ******************* //
+// function _createFetchString() {
+//     let fetchString = '../api/api_filter_items.php?';
+//     let filterNames = ['type_item', 'categoryId', 'clotheSize', 'orderBy'];
+//     filters.currFilterValues.forEach((value, index) => {
+//         if (value != null){
+//             fetchString += filterNames[index] + '=' + value + '&';
+//         }
+//     });
+//     const urlParams = new URLSearchParams(window.location.searchTerm);
+//     if (urlParams.has('searchTerm')){
+//         fetchString += 'searchTerm=' + urlParams.get('searchTerm') + '&';
+//     }
+
+//     return fetchString;
+// }
+
 // function _drawItemCard(item, loggedIn) {
 //     const itemCard = document.createElement('div');
 //     itemCard.classList.add('item-card');
