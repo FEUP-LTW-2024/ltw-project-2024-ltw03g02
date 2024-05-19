@@ -18,6 +18,7 @@
         </section>
         <section>
             <form id="devolution-form" action="/../../actions/action_devolution.php" method="POST">
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
                 <textarea id="support" name="client_support" rows="15" cols="80" placeholder="Explica tudo detalhadamente aqui acerca do produto, da entrega e do vendedor (qualidade do produto, qualidade de entrega, preço, nome do produto, etc) ..." class="textarea"></textarea>
                 <br>
                 <input type="submit" value="Enviar" class="primary-btn">

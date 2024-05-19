@@ -5,6 +5,7 @@ function drawRegister() {
     <section id="registerpage">
         <h1>Register</h1>
         <form action = "/../actions/action_register.php" method = "POST">
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
             <label>Nome: <input type="text" name="nome" value="<?= isset($_SESSION['input']['nome newUser']) ? htmlentities($_SESSION['input']['nome newUser']) : '' ?>"></label>
             <label>Username: <input type="text" name="username" value="<?= isset($_SESSION['input']['username newUser']) ? htmlentities($_SESSION['input']['username newUser']) : '' ?>"></label>
             <label>Email: <input type="text" name="email" value="<?= isset($_SESSION['input']['email newUser']) ? htmlentities($_SESSION['input']['email newUser']) : '' ?>"></label>

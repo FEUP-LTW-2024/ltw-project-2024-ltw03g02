@@ -19,6 +19,7 @@
             <?php drawItemCard($item['idItem'], $item['picture'], $item['profile_image_link'], $item['username'], $item['price'], $item['sizeName'], $item['categoryName'], $item['type_item'], 0, 0, null); ?>
             <p>Are you sure you want to delete this item?</p>
             <form id="delete-item-form" action="../actions/profile_page/action_delete_item.php" method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
                 <input id="id-input-delete" type="hidden" name="idItem" class="input-delete-row idItem-input" value="<?php echo $item['idItem']; ?>" required>
                 <button class="primary-btn" type="submit">Delete Item</button>
             </form>

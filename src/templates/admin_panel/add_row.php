@@ -2,6 +2,7 @@
     <section id="add-row-section">
         <h2>Add New User</h2>
         <form id="add-row-form" action="../actions/admin_panel/action_add_user.php" method="post">
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
             <div>
                 <label for="nome">Name</label>
                 <input type="text" name="nome" id="nome-input" required>
@@ -59,6 +60,7 @@
         <section id="add-row-section">
             <h2>Add New <?php echo ucfirst(str_replace('id', '', $primaryKey)); ?></h2>
             <form id="add-row-form" action="<?php echo $action ?>" method="post">
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf']; ?>">
                 <?php
                     foreach ($columns as $column) {
                         if ($column != $primaryKey) {
