@@ -1,6 +1,8 @@
 <?php function drawProfile() {
     require_once('../database/connection.db.php');
     require_once('../classes/user.class.php');
+    require_once('../classes/item.class.php');
+    require_once('../database/items.db.php');
     require_once('../templates/common/item_card.php');
     require_once('../templates/common/icon_btn.php');
     require_once('../templates/profile_page/edit_item.php');
@@ -24,6 +26,7 @@
         <div class="profile-actions">
             <a href="edit_profile.php" class="btn">Editar perfil</a>
             <a href="messages.php" class="btn">Mensagens</a>
+            <a href="sold_items.php" class="btn">Itens Vendidos</a>
         </div>
         <?php if (isset($_GET['idItemEdit'])) {
             $idItemEdit = $_GET['idItemEdit'];

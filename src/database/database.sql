@@ -48,6 +48,8 @@ CREATE TABLE Item (
     idBrand INTEGER NOT NULL,
     clotheSize INTEGER NOT NULL,
     listedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    isSold BOOLEAN DEFAULT FALSE,
+    idOrder INTEGER,
     FOREIGN KEY (sellerId) REFERENCES User(idUser),
     FOREIGN KEY (categoryId) REFERENCES Category(idCategory),
     FOREIGN KEY (idBrand) REFERENCES Brand(idBrand),
@@ -93,12 +95,13 @@ CREATE TABLE FavoriteItem (
 );
 
 CREATE TABLE UserOrder (
-    idUser INTEGER REFERENCES User,
+    idOrder INTEGER PRIMARY KEY AUTOINCREMENT,
+    idBuyer INTEGER REFERENCES User,
+    idSeller INTEGER REFERENCES User,
     idItem INTEGER REFERENCES Item,
-    address TEXT NOT NULL,
-    data DATETIME DEFAULT CURRENT_TIMESTAMP,
-    state TEXT NOT NULL,
-    PRIMARY KEY(idUser, idItem, data)
+    paymentOption TEXT NOT NULL,
+    productPrice DECIMAL(10, 2) NOT NULL,
+    data DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE Apoio (

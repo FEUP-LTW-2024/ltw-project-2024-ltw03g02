@@ -9,7 +9,7 @@
             JOIN User ON sellerId=idUser 
             JOIN Category ON categoryId=idCategory
             JOIN clotheSize ON clotheSize=idSize';
-        $sql .= ' WHERE 1=1';
+        $sql .= ' WHERE 1=1 AND isSold=0';
         if ($clotheSize != null) {
             $sql .= ' AND clotheSize = :clotheSize';
         } 
@@ -57,7 +57,7 @@
             JOIN User ON sellerId=idUser 
             JOIN Category ON categoryId=idCategory
             JOIN clotheSize ON clotheSize=idSize';
-        $sql .= ' WHERE 1=1';
+        $sql .= ' WHERE 1=1 AND isSold=0';
         if ($clotheSize != null) {
             $sql .= ' AND clotheSize = :clotheSize';
         } 
@@ -97,7 +97,7 @@
         include_once('connection.db.php');
         $db = getDatabaseConnection();
         error_log($idItem);
-        $sql = 'SELECT title, description, type_item, color, picture, price, condition, username, categoryName, brandName, sizeName, profile_image_link, condition
+        $sql = 'SELECT idItem, sellerId, title, description, type_item, color, picture, price, condition, username, categoryName, brandName, sizeName, profile_image_link, condition
                 FROM Item
                 JOIN User ON sellerId=idUser
                 JOIN Category ON categoryId=idCategory
@@ -200,7 +200,7 @@
             JOIN User ON sellerId=idUser 
             JOIN Category ON categoryId=idCategory
             JOIN clotheSize ON clotheSize=idSize
-            WHERE sellerId = :sellerId;';
+            WHERE sellerId = :sellerId AND isSold=0;';
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':sellerId', $sellerId);

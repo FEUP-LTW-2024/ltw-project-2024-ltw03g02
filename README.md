@@ -7,13 +7,13 @@ Requirements list:
     - [x] Log in and out.
     - [x] Edit their profile, including their name, username, password, and email.
 
-- [ ] Sellers should be able to:
+- [x] Sellers should be able to:
     - [x] List new items, providing details such as category, brand, model, size, and condition, along with images.
     - [x] Track and manage their listed items.
     - [x] Respond to inquiries from buyers regarding their items and add further information if needed.
-    - [ ] Print shipping forms for items that have been sold.
+    - [x] Print shipping forms for items that have been sold.
 
-- [ ] Buyers should be able to:
+- [x] Buyers should be able to:
     - [x] Browse items using filters like category, price, and condition.
     - [x] Engage with sellers to ask questions or negotiate prices.
     - [x] Add items to a wishlist or shopping cart.

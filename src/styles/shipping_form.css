@@ -1,0 +1,63 @@
+header .topbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shipping-form img {
+    width: 10em;
+    height: 10em;
+}
+
+h1 {
+    margin-top: 1em;
+}
+
+.shipping-form {
+    padding: 3rem;
+    max-width: 1000px;
+    margin: auto;
+}
+
+p {
+    margin: 0.5rem 0rem;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--lighter-grey);
+    border: 1px solid var(--light-grey);
+    border-radius: 1em;
+    padding: 2em;
+    width: 100%;
+}
+
+.item-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: var(--lighter-grey);
+    img {
+        width: aspect-ratio(1/1);
+        height: 100%;
+        object-fit: cover;  
+    }
+    .item-info {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 1rem;
+        justify-content: space-around;
+        margin: auto 0;
+        margin-left: 2em; 
+        h2 {
+            font-weight: lighter;
+        }
+        .item-price {
+            font-weight: bold;
+        }
+    }
+}
